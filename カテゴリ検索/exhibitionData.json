@@ -1,0 +1,73 @@
+{
+  "middleSchoolExhibitions": [
+    { "name": "J2A", "event": "お化け屋敷「闇の迷路」", "location": "中学校舎3階" },
+    { "name": "J2B", "event": "脱出ゲーム ～密室の謎～", "location": "中学校舎3階" },
+    { "name": "J2C", "event": "演劇『白雪姫』", "location": "中学校舎3階" },
+    { "name": "J2D", "event": "映画上映『夏の軌跡』", "location": "中学校舎3階" },
+    { "name": "J2E", "event": "世界の民族衣装展示", "location": "中学校舎3階" },
+    { "name": "J3A", "event": "クイズ王決定戦", "location": "中学校舎4階" },
+    { "name": "J3B", "event": "わなげ & 射的コーナー", "location": "中学校舎4階" },
+    { "name": "J3C", "event": "星空プラネタリウム", "location": "中学校舎4階" },
+    { "name": "J3D", "event": "手作りおもちゃ工房", "location": "中学校舎4階" },
+    { "name": "J3E", "event": "縁日 ヨーヨーつり", "location": "中学校舎4階" }
+  ],
+  "highSchoolExhibitions": [
+    { "name": "S1A", "event": "クラス喫茶『憩いの森』", "location": "高校校舎2階" },
+    { "name": "S1B", "event": "演劇『ロミオとジュリエット』", "location": "高校校舎2階" },
+    { "name": "S1C", "event": "軽音楽ライブ", "location": "高校校舎2階" },
+    { "name": "S1D", "event": "現代美術展", "location": "高校校舎2階" },
+    { "name": "S1E", "event": "戦国時代歴史パネル", "location": "高校校舎2階" },
+    { "name": "S2A", "event": "科学実験ショー", "location": "高校校舎3階" },
+    { "name": "S2B", "event": "模擬裁判体験", "location": "高校校舎3階" },
+    { "name": "S2C", "event": "ファッションショー", "location": "高校校舎3階" },
+    { "name": "S2D", "event": "ダンスパフォーマンス", "location": "高校校舎3階" },
+    { "name": "S2E", "event": "プログラミング体験教室", "location": "高校校舎3階" }
+  ],
+  "clubActivities": [
+    { "name": "写真部", "event": "写真展「青春の一瞬」", "location": "高校校舎2階" },
+    { "name": "英語部", "event": "英語劇『ヘンゼルとグレーテル』", "location": "高校校舎2階" },
+    { "name": "理科部 天文班", "event": "星空観測会 & 展示", "location": "高校校舎2階" },
+    { "name": "理科部 生物班", "event": "生物標本・顕微鏡コーナー", "location": "高校校舎2階" },
+    { "name": "理科部 地質班", "event": "岩石・鉱物展示 宝石すり", "location": "高校校舎2階" },
+    { "name": "将棋部", "event": "将棋対局・指導コーナー", "location": "中学校舎4階" },
+    { "name": "奇術部", "event": "マジックショー (随時公演)", "location": "中学校舎4階" },
+    { "name": "ブラスバンド部", "event": "ミニコンサート", "location": "中学校舎4階" },
+    { "name": "美術同好会", "event": "作品展示・似顔絵コーナー", "location": "中学校舎4階" },
+    { "name": "歴史研究同好会", "event": "歴史資料展示 火縄銃レプリカ", "location": "中学校舎4階" },
+    { "name": "演劇同好会", "event": "演劇『注文の多い料理店』", "location": "高校校舎1階" },
+    { "name": "パソコン同好会", "event": "PCゲーム体験 & プログラミング", "location": "高校校舎1階" },
+    { "name": "アマチュア無線同好会", "event": "無線通信体験・モールス信号", "location": "中学校舎1階" }
+  ],
+  "foodStalls": [
+    { "name": "J2A", "event": "焼きそば", "location": "アクティブテラス" },
+    { "name": "J3C", "event": "フランクフルト", "location": "アクティブテラ스" },
+    { "name": "S1B", "event": "かき氷", "location": "アクティブテラス" },
+    { "name": "S2D", "event": "たこ焼き", "location": "アクティブテラス" },
+    { "name": "J2E", "event": "チョコバナナ", "location": "アクティブテラス" },
+    { "name": "S1A", "event": "わたあめ", "location": "アクティブテラス" },
+    { "name": "J3B", "event": "ポップコーン", "location": "アクティブテラス" },
+    { "name": "S2C", "event": "クレープ", "location": "アクティブテラス" },
+    { "name": "J2C", "event": "じゃがバター", "location": "アクティブテラス" },
+    { "name": "S1E", "event": "ラムネ", "location": "アクティブテラス" }
+  ],
+  "volunteerBands": [
+    { "name": "Unconditional", "event": "オリジナルロックライブ", "location": "講堂1階ホール" },
+    { "name": "OUR HANDS", "event": "アコースティック演奏", "location": "講堂1階ホール" },
+    { "name": "秒速21秒", "event": "青春ポップステージ", "location": "講堂1階ホール" },
+    { "name": "雅バンド", "event": "ジャズ＆フュージョン", "location": "講堂1階ホール" },
+    { "name": "SECRET GUEST", "event": "シークレットライブ(当日発表)", "location": "講堂1階ホール" }
+  ],
+  "volunteerExhibitions": [
+    { "name": "クイズ研究会", "event": "クイズ大会 & 謎解きコーナー", "location": "高校校舎1階" },
+    { "name": "鉄道研究会", "event": "鉄道模型ジオラマ展示", "location": "高校校舎1階" },
+    { "name": "学歴同好会", "event": "学歴クイズ・出身校パネル", "location": "中学校舎1階" }
+  ],
+  "stagePerformances": [
+    { "name": "演劇同好会", "event": "演劇『ロミオとジュリエット』", "location": "講堂2階舞台" },
+    { "name": "オールージュ", "event": "ダンスパフォーマンス", "location": "講堂2階舞台" },
+    { "name": "ヲタ芸", "event": "ヲタ芸ライブ", "location": "講堂2階舞台" },
+    { "name": "奇術部", "event": "ステージマジックショー", "location": "講堂2階舞台" },
+    { "name": "ブラスバンド部", "event": "吹奏楽コンサート", "location": "講堂2階舞台" },
+    { "name": "桑田まさき", "event": "桑田佳祐トリビュートバンド", "location": "講堂2階舞台" }
+  ]
+}
