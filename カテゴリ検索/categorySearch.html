@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>団体検索</title>
     <style>
-        /* 必要最低限のスタイル */
         body {
             font-family: sans-serif;
             margin: 20px;
@@ -17,9 +16,6 @@
         h1 {
             margin: 0 0 10px;
             font-size: 1.8rem;
-        }
-        .subtitle {
-            margin-bottom: 20px;
         }
         .search-area {
             display: flex;
@@ -82,6 +78,11 @@
             padding-left: 8px;
             border-left: 3px solid #ccc;
         }
+        .description {
+            font-size: 0.95rem;
+            margin: 8px 0;
+            color: #555;
+        }
         .location-info {
             font-size: 0.9rem;
             margin-top: 8px;
@@ -113,6 +114,7 @@
         <label><input type="checkbox" value="有志演奏" checked disabled> 有志演奏</label>
         <label><input type="checkbox" value="有志展示" checked disabled> 有志展示</label>
         <label><input type="checkbox" value="講堂舞台企画" checked disabled> 講堂舞台企画</label>
+        <label><input type="checkbox" value="部活舞台企画" checked disabled> 部活舞台企画</label>
         <label><input type="checkbox" id="selectAll" checked disabled> すべて</label>
     </div>
 
@@ -141,15 +143,16 @@
                 if (!response.ok) throw new Error('データの読み込みに失敗しました');
                 const data = await response.json();
 
-                // カテゴリ名を付けて結合
+                // 新しいJSON構造に合わせてカテゴリ名を付けて結合
                 allItems = [
-                    ...data.middleSchoolExhibitions.map(item => ({ ...item, category: "中学展示" })),
-                    ...data.highSchoolExhibitions.map(item => ({ ...item, category: "高校展示" })),
-                    ...data.clubActivities.map(item => ({ ...item, category: "部活動" })),
-                    ...data.foodStalls.map(item => ({ ...item, category: "模擬店" })),
-                    ...data.volunteerBands.map(item => ({ ...item, category: "有志演奏" })),
-                    ...data.volunteerExhibitions.map(item => ({ ...item, category: "有志展示" })),
-                    ...data.stagePerformances.map(item => ({ ...item, category: "講堂舞台企画" }))
+                    ...data.J.map(item => ({ ...item, category: "中学展示" })),
+                    ...data.S.map(item => ({ ...item, category: "高校展示" })),
+                    ...data.C.map(item => ({ ...item, category: "部活動" })),
+                    ...data.F.map(item => ({ ...item, category: "模擬店" })),
+                    ...data.B.map(item => ({ ...item, category: "有志演奏" })),
+                    ...data.V.map(item => ({ ...item, category: "有志展示" })),
+                    ...data.St.map(item => ({ ...item, category: "講堂舞台企画" })),
+                    ...data.CS.map(item => ({ ...item, category: "部活舞台企画" }))
                 ];
 
                 searchInput.disabled = false;
@@ -176,7 +179,9 @@
             const filtered = allItems.filter(item => {
                 if (selectedCategories.length > 0 && !selectedCategories.includes(item.category)) return false;
                 if (searchTerm !== '') {
-                    return item.name.toLowerCase().includes(searchTerm) || item.event.toLowerCase().includes(searchTerm);
+                    return item.group.toLowerCase().includes(searchTerm) ||
+                           item.title.toLowerCase().includes(searchTerm) ||
+                           (item.desc && item.desc.toLowerCase().includes(searchTerm));
                 }
                 return true;
             });
@@ -192,9 +197,10 @@
             for (const item of filtered) {
                 html += `
                     <div class="item-card">
-                        <div class="group-name">${item.name}</div>
+                        <div class="group-name">${item.group}</div>
                         <span class="category-badge">${item.category}</span>
-                        <div class="event-name">「${item.event}」</div>
+                        <div class="event-name">「${item.title}」</div>
+                        <div class="description">${item.desc}</div>
                         <div class="location-info">${item.location}</div>
                     </div>
                 `;
@@ -202,13 +208,11 @@
             container.innerHTML = html;
         }
 
-        // イベントリスナー設定
         for (const cb of filterCheckboxes) {
             cb.addEventListener('change', function() {
                 if (!this.checked) {
                     selectAllCheckbox.checked = false;
                 } else {
-                    // every はそのまま（配列メソッドなのでforEachではない）
                     const allChecked = Array.from(filterCheckboxes).every(c => c.checked);
                     selectAllCheckbox.checked = allChecked;
                 }
