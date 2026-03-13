@@ -1,13 +1,22 @@
-// Header & Footer inject + Countdown
-// === Pinch Blocker (ピンチだけ禁止 / 通常のブラウザズームは許可) ===
-// 目的: ユーザースケール UI (Ctrl+ + / ブラウザ設定) は使える状態を保ちつつ、
-//       モバイルのピンチ操作による accidental zoom を防ぐ。
-// 解除方法: 下の ENABLE_PINCH を true にするか、この即時関数を削除。
+$(function(){
+  $.getJSON("data.json", function(data){
+    for (var i = 0; i < data.length; i++) {
+      var href  = data[i].href + '#' + data[i].group;
+      var group = '<span class="group">' + data[i].group + '</span>';
+      var title = '<span class="title">' + data[i].title + '</span>';
+      var desc  = '<div class="desc">' + (data[i].desc || '') + '</div>';
+      var image = '<img src="' + data[i].image + '" class="map">';
+      var card  = '<a href="' + href + '">' + `<div class="exhib_card">` + group + title + desc + image + '</div></a>';
+      var mount = document.getElementById('exhib_' + data[i].group);
+      if (!mount) continue;
+      mount.insertAdjacentHTML('beforeend', card);
+        }
+    });
+});
+// Header & Footer inject + Countdown + Swiper init + Pinch zoom block
 (function pinchOnlyBlock(){
   const ENABLE_PINCH = false; // true にするとピンチ再許可
   if(ENABLE_PINCH) return;
-
-  // iOS Safari の gesture* イベントを抑止 (ピンチ開始を止める)
   ['gesturestart','gesturechange','gestureend'].forEach(ev => {
     document.addEventListener(ev, e => { e.preventDefault(); }, { passive:false });
   });
@@ -20,14 +29,6 @@
     if(isPinchEvent(e)) e.preventDefault();
   }, { passive:false });
 
-  // (任意) 特定要素内でピンチを許可したい場合:
-  // 1. 下記コメントアウトを解除
-  // 2. 対象要素に data-allow-pinch="true" を付与
-  // window.addEventListener('touchmove', e => {
-  //   const target = e.target.closest('[data-allow-pinch]');
-  //   if(target) return; // 許可領域
-  //   if(isPinchEvent(e)) e.preventDefault();
-  // }, { passive:false });
 })();
 document.addEventListener('DOMContentLoaded', () => {
   // Inject header
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Countdown to event start
-  const eventDate = new Date('2025-09-20T09:00:00+09:00');
+  const eventDate = new Date('2026-09-19T09:00:00+09:00');
   const els = {
     days: document.getElementById('days'),
     hours: document.getElementById('hours'),

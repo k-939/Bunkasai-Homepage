@@ -349,6 +349,19 @@ font-family: 'Oswald', sans-serif;
   justify-content: center;
 }
 
+/* site.js は <a><div class="exhib_card">...</div></a> を注入する。
+   その内側カードが縮まないよう、a はストレッチ配置にする（中央寄せはカード側でやる）。 */
+.swiper-slide > [id^="exhib_"] > a {
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.swiper-slide > [id^="exhib_"] > a > .exhib_card,
+.swiper-slide > [id^="exhib_"] > a > .exhib-card {
+  width: 100%;
+  height: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   .swiper-pagination-bullet {
     background: #ffffff !important;
