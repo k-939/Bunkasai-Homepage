@@ -99,22 +99,20 @@
 <body>
 <div class="container">
     <h1>団体検索</h1>
-
     <div class="search-area">
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="団体名・企画名で検索" disabled>
         </div>
     </div>
-
     <div class="filter-group" id="categoryFilters">
         <label><input type="checkbox" value="中学展示" checked disabled> 中学展示</label>
         <label><input type="checkbox" value="高校展示" checked disabled> 高校展示</label>
         <label><input type="checkbox" value="部活動" checked disabled> 部活動</label>
         <label><input type="checkbox" value="模擬店" checked disabled> 模擬店</label>
         <label><input type="checkbox" value="有志演奏" checked disabled> 有志演奏</label>
-        <label><input type="checkbox" value="有志展示" checked disabled> 有志展示</label>
         <label><input type="checkbox" value="講堂舞台企画" checked disabled> 講堂舞台企画</label>
         <label><input type="checkbox" value="部活舞台企画" checked disabled> 部活舞台企画</label>
+        <label><input type="checkbox" value="Nanzan's Got Talent" checked disabled> Nanzan's Got Talent</label>
         <label><input type="checkbox" id="selectAll" checked disabled> すべて</label>
     </div>
 
@@ -139,22 +137,29 @@
 
         async function loadData() {
             try {
-                const response = await fetch('exhibitionData.json');
+                // ファイル名を data.json に変更
+                const response = await fetch('data.json');
                 if (!response.ok) throw new Error('データの読み込みに失敗しました');
-                const data = await response.json();
+                const data = await response.json(); // 新しいJSONは配列
 
-                // 新しいJSON構造に合わせてカテゴリ名を付けて結合
-                allItems = [
-                    ...data.J.map(item => ({ ...item, category: "中学展示" })),
-                    ...data.S.map(item => ({ ...item, category: "高校展示" })),
-                    ...data.C.map(item => ({ ...item, category: "部活動" })),
-                    ...data.F.map(item => ({ ...item, category: "模擬店" })),
-                    ...data.B.map(item => ({ ...item, category: "有志演奏" })),
-                    ...data.V.map(item => ({ ...item, category: "有志展示" })),
-                    ...data.St.map(item => ({ ...item, category: "講堂舞台企画" })),
-                    ...data.CS.map(item => ({ ...item, category: "部活舞台企画" }))
-                ];
+                // href の値をもとにカテゴリをマッピング（ngt を追加）
+                const categoryMap = {
+                    'J.html': '中学展示',
+                    'S.html': '高校展示',
+                    'C.html': '部活動',
+                    'F.html': '模擬店',
+                    'B.html': '有志演奏',
+                    'St.html': '講堂舞台企画',
+                    'CS.html': '部活舞台企画',
+                    'ngt.html': "Nanzan's Got Talent"
+                };
 
+                allItems = data.map(item => ({
+                    ...item,
+                    category: categoryMap[item.href] || 'その他' // 万一マップにない場合は「その他」
+                }));
+
+                // 入力を有効化
                 searchInput.disabled = false;
                 for (const cb of filterCheckboxes) {
                     cb.disabled = false;
@@ -195,19 +200,21 @@
 
             let html = '';
             for (const item of filtered) {
+                // 説明文はHTMLを含む可能性があるのでそのまま挿入
+                // タイトルもHTMLを含む場合がある（例：日時カラー表示）
                 html += `
                     <div class="item-card">
                         <div class="group-name">${item.group}</div>
                         <span class="category-badge">${item.category}</span>
                         <div class="event-name">「${item.title}」</div>
                         <div class="description">${item.desc}</div>
-                        <div class="location-info">${item.location}</div>
                     </div>
                 `;
             }
             container.innerHTML = html;
         }
 
+        // 個別チェックボックスの変更イベント
         for (const cb of filterCheckboxes) {
             cb.addEventListener('change', function() {
                 if (!this.checked) {
@@ -220,6 +227,7 @@
             });
         }
 
+        // 「すべて」チェックボックス
         selectAllCheckbox.addEventListener('change', function() {
             const isChecked = this.checked;
             for (const cb of filterCheckboxes) {
@@ -228,8 +236,10 @@
             render();
         });
 
+        // 検索ボックス
         searchInput.addEventListener('input', render);
 
+        // データ読み込み開始
         loadData();
     })();
 </script>
