@@ -764,6 +764,121 @@ a.is-active {
   text-decoration: none;
   color: #fff;
 }
+
+/* ==========================
+   Project list (project.html)
+   ========================== */
+.project-page h1 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 3vw, 30px);
+  font-family: "Mochiy Pop One", "Noto Sans JP", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.project-page .search-area {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0 16px;
+}
+
+.project-page .search-box {
+  flex: 2;
+  min-width: 240px;
+}
+
+.project-page .search-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: var(--border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  color: var(--color-text);
+  outline: none;
+}
+
+.project-page .search-box input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary, #6aa2ff) 28%, transparent);
+}
+
+.project-page .filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0 14px;
+}
+
+.project-page .filter-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: var(--border);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.project-page .stats {
+  margin: 10px 0 14px;
+  color: var(--color-text-muted);
+}
+
+.project-page .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* カードデザインは project.html のまま（枠＋余白）を維持しつつ、サイト配色に寄せる */
+.project-page .item-card {
+  border: var(--border);
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-1);
+}
+
+.project-page .group-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.project-page .category-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  border: var(--border);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+  background: color-mix(in srgb, var(--color-primary, #6aa2ff) 12%, transparent);
+}
+
+.project-page .event-name {
+  font-size: 1.05rem;
+  margin: 8px 0;
+  padding-left: 10px;
+  border-left: 3px solid color-mix(in srgb, var(--color-primary, #6aa2ff) 55%, #ccc);
+}
+
+.project-page .description {
+  font-size: 0.95rem;
+  margin: 8px 0;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.project-page .no-result,
+.project-page .loading {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 40px;
+  color: var(--color-text-muted);
+}
 .schedule::before {
     position: absolute;
     background-color: #deeef7;

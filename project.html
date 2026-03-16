@@ -2,103 +2,17 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>団体検索</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            margin: 0 0 10px;
-            font-size: 1.8rem;
-        }
-        .search-area {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .search-box {
-            flex: 2;
-            min-width: 250px;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-        .filter-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .filter-group label {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid #aaa;
-            padding: 5px 12px;
-            cursor: pointer;
-        }
-        .stats {
-            margin: 10px 0;
-        }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-        .item-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-        }
-        .group-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .category-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            border: 1px solid #aaa;
-            padding: 3px 10px;
-            margin-bottom: 8px;
-        }
-        .event-name {
-            font-size: 1.1rem;
-            margin: 8px 0;
-            padding-left: 8px;
-            border-left: 3px solid #ccc;
-        }
-        .description {
-            font-size: 0.95rem;
-            margin: 8px 0;
-            color: #555;
-        }
-        .location-info {
-            font-size: 0.9rem;
-            margin-top: 8px;
-            border-top: 1px dashed #ccc;
-            padding-top: 6px;
-        }
-        .no-result, .loading {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 40px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>企画一覧 | 飛翔祭2026</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    <script src="/assets/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-    <h1>団体検索</h1>
+<div id="header"></div>
+
+<main class="page-section project-page">
+    <h1>企画一覧</h1>
     <div class="search-area">
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="団体名・企画名で検索" disabled>
@@ -123,7 +37,10 @@
     <div id="cardsContainer" class="card-grid">
         <div class="loading">データ読み込み中</div>
     </div>
-</div>
+
+</main>
+
+<div id="footer"></div>
 
 <script>
     (function() {
@@ -137,8 +54,8 @@
 
         async function loadData() {
             try {
-                // ファイル名を data.json に変更
-                const response = await fetch('data.json');
+                // data.json はリポジトリ直下
+                const response = await fetch('/assets/data.json');
                 if (!response.ok) throw new Error('データの読み込みに失敗しました');
                 const data = await response.json(); // 新しいJSONは配列
 
@@ -243,5 +160,6 @@
         loadData();
     })();
 </script>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
