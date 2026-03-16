@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>団体検索</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0 0 10px;
+            font-size: 1.8rem;
+        }
+        .search-area {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .search-box {
+            flex: 2;
+            min-width: 250px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .filter-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid #aaa;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+        .stats {
+            margin: 10px 0;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .item-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .group-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            border: 1px solid #aaa;
+            padding: 3px 10px;
+            margin-bottom: 8px;
+        }
+        .event-name {
+            font-size: 1.1rem;
+            margin: 8px 0;
+            padding-left: 8px;
+            border-left: 3px solid #ccc;
+        }
+        .description {
+            font-size: 0.95rem;
+            margin: 8px 0;
+            color: #555;
+        }
+        .location-info {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            border-top: 1px dashed #ccc;
+            padding-top: 6px;
+        }
+        .no-result, .loading {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>団体検索</h1>
+    <div class="search-area">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="団体名・企画名で検索" disabled>
+        </div>
+    </div>
+    <div class="filter-group" id="categoryFilters">
+        <label><input type="checkbox" value="中学展示" checked disabled> 中学展示</label>
+        <label><input type="checkbox" value="高校展示" checked disabled> 高校展示</label>
+        <label><input type="checkbox" value="部活動" checked disabled> 部活動</label>
+        <label><input type="checkbox" value="模擬店" checked disabled> 模擬店</label>
+        <label><input type="checkbox" value="有志演奏" checked disabled> 有志演奏</label>
+        <label><input type="checkbox" value="講堂舞台企画" checked disabled> 講堂舞台企画</label>
+        <label><input type="checkbox" value="部活舞台企画" checked disabled> 部活舞台企画</label>
+        <label><input type="checkbox" value="Nanzan's Got Talent" checked disabled> Nanzan's Got Talent</label>
+        <label><input type="checkbox" id="selectAll" checked disabled> すべて</label>
+    </div>
+
+    <div class="stats">
+        <span id="resultCount">データ読み込み中</span>
+    </div>
+
+    <div id="cardsContainer" class="card-grid">
+        <div class="loading">データ読み込み中</div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const container = document.querySelector('#cardsContainer');
+        const searchInput = document.querySelector('#searchInput');
+        const resultSpan = document.querySelector('#resultCount');
+        const filterCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]:not(#selectAll)');
+        const selectAllCheckbox = document.querySelector('#selectAll');
+
+        let allItems = [];
+
+        async function loadData() {
+            try {
+                // ファイル名を data.json に変更
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('データの読み込みに失敗しました');
+                const data = await response.json(); // 新しいJSONは配列
+
+                // href の値をもとにカテゴリをマッピング（ngt を追加）
+                const categoryMap = {
+                    'J.html': '中学展示',
+                    'S.html': '高校展示',
+                    'C.html': '部活動',
+                    'F.html': '模擬店',
+                    'B.html': '有志演奏',
+                    'St.html': '講堂舞台企画',
+                    'CS.html': '部活舞台企画',
+                    'ngt.html': "Nanzan's Got Talent"
+                };
+
+                allItems = data.map(item => ({
+                    ...item,
+                    category: categoryMap[item.href] || 'その他' // 万一マップにない場合は「その他」
+                }));
+
+                // 入力を有効化
+                searchInput.disabled = false;
+                for (const cb of filterCheckboxes) {
+                    cb.disabled = false;
+                }
+                selectAllCheckbox.disabled = false;
+
+                render();
+            } catch (error) {
+                container.innerHTML = `<div class="no-result">❌ ${error.message}</div>`;
+                resultSpan.innerText = 'エラー';
+            }
+        }
+
+        function render() {
+            const selectedCategories = [];
+            for (const cb of filterCheckboxes) {
+                if (cb.checked) selectedCategories.push(cb.value);
+            }
+
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filtered = allItems.filter(item => {
+                if (selectedCategories.length > 0 && !selectedCategories.includes(item.category)) return false;
+                if (searchTerm !== '') {
+                    return item.group.toLowerCase().includes(searchTerm) ||
+                           item.title.toLowerCase().includes(searchTerm) ||
+                           (item.desc && item.desc.toLowerCase().includes(searchTerm));
+                }
+                return true;
+            });
+
+            resultSpan.innerText = `${filtered.length} 団体 / 全 ${allItems.length} 団体中`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="no-result">該当する団体なし</div>';
+                return;
+            }
+
+            let html = '';
+            for (const item of filtered) {
+                // 説明文はHTMLを含む可能性があるのでそのまま挿入
+                // タイトルもHTMLを含む場合がある（例：日時カラー表示）
+                html += `
+                    <div class="item-card">
+                        <div class="group-name">${item.group}</div>
+                        <span class="category-badge">${item.category}</span>
+                        <div class="event-name">「${item.title}」</div>
+                        <div class="description">${item.desc}</div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        // 個別チェックボックスの変更イベント
+        for (const cb of filterCheckboxes) {
+            cb.addEventListener('change', function() {
+                if (!this.checked) {
+                    selectAllCheckbox.checked = false;
+                } else {
+                    const allChecked = Array.from(filterCheckboxes).every(c => c.checked);
+                    selectAllCheckbox.checked = allChecked;
+                }
+                render();
+            });
+        }
+
+        // 「すべて」チェックボックス
+        selectAllCheckbox.addEventListener('change', function() {
+            const isChecked = this.checked;
+            for (const cb of filterCheckboxes) {
+                cb.checked = isChecked;
+            }
+            render();
+        });
+
+        // 検索ボックス
+        searchInput.addEventListener('input', render);
+
+        // データ読み込み開始
+        loadData();
+    })();
+</script>
+</body>
+</html>
