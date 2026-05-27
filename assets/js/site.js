@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', async () => {
   // --- Exhib cards (no jQuery dependency) ---
   try {
@@ -34,12 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   ['gesturestart','gesturechange','gestureend'].forEach(ev => {
     document.addEventListener(ev, e => { e.preventDefault(); }, { passive:false });
   });
-=======
-// Prevent double initialization when this script is included twice.
-(function bootstrapSiteJs() {
-  if (window.__BUNKASAI_SITE_JS__) return;
-  window.__BUNKASAI_SITE_JS__ = true;
->>>>>>> 63948443298b43072647ede52b408a527dc729bb
 
   const categoryMap = {
     'J.html': '中学展示',
