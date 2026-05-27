@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -7,14 +8,11 @@
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
   <script src="assets/js/site.js"></script>
   <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- カウントダウン要素間のスペース -->
-  <style>
-    .countdown-timer .time-block+.time-block {
-      margin-left: 12px;
-    }
-  </style>
 </head>
 
 <body>
@@ -22,31 +20,33 @@
   <div id="header"></div>
   <div class="image_container">
     <div class="back-resize">
-      <img src="./assets/img/S__11378705.jpg" class="pcback_img">
-      <img src="./assets/img/92316_0.jpg" class="spback_img">
+      <img src="./assets/img/mv_resized.png" class="pcback_img">
+      <img src="./assets/img/mv_resized.png" class="spback_img">
       <div class="image_overlay">
         <div class="logo_container">
           <img src="./assets/img/logo.png" class="logo_image">
           <div class="items">2026</div>
           <div class="items">in 南山高等学校・中学校男子部</div>
         </div>
-  <h2 class="countdown-title" style="color:#fff;"></h2>
-        <div class="countdown-timer">
-          <div class="time-block">
-            <span id="days">00</span>
-            <span class="label">日</span>
-          </div>
-          <div class="time-block">
-            <span id="hours">00</span>
-            <span class="label">時間</span>
-          </div>
-          <div class="time-block">
-            <span id="minutes">00</span>
-            <span class="label">分</span>
-          </div>
-          <div class="time-block">
-            <span id="seconds">00</span>
-            <span class="label">秒</span>
+        <div class="countdown-card">
+          <h2 class="countdown-title">開催まであと</h2>
+          <div class="countdown-timer">
+            <div class="time-block">
+              <span id="days">00</span>
+              <span class="label">日</span>
+            </div>
+            <div class="time-block">
+              <span id="hours">00</span>
+              <span class="label">時間</span>
+            </div>
+            <div class="time-block">
+              <span id="minutes">00</span>
+              <span class="label">分</span>
+            </div>
+            <div class="time-block">
+              <span id="seconds">00</span>
+              <span class="label">秒</span>
+            </div>
           </div>
         </div>
       </div>

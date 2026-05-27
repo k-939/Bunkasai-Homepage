@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    body {
+        font-family: 'Oswald', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    #header {
+        height: 64px;
+    }
+
+
+    @media (min-width: 769px) {
+        .main-nav {
+            z-index: 1000;
+        }
+
+        .smartphone-nav {
+            display: none;
+        }
+
+        .header {
+            background: color-mix(in srgb, var(--color-surface, #ffffff) 88%, transparent);
+            color: #333;
+            /* header text dark by default */
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            border-bottom: var(--border, 1px solid #ddd);
+            backdrop-filter: saturate(120%) blur(10px);
+            z-index: 1000;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            display: none;
+        }
+
+        .smartphone-nav {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: color-mix(in srgb, var(--color-surface, #ffffff) 88%, transparent);
+            border-top: var(--border, 1px solid #ddd);
+            backdrop-filter: saturate(120%) blur(10px);
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 1rem;
+            align-items: center;
+        }
+
+        .bottom-nav > li {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        .bottom-nav a { 
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            width: 100%;
+            text-align: center;
+        }
+
+        .bottom-nav a svg {
+            width: 1.35em;
+            height: 1.35em;
+            display: inline-block;
+            flex: none;
+            vertical-align: -0.125em;
+            fill: currentColor;
+        }
+}
+
+    @media (prefers-color-scheme: dark) {
+        .header {
+            background: color-mix(in srgb, var(--color-surface, #000000) 88%, transparent);
+            color: #fff;
+        }
+
+        .logo a,
+        .logo a:visited {
+            color: #fff;
+        }
+
+        .main-nav>li>a {
+            color: #fff;
+        }
+
+        .main-nav>li>a:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .smartphone-nav {
+            background: color-mix(in srgb, var(--color-surface, #000000) 88%, transparent);
+        }
+
+        .bottom-nav a {
+            color: #fff;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <p>飛翔祭2026</p>
+                </a>
+            </div>
+            <ul class="main-nav">
+                <li><a href="https://nz-hishosai.com">トップ</a></li>
+                <li><a href="/project.html">企画一覧</a></li>
+                <li><a href="/F.html">模擬店</a></li>
+                <li><a href="/index.html#timetable">タイムテーブル</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <nav class="smartphone-nav">
+        <ul class="bottom-nav">
+            <li><a href="https://nz-hishosai.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M240 6.1c9.1-8.2 22.9-8.2 32 0l232 208c9.9 8.8 10.7 24 1.8 33.9s-24 10.7-33.9 1.8l-8-7.2 0 205.3c0 35.3-28.7 64-64 64l-288 0c-35.3 0-64-28.7-64-64l0-205.3-8 7.2c-9.9 8.8-25 8-33.9-1.8s-8-25 1.8-33.9L240 6.1zm16 50.1L96 199.7 96 448c0 8.8 7.2 16 16 16l48 0 0-104c0-39.8 32.2-72 72-72l48 0c39.8 0 72 32.2 72 72l0 104 48 0c8.8 0 16-7.2 16-16l0-248.3-160-143.4zM208 464l96 0 0-104c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24l0 104z"/></svg>トップ</a></li>
+            <li><a href="/project.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M48 144a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L192 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zM48 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM96 256a48 48 0 1 0 -96 0 48 48 0 1 0 96 0z"/></svg>企画一覧</a></li>
+            <li><a href="/F.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M21.5 181.1L78.3 67.4C89.2 45.7 111.3 32 135.6 32l304.9 0c24.2 0 46.4 13.7 57.2 35.4l56.8 113.7c3.6 7.2 5.5 15.1 5.5 23.2 0 27.3-21.2 49.7-48 51.6L512 448c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-192-96 0 0 176c0 26.5-21.5 48-48 48l-192 0c-26.5 0-48-21.5-48-48l0-176.1c-26.8-1.9-48-24.3-48-51.6 0-8 1.9-16 5.5-23.2zM128 256l0 112c0 8.8 7.2 16 16 16l128 0c8.8 0 16-7.2 16-16l0-112-160 0z"/></svg>模擬店</a></li>
+            <li><a href="/index.html#timetable"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M160 169.3c28.3-12.3 48-40.5 48-73.3 0-44.2-35.8-80-80-80S48 51.8 48 96c0 32.8 19.7 61 48 73.3l0 54.7-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l224 0 0 54.7c-28.3 12.3-48 40.5-48 73.3 0 44.2 35.8 80 80 80s80-35.8 80-80c0-32.8-19.7-61-48-73.3l0-54.7 224 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-54.7c28.3-12.3 48-40.5 48-73.3 0-44.2-35.8-80-80-80s-80 35.8-80 80c0 32.8 19.7 61 48 73.3l0 54.7-256 0 0-54.7z"/></svg>タイムテーブル</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,17 +1,30 @@
-$(function(){
-  $.getJSON("data.json", function(data){
-    for (var i = 0; i < data.length; i++) {
-      var href  = data[i].href + '#' + data[i].group;
-      var group = '<span class="group">' + data[i].group + '</span>';
-      var title = '<span class="title">' + data[i].title + '</span>';
-      var desc  = '<div class="desc">' + (data[i].desc || '') + '</div>';
-      var image = '<img src="' + data[i].image + '" class="map">';
-      var card  = '<a href="' + href + '">' + `<div class="exhib_card">` + group + title + desc + image + '</div></a>';
-      var mount = document.getElementById('exhib_' + data[i].group);
+document.addEventListener('DOMContentLoaded', async () => {
+  // --- Exhib cards (no jQuery dependency) ---
+  try {
+    const res = await fetch('assets/data.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!Array.isArray(data)) return;
+
+    for (let i = 0; i < data.length; i++) {
+      const item = data[i] || {};
+      const groupName = item.group;
+      if (!groupName) continue;
+
+      const mount = document.getElementById('exhib_' + groupName);
       if (!mount) continue;
+
+      const href = (item.href || '') + '#' + groupName;
+      const group = '<span class="group">' + groupName + '</span>';
+      const title = '<span class="title">' + (item.title || '') + '</span>';
+      const desc = '<div class="desc">' + (item.desc || '') + '</div>';
+      const image = '<img src="' + (item.image || '') + '" class="map">';
+      const card = '<a href="' + href + '">' + '<div class="exhib_card">' + group + title + desc + image + '</div></a>';
       mount.insertAdjacentHTML('beforeend', card);
-        }
-    });
+    }
+  } catch (e) {
+    // ignore
+  }
 });
 // Header & Footer inject + Countdown + Swiper init + Pinch zoom block
 (function pinchOnlyBlock(){
@@ -34,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject header
   const headerMount = document.querySelector('#header');
   if (headerMount) {
-    fetch('template/header.html').then(r => r.text()).then(html => {
+    fetch('template/menu.html').then(r => r.text()).then(html => {
       headerMount.innerHTML = html;
     }).catch(() => {/* ignore */});
   }
