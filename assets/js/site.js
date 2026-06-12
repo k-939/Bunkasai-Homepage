@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const title = '<span class="title">' + (item.title || '') + '</span>';
       const desc = '<div class="desc">' + (item.desc || '') + '</div>';
       const image = '<img src="' + (item.image || '') + '" class="map">';
-      const card = '<a href="' + href + '">' + '<div class="exhib_card">' + group + title + desc + image + '</div></a>';
+      const card = '<div class="exhib_card">' + group + title + desc + image + '</div>';
       mount.insertAdjacentHTML('beforeend', card);
     }
   } catch (e) {
@@ -45,18 +45,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     'ngt.html': "Nanzan's Got Talent"
   };
 
+  const projectVisibleHrefs = new Set(['F.html', 'B.html', 'St.html', 'CS.html', 'ngt.html']);
+  const projectExhibVisibleHrefs = new Set(['J.html', 'S.html', 'C.html']);
+
   const DATA_URL = new URL('assets/data.json', document.baseURI).toString();
 
-  const hrefRewriteMap = {
-    'J.html': 'exhib/J.html',
-    'S.html': 'exhib/S.html',
-    'C.html': 'exhib/C.html',
-    'V.html': 'exhib/V.html'
-  };
-
-  function resolveHref(pageHref) {
-    if (!pageHref) return '';
-    return hrefRewriteMap[pageHref] || pageHref;
+  function resolveHref(href) {
+    return href || '';
   }
 
   function escapeHtml(value) {
@@ -89,11 +84,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     const resultSpan = document.querySelector('#resultCount');
     const filterCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]:not(#selectAll)');
     const selectAllCheckbox = document.querySelector('#selectAll');
+    const pathname = location.pathname.toLowerCase();
+    const listMode = pathname.endsWith('/project_exhib.html')
+      ? 'project_exhib'
+      : pathname.endsWith('/project.html')
+        ? 'project'
+        : 'all';
 
     const hasProjectUi = !!(container && searchInput && resultSpan && selectAllCheckbox && filterCheckboxes.length);
     if (!hasProjectUi) return;
 
     let allItems = [];
+    let visibleItems = [];
+
+    function getVisibleItems(items) {
+      if (listMode === 'project_exhib') {
+        return items.filter(item => projectExhibVisibleHrefs.has(item.href));
+      }
+      if (listMode === 'project') {
+        return items.filter(item => projectVisibleHrefs.has(item.href));
+      }
+      return items;
+    }
 
     function render() {
       const selectedCategories = [];
@@ -103,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const searchTerm = searchInput.value.trim().toLowerCase();
 
-      const filtered = allItems.filter(item => {
+      const filtered = visibleItems.filter(item => {
         if (selectedCategories.length > 0 && !selectedCategories.includes(item.category)) return false;
         if (searchTerm !== '') {
           return item.group.toLowerCase().includes(searchTerm) ||
@@ -113,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return true;
       });
 
-      resultSpan.innerText = `${filtered.length} 団体 / 全 ${allItems.length} 団体中`;
+  resultSpan.innerText = `${filtered.length} 団体 / 全 ${visibleItems.length} 団体中`;
 
       if (filtered.length === 0) {
         container.innerHTML = '<div class="no-result">該当する団体なし</div>';
@@ -137,6 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadData() {
       try {
         allItems = await fetchItems();
+        visibleItems = getVisibleItems(allItems);
 
         searchInput.disabled = false;
         for (const cb of filterCheckboxes) cb.disabled = false;
