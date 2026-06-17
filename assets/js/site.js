@@ -29,7 +29,6 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
-
 async function fetchItems() {
   if (cachedItems) return cachedItems;
   try {
@@ -48,6 +47,96 @@ async function fetchItems() {
 }
 
 // --- Specific Features ---
+
+function renderSingleCard(container, item) {
+  const page = resolveHref(item.href);
+  const href = `${page}#${encodeURIComponent(item.group)}`;
+  const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
+
+  // 💡 時間情報がある場合は、カード内に「公演時間」として綺麗に表示する
+  let timeHtml = '';
+  if (item.startTime && item.endTime) {
+    const start = new Date(item.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+    const end = new Date(item.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+    timeHtml = `<div class="event-time" style="color: #d32f2f; font-weight: bold; font-size: 0.9rem; margin-top: 4px;">⏰ 本日の公演: ${start} 〜 ${end}</div>`;
+  }
+
+  container.innerHTML = `
+    <div class="exhib_card_wrapper" style="width: 100%; max-width: 500px; margin: 0 auto;">
+      <a href="${href}">
+        <div class="exhib_card">
+          <span class="category-badge" style="background: #e0e0e0; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-bottom: 8px;">${item.category}</span>
+          <span class="group" style="display: block;">${escapeHtml(item.group)}</span>
+          <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
+          <span class="title" style="display: block; font-weight: bold; margin-top: 8px;">${escapeHtml(item.title)}</span>
+          ${timeHtml}
+          <div class="desc" style="margin-top: 8px;">${escapeHtml(item.desc || '')}</div>
+        </div>
+      </a>
+      <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
+      <label class="popup-background" for="popupFlag${item.group}"></label>
+      <div class="popup">
+        <label class="close-button" for="popupFlag${item.group}">×</label>
+        <div class="content">
+          <div>${imageHtml}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// 💡 変更点: 現在時刻に応じて過去の舞台企画を自動除外する
+async function initRandomPickup(selectorContainer, categoryFilter) {
+  const container = document.querySelector(selectorContainer);
+  if (!container) return;
+
+  try {
+    const allItems = await fetchItems();
+
+    function updatePickup() {
+      // 基準となる現在時刻を取得
+      let now = new Date();
+
+      // 【💡開発・テスト用の裏技】
+      // もし文化祭当日（2026-09-19）以外に動作確認したい場合は、
+      // 下の行のコメントアウトを解除すると、擬似的に「当日11:15」の状態でテストできます。
+      // now = new Date('2026-09-19T11:15:00+09:00');
+
+      // 1. まず基本的なカテゴリ（展示や模擬店など）でフィルター
+      let filteredItems = allItems.filter(item => categoryFilter(item.category));
+
+      // 2. 時間による条件分岐フィルター（終了した舞台企画を弾く）
+      filteredItems = filteredItems.filter(item => {
+        // もしデータに「終了時刻(endTime)」が設定されている場合のみチェックを行う
+        if (item.endTime) {
+          const endTime = new Date(item.endTime);
+          // 現在時刻が終了時刻を「過ぎていたら」不採用(false)、まだなら採用(true)
+          return now < endTime;
+        }
+        // endTime がない一般展示（教室展示など）はいつでも表示対象にする
+        return true;
+      });
+
+      if (filteredItems.length === 0) {
+        container.innerHTML = '<div class="no-result">現在、表示可能な企画はありません</div>';
+        return;
+      }
+
+      // 3. 残った有効な企画の中からランダムに1つ選ぶ
+      const randomIndex = Math.floor(Math.random() * filteredItems.length);
+      const targetItem = filteredItems[randomIndex];
+      
+      renderSingleCard(container, targetItem);
+    }
+
+    // 初回実行と、10秒ごとのタイマー駆動
+    updatePickup();
+    setInterval(updatePickup, 10000);
+
+  } catch (error) {
+    container.innerHTML = `<div class="no-result">❌ ${escapeHtml(error.message)}</div>`;
+  }
+}
 
 function initProjectList() {
   const container = document.querySelector('#cardsContainer');
@@ -148,60 +237,6 @@ function initProjectList() {
   loadData();
 }
 
-async function renderSwiperCards({ container, swiperEl, items }) {
-  if (items.length === 0) {
-    container.innerHTML = '<div class="swiper-slide"><div class="no-result">該当する団体なし</div></div>';
-    return;
-  }
-
-  let html = '';
-  for (const item of items) {
-    const page = resolveHref(item.href);
-    const href = `${page}#${encodeURIComponent(item.group)}`;
-    const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
-    html += `
-      <div class="swiper-slide">
-        <a href="">
-          <div class="exhib_card">
-            <span class="group">${escapeHtml(item.group)}</span>
-            <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
-            <span class="title">${item.title}</span>
-            <div class="desc">${item.desc || ''}</div>
-          </div>
-        </a>
-      </div>
-      <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
-            <label class="popup-background" for="popupFlag${item.group}"></label>
-           <div class="popup">
-            <label class="close-button" for="popupFlag${item.group}">×</label>
-              <div class="content">
-                <div>${imageHtml}</div>
-              </div>
-           </div>
-    `;
-  }
-  container.innerHTML = html;
-
-  if (swiperEl && swiperEl.swiper) {
-    swiperEl.swiper.update();
-    swiperEl.swiper.slideToLoop(0, 0);
-  }
-}
-
-async function renderTopSlider(selectorContainer, selectorSwiper, categoryFilter) {
-  const container = document.querySelector(selectorContainer);
-  const swiperEl = document.querySelector(selectorSwiper);
-  if (!container || !swiperEl || !container.classList.contains('swiper-wrapper')) return;
-
-  try {
-    const items = await fetchItems();
-    const filtered = items.filter(item => categoryFilter(item.category));
-    await renderSwiperCards({ container, swiperEl, items: filtered });
-  } catch (error) {
-    container.innerHTML = `<div class="swiper-slide"><div class="no-result">❌ ${escapeHtml(error.message)}</div></div>`;
-  }
-}
-
 async function renderExhibPlaceholders() {
   const mounts = document.querySelectorAll('[id^="exhib_"]');
   if (!mounts.length) return;
@@ -214,8 +249,6 @@ async function renderExhibPlaceholders() {
     const item = byGroup.get(group);
     
     if (!item) continue;
-
-    // 既にカードが生成されている場合はスキップ
     if (mount.querySelector('.exhib_card')) continue;
 
     const page = resolveHref(item.href);
@@ -223,12 +256,12 @@ async function renderExhibPlaceholders() {
     const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
 
     mount.innerHTML = `
-      <a href="">
+      <a href="${href}">
         <div class="exhib_card">
           <span class="group">${escapeHtml(item.group)}</span>
           <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
-            <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
-            <label class="popup-background" for="popupFlag${item.group}"></label>
+           <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
+           <label class="popup-background" for="popupFlag${item.group}"></label>
            <div class="popup">
             <label class="close-button" for="popupFlag${item.group}">×</label>
               <div class="content">
@@ -242,10 +275,11 @@ async function renderExhibPlaceholders() {
       <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
       <label class="popup-background" for="popupFlag${item.group}"></label>
       <div class="popup">
-      <label class="close-button" for="popupFlag${item.group}">×</label>
-       <div class="content">
-         <div>${imageHtml}</div>
-       </div>
+        <label class="close-button" for="popupFlag${item.group}">×</label>
+        <div class="content">
+          <div>${imageHtml}</div>
+        </div>
+      </div>
     `;
   }
 }
@@ -260,8 +294,6 @@ async function renderDirectExhibCards() {
 
       const mount = document.getElementById('exhib_' + groupName);
       if (!mount) continue;
-
-      // 既にカードが生成されている場合はスキップ
       if (mount.querySelector('.exhib_card')) continue;
 
       const group = '<span class="group">' + escapeHtml(groupName) + '</span>';
@@ -326,38 +358,6 @@ function initTemplateInjection() {
   }
 }
 
-function initSwipers() {
-  if (!window.Swiper) return;
-  const commonConfig = {
-    slidesPerView: 3,
-    spaceBetween: 24,
-    centeredSlides: false,
-    loop: true,
-    breakpoints: {
-      0:   { slidesPerView: 1, spaceBetween: 16 },
-      600: { slidesPerView: 1, spaceBetween: 20 },
-      900: { slidesPerView: 3, spaceBetween: 24 }
-    }
-  };
-
-  const swiperOptions = [
-    { selector: '.class-swiper', delay: 3000 },
-    { selector: '.indv-swiper', autoplayDisabled: true }
-  ];
-
-  swiperOptions.forEach(opt => {
-    document.querySelectorAll(opt.selector).forEach(el => {
-      if (el.swiper) return;
-      const config = { ...commonConfig };
-      if (!opt.autoplayDisabled) {
-        config.autoplay = { delay: opt.delay, disableOnInteraction: false };
-      }
-      config.pagination = { el: el.querySelector('.swiper-pagination'), clickable: true };
-      new Swiper(el, config);
-    });
-  });
-}
-
 function initNavHighlight() {
   try {
     const current = new URL(location.href);
@@ -376,22 +376,18 @@ function initNavHighlight() {
 
 // --- Main Initialization ---
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. 各種UI・コンポーネントの初期化
   initTemplateInjection();
   initCountdown();
   initNavHighlight();
 
-  // 2. データの取得とカードの描画処理
-  //    Legacy直接描画とアンカーつき描画の両方を実行
   await Promise.all([
     renderDirectExhibCards(),
     renderExhibPlaceholders(),
-    renderTopSlider('#cardsContainer', '.class-swiper', c =>
-      c === '中学展示' || c === '高校展示' || c === '部活動' || c === '模擬店'
+    // 💡 10秒ローテーションの初期化（条件分岐フィルター内蔵）
+    initRandomPickup('#cardsContainer', c =>
+      c === '中学展示' || c === '高校展示' || c === '部活動' || c === '模擬店' || c === '有志演奏' || c === '講堂舞台企画' || c === '部活舞台企画'
     )
   ]);
 
-  // 3. コンテンツがDOMに追加されたあとにSwiperとプロジェクトリストを初期化
-  initSwipers();
   initProjectList();
 });
