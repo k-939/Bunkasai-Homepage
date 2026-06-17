@@ -163,6 +163,11 @@ body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
   color: #fff;
 }
 
+.image_overlay .about-theme,
+.image_overlay .button {
+  color: #f5f3ef;
+}
+
 .logo_image {
   width: min(78vw, 460px);
   height: auto;
@@ -608,6 +613,9 @@ a.is-active {
   opacity: 0.9;
 }
 
+.exhib-slider {
+  overflow: visible;
+}
 /* --- 追加: 展示スライダー共通スタイル --- */
 .exhib-slider .swiper-container { 
   padding: 16px 0 36px; 
@@ -1039,7 +1047,6 @@ a.is-active {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    color: var(--color-text);
 }
 
 .button {
@@ -1064,7 +1071,7 @@ a.is-active {
 .popup-background {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 2000;
     background: rgba(7, 10, 18, 0.72);
     backdrop-filter: blur(2px);
     cursor: pointer;
@@ -1073,7 +1080,7 @@ a.is-active {
 }
 
 .popup {
-    z-index: 101;
+    z-index: 2001;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1084,7 +1091,7 @@ a.is-active {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    color: inherit;
+    color: #f5f3ef;
     border-radius: var(--radius-md);
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(8, 10, 16, 0.72);

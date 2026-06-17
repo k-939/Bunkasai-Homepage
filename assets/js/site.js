@@ -161,15 +161,23 @@ async function renderSwiperCards({ container, swiperEl, items }) {
     const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
     html += `
       <div class="swiper-slide">
-        <a href="${href}">
+        <a href="">
           <div class="exhib_card">
             <span class="group">${escapeHtml(item.group)}</span>
-            ${imageHtml}
+            <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
             <span class="title">${item.title}</span>
             <div class="desc">${item.desc || ''}</div>
           </div>
         </a>
       </div>
+      <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
+            <label class="popup-background" for="popupFlag${item.group}"></label>
+           <div class="popup">
+            <label class="close-button" for="popupFlag${item.group}">×</label>
+              <div class="content">
+                <div>${imageHtml}</div>
+              </div>
+           </div>
     `;
   }
   container.innerHTML = html;
@@ -215,14 +223,29 @@ async function renderExhibPlaceholders() {
     const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
 
     mount.innerHTML = `
-      <a href="${href}">
+      <a href="">
         <div class="exhib_card">
           <span class="group">${escapeHtml(item.group)}</span>
-          ${imageHtml}
+          <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
+            <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
+            <label class="popup-background" for="popupFlag${item.group}"></label>
+           <div class="popup">
+            <label class="close-button" for="popupFlag${item.group}">×</label>
+              <div class="content">
+                <div>${imageHtml}</div>
+              </div>
+           </div>
           <span class="title">${escapeHtml(item.title)}</span>
           <div class="desc">${escapeHtml(item.desc || '')}</div>
         </div>
       </a>
+      <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
+      <label class="popup-background" for="popupFlag${item.group}"></label>
+      <div class="popup">
+      <label class="close-button" for="popupFlag${item.group}">×</label>
+       <div class="content">
+         <div>${imageHtml}</div>
+       </div>
     `;
   }
 }
