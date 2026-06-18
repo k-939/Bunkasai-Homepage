@@ -55,10 +55,14 @@ function renderSingleCard(container, item) {
 
   // 💡 時間情報がある場合は、カード内に「公演時間」として綺麗に表示する
   let timeHtml = '';
+  const dateObj = new Date(item.startTime);
+  const m = dateObj.getMonth() + 1;
+  const d = dateObj.getDate();
+  const formattedDate = `${m}/${d}`;
   if (item.startTime && item.endTime) {
     const start = new Date(item.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
     const end = new Date(item.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-    timeHtml = `<div class="event-time" style="color: #d32f2f; font-weight: bold; font-size: 0.9rem; margin-top: 4px;">⏰ 本日の公演: ${start} 〜 ${end}</div>`;
+    timeHtml = `<div class="event-time" style="color: #d32f2f; font-weight: bold; font-size: 0.9rem; margin-top: 4px;">公演:${formattedDate} ${start} 〜 ${end}</div>`;
   }
 
   container.innerHTML = `
@@ -122,11 +126,20 @@ async function initRandomPickup(selectorContainer, categoryFilter) {
         return;
       }
 
-      // 3. 残った有効な企画の中からランダムに1つ選ぶ
-      const randomIndex = Math.floor(Math.random() * filteredItems.length);
-      const targetItem = filteredItems[randomIndex];
-      
-      renderSingleCard(container, targetItem);
+      // 3. 残った有効な企画の中からランダムに3つ選ぶ
+      const shuffled = [...filteredItems].sort(() => Math.random() - 0.5);
+
+const div1 = document.createElement('div');
+const div2 = document.createElement('div');
+const div3 = document.createElement('div');
+container.innerHTML = '';
+container.appendChild(div1);
+container.appendChild(div2);
+container.appendChild(div3);
+
+renderSingleCard(div1, shuffled[0]);
+renderSingleCard(div2, shuffled[1]);
+renderSingleCard(div3, shuffled[2]);
     }
 
     // 初回実行と、10秒ごとのタイマー駆動
