@@ -4,35 +4,21 @@
 :root {
   /* brand */
   --color-primary: #ffffff;
-  --color-primary-600: #ffffff;
   --color-secondary: #ffffff;
   --color-accent: #ffffff;
   /* surface */
   --color-bg: #0b1220;
   --color-surface: #0f172a; /* slate-900-ish */
   --color-card: #111827; /* gray-900 */
-  --color-elev: rgba(255,255,255,0.06);
   /* text */
   --color-text: #e6eaf2;
   --color-text-muted: #a9b3c6;
   /* borders/shadows */
   --border: 1px solid rgba(255,255,255,0.08);
-  --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --shadow-1: 0 6px 18px rgba(0,0,0,0.25);
-  --shadow-2: 0 10px 30px rgba(0,0,0,0.35);
-  /* spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
   --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
   --container: 1200px;
   /* schedule */
   --schedule-time-width: 8.5em;
@@ -43,7 +29,6 @@
     --color-bg: #f7f9fc;
     --color-surface: #ffffff;
     --color-card: #ffffff;
-    --color-elev: rgba(0,0,0,0.06);
     --color-text: #1f2a44;
     --color-text-muted: #5b6b88;
     --border: 1px solid rgba(0,0,0,0.08);
@@ -67,40 +52,18 @@ body {
   color: var(--color-text);
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Mochiy Pop One", sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
   line-height: 1.7;
 }
 
-/* --- Global overflow helpers --- */
-/* 任意のラッパーに付与して強制的に横スクロール抑止 */
-.no-x-scroll { overflow-x: hidden !important; }
-.clip-children { overflow: hidden !important; position: relative; }
-/* デバッグ: はみ出している要素を視覚化（コンソール等で document.body.classList.add('debug-overflow')）*/
-body.debug-overflow * { outline: 1px solid rgba(255,0,0,0.25); }
-body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
-
-.container {
-  /* 100% - 32px は calc() 必須。旧記法は無効値になり得るため修正 */
-  width: min(calc(100% - 32px), var(--container));
-  margin-inline: auto;
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
-/* Sticky translucent header (also used by template/header.html) */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: saturate(120%) blur(10px);
-  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
-  border-bottom: var(--border);
-  padding: 10px 0;
-  font-size: 18px;
-}
-@media screen and (max-width: 861px) {
-  .header { padding: 14px 0; font-size: 16px; }
-}
-.back-resize {
+.hero {
   position: relative;
+  isolation: isolate;
   min-height: 100svh;
   display: grid;
   place-items: center;
@@ -108,7 +71,7 @@ body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
   overflow: hidden;
 }
 
-.back-resize::after {
+.hero::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -117,19 +80,7 @@ body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
   background: linear-gradient(180deg, rgba(7, 10, 18, 0.35) 0%, rgba(7, 10, 18, 0.72) 58%, rgba(7, 10, 18, 0.92) 100%);
 }
 
-.pcback_img {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  filter: saturate(0.9) contrast(1.08) brightness(0.62);
-  transform: scale(1.04);
-}
-
-.spback_img {
+.hero-bg {
   position: absolute;
   inset: 0;
   z-index: -2;
@@ -164,7 +115,8 @@ body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
 }
 
 .image_overlay .about-theme,
-.image_overlay .button {
+.image_overlay .button,
+.button {
   color: #f5f3ef;
 }
 
@@ -218,213 +170,31 @@ body.debug-overflow *:hover { outline-color: rgba(255,0,0,0.6); }
   letter-spacing: 0.18em;
   color: rgba(245, 243, 239, 0.78);
 }
-@media screen and (min-width: 861px) {
-  div.back-resize img.pcback_img {
-    display: block;
-  }
-  div.back-resize img.spback_img {
-    display: none;
-  }
-  .logo_container { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .logo_image { width: min(78vw, 460px); height: auto; z-index: 5; }
+.logo_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
+
+.logo_image { z-index: 5; }
+
 @media screen and (max-width: 860px) {
-  div.back-resize img.spback_img {
-    display: block;
-  }
-  div.back-resize img.pcback_img {
-    display: none;
-  }
   .logo_container {
     position: relative;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: clamp(12px, 3vh, 28px);
   }
 }
 
-/* ensure top hero section is not sticky/fixed */
-.top-img { position: static; }
-
-
-
-/* 校長挨拶 */
-.overview {
-  min-height: 100vh;
-  background-color:white;
-}
-
-.overview_greet-container{
-  margin: 0 auto;
-  max-width: 1200px;
-  text-align: left;
-  line-height: 3;
-}
-
-.overview_greet-principal{
-font-family: 'Oswald', sans-serif;
-    font-weight: 500;
-    color: #fff;
-    font-size: 50px;
-    text-align: center;
-    letter-spacing: 0.03em;
-    line-height: 1em;
-    margin-bottom: 0;
-}
-
-.overview_greet-photo img{
-  height: 500px;
-}
-
-.overview_greet-photo-alt{
-  line-height: 1.5;
-  text-align: center;
-}
-
-/* .ttl wrapper removed */
-
-@media (max-width: 600px) {
-  .overview { min-height: auto; }
-  .overview_greet-container { padding: 40px 16px; line-height: 1.8; }
-  .overview_greet-photo img { height: auto; max-height: 320px; width: auto; }
-  /* .ttl removed */
-}
-
-/* Swiper */
-/* Ensure container does not expand page width on mobile */
-.swiper-container {
-  width: 100%;
-  max-width: 100%;
-  padding: 24px 0 48px;
-  overflow: hidden;
-  box-sizing: border-box;
-  position: relative;
-  height: 550px;
-}
-
-/* Wrapper transparent background */
-.swiper-wrapper {
-  background: transparent;
-  display: flex;
-  align-items: stretch;
-  height: 450px;
-}
-
-/* Common slide styles */
-.swiper-slide {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-/* カードコンテンツ */
-.exhib-card {
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
-  border: var(--border);
-  box-shadow: var(--shadow-1);
-}
-
-.exhib-card img.map {
-  width: 60%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.exhib-card .title,
-.exhib-card .group {
-  font-size: 24px;
-  line-height: 1;
-  color: var(--color-text); /* テーマに合わせて色を設定 */
-}
-
-/* スライドリンク - 共通 */
-.swiper-slide a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-/* site.js は <a><div class="exhib_card">...</div></a> を注入する。
-   その内側カードが縮まないよう、a はストレッチ配置にする（中央寄せはカード側でやる）。 */
-.swiper-slide > [id^="exhib_"] > a {
-  align-items: stretch;
-  justify-content: stretch;
-}
-
-.swiper-slide > [id^="exhib_"] > a > .exhib_card,
-.swiper-slide > [id^="exhib_"] > a > .exhib-card {
-  width: 100%;
-  height: 100%;
-}
-
 @media (prefers-color-scheme: dark) {
-  .swiper-pagination-bullet {
+  .exhib-slider .swiper-pagination-bullet {
     background: #ffffff !important;
     opacity: 1;
   }
 
-  .swiper-pagination-bullet-active {
+  .exhib-slider .swiper-pagination-bullet-active {
     background-color: #007aff !important;
-  }
-}
-
-/* 空要素対策 */
-.swiper-slide:empty,
-.swiper-slide > a:empty {
-  display: none !important;
-}
-
-/* Mobile tuning for Swiper - 行350あたり */
-@media (max-width: 600px) {
-  .swiper-container {
-    padding: 16px 0 36px;
-    height: auto;
-  }
-  
-  .swiper-wrapper {
-    height: auto !important; /* 高さを自動に */
-  }
-  
-  .swiper-slide {
-    width: min(80vw, 300px); /* 幅をビューポートの80%か300pxの小さい方に */
-    height: min(80vw, 300px); /* 高さも同じ値に指定してスクエアに */
-    margin: 0 auto; /* センタリング */
-  }
-  
-  .exhib-card {
-    aspect-ratio: 1/1; /* 強制的に正方形に */
-    padding: 8px !important; /* パディングを小さく */
-  }
-  
-  /* カードコンテンツも調整 */
-  .exhib-card .title,
-  .exhib-card .group {
-    font-size: 20px; /* スクエアになるので文字サイズを調整 */
-  }
-  
-  .exhib-card img.map {
-    width: 90%; /* 画像サイズを調整 */
   }
 }
 
@@ -502,39 +272,6 @@ font-family: 'Oswald', sans-serif;
   }
 }
 
-/* Overview tuning */
-.overview {
-  min-height: 100vh;
-  background: var(--color-surface);
-  border-top: var(--border);
-}
-.overview_greet-container{
-  max-width: var(--container);
-  line-height: 2;
-  padding: var(--space-10) var(--space-6) var(--space-16);
-}
-.overview_greet-principal{
-  font-weight: 600;
-  color: var(--color-text);
-  font-size: clamp(28px, 4vw, 50px);
-  line-height: 1.2;
-  margin-bottom: var(--space-6);
-}
-.overview_greet-photo img{
-  height: clamp(260px, 40vw, 500px);
-  border-radius: var(--radius-lg);
-  border: var(--border);
-  box-shadow: var(--shadow-1);
-  margin: 0 auto; /* 中央揃え */
-}
-.overview_greet-photo-alt{
-  line-height: 1.7;
-  color: var(--color-text-muted);
-  margin-top: var(--space-3);
-}
-.overview_greet .overview_greet-text p { line-height: 2.5; }
-/* .ttl removed */
-
 /* Access (moved from inline) */
 .access { padding: 64px 20px; background: color-mix(in srgb, var(--color-surface) 94%, transparent); }
 .access .contents {
@@ -606,71 +343,89 @@ a.is-active {
   padding: clamp(24px, 4vw, 48px) 16px;
 }
 
-/* --- 追加: Jページのリード文 --- */
-.j-page .lead {
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.8;
-  opacity: 0.9;
-}
-
 .exhib-slider {
   overflow: visible;
 }
-/* --- 追加: 展示スライダー共通スタイル --- */
-.exhib-slider .swiper-container { 
-  padding: 16px 0 36px; 
-  height: auto !important; 
-  /* 元は overflow: visible; だったためスライドのはみ出しが切れなかった */
-  overflow: hidden; 
-  position: relative; /* クリップ基準 */
-}
-/* もし一部で意図的に外側へドロップシャドウ等を表示したい場合は below クラスを付与 */
-.exhib-slider .swiper-container.overflow-visible {
-  overflow: visible;
-}
-.exhib-slider .swiper-wrapper { 
-  height: auto !important; 
-}
-.exhib-slider .swiper-slide { 
-  background: transparent; 
-  box-shadow: none; 
-  display: flex; 
-  align-items: stretch; 
-  justify-content: stretch; 
-  padding: 6px; 
-  height: auto !important; 
-  overflow: visible; 
-}
-.exhib-slider .swiper-slide a { 
-  display: flex; 
-  width: 100%; 
-  height: 100%; 
-  align-items: stretch; 
-  justify-content: stretch; 
-  text-decoration: none; 
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.exhib_card { 
-  background: var(--color-card, rgba(255,255,255,0.96)); 
-  border: var(--border, 1px solid rgba(0,0,0,0.08)); 
-  border-radius: 16px; 
-  padding: 16px; 
-  box-shadow: var(--shadow-1, 0 8px 24px rgba(0,0,0,0.08)); 
-  display: flex; 
-  flex-direction: column; 
-  width: 100%; 
-  height: auto; 
-  box-sizing: border-box; 
-  gap: 12px; 
-  overflow: visible; 
+.exhib-slider .swiper-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 0 36px;
+  height: auto !important;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
-.exhib_card .group { 
-  display: inline-block; 
-  font-weight: 700; 
-  font-size: 14px; 
+
+.exhib-slider .swiper-wrapper {
+  background: transparent;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  height: auto !important;
+}
+
+.exhib-slider .swiper-slide {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--color-text);
+  display: flex;
+  align-items: stretch;
+  padding: 6px;
+  height: auto !important;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.exhib-slider .swiper-slide a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+  justify-content: stretch;
+  text-decoration: none;
+  color: inherit;
+}
+
+.exhib-slider .swiper-slide:empty,
+.exhib-slider .swiper-slide > a:empty {
+  display: none !important;
+}
+
+.exhib-slider .swiper-slide > [id^="exhib_"] > a > .exhib_card {
+  width: 100%;
+  height: 100%;
+}
+
+.exhib_card {
+  background: var(--color-card, rgba(255,255,255,0.96));
+  border: var(--border, 1px solid rgba(0,0,0,0.08));
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow-1, 0 8px 24px rgba(0,0,0,0.08));
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  gap: 12px;
+  overflow: visible;
+}
+.exhib_card .group {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
   background: rgba(200, 200, 200, 0.2); /* 薄いグレー背景 */
-  padding: 4px 10px; 
-  border-radius: 999px; 
+  padding: 4px 10px;
+  border-radius: 999px;
 }
 
 /* ライトモードでの表示 */
@@ -688,84 +443,37 @@ a.is-active {
     background: color-mix(in srgb, var(--color-primary, #6aa2ff) 14%, transparent);
   }
 }
-.exhib_card img.map { 
-  width: 100%; 
-  aspect-ratio: 16 / 9; 
-  object-fit: cover; 
-  border-radius: 12px; 
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.04); 
+.exhib_card img.map {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
 }
-.title { 
-  font-size: 18px; 
-  line-height: 1.4; 
-  margin: 4px 0 2px; 
+.title {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 4px 0 2px;
 }
-.desc { 
-  display: block; 
-  color: var(--color-text-muted, #666); 
-  font-size: 14px; 
-  line-height: 1.6; 
-  word-break: break-word; 
+.desc {
+  display: block;
+  color: var(--color-text-muted, #666);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-word;
 }
-.desc p { 
-  margin: 0 0 8px; 
+.desc p {
+  margin: 0 0 8px;
 }
-.desc p:last-child { 
-  margin-bottom: 0; 
-}
-
-/* 展示コンテナレスポンシブレイアウト */
-.exhib_container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
+.desc p:last-child {
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
-  .exhib_container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
-  }
-  
   .exhib_card {
     flex: 1 1 calc(33% - 40px);
     max-width: 350px;
   }
-}
-
-/* --- 追加: 模擬店関連スタイル --- */
-.food-notice {
-  max-width: 800px;
-  margin: 0 auto 32px;
-  padding: 16px 24px;
-  background: #a9b3c6;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.food-notice p {
-  margin: 8px 0;
-  line-height: 1.7;
-}
-
-.food-notice strong {
-  color: #d35400;
-}
-
-.food-price {
-  display: inline-block;
-  background: #a9b3c6;
-  color: white;
-  font-weight: bold;
-  padding: 2px 10px;
-  border-radius: 16px;
-  font-size: 14px;
-  margin-top: 4px;
 }
 
 /* .groupクラス全般のスタイル（上記の特定のコンテナでオーバーライドされない場合） */
@@ -1184,19 +892,4 @@ a.is-active {
         .popup > .content div {
             font-size: 1rem;
         }
-}
-
-.button-container{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-.button-container > *{
-  margin : 15px;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
 }

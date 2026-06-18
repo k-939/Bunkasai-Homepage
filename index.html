@@ -16,53 +16,49 @@
 </head>
 
 <body>
-  <section class="top-img"></section>
   <div id="header"></div>
-  <div class="image_container">
-    <div class="back-resize">
-      <img src="./assets/img/mv_resized.png" class="pcback_img">
-      <img src="./assets/img/mv_resized.png" class="spback_img">
-      <div class="image_overlay">
-        <div class="logo_container">
-          <img src="./assets/img/logo.png" class="logo_image">
-          <div class="items">2026</div>
-          <div class="items">in 南山高等学校・中学校男子部</div>
+  <section class="hero">
+    <img src="./assets/img/mv_resized.png" class="hero-bg" alt="">
+    <div class="image_overlay">
+      <div class="logo_container">
+        <img src="./assets/img/logo.png" class="logo_image">
+        <div class="items">2026</div>
+        <div class="items">in 南山高等学校・中学校男子部</div>
+      </div>
+      <div class="countdown-card">
+        <h2 class="countdown-title">開催まであと</h2>
+        <div class="countdown-timer">
+          <div class="time-block">
+            <span id="days">00</span>
+            <span class="label">日</span>
+          </div>
+          <div class="time-block">
+            <span id="hours">00</span>
+            <span class="label">時間</span>
+          </div>
+          <div class="time-block">
+            <span id="minutes">00</span>
+            <span class="label">分</span>
+          </div>
+          <div class="time-block">
+            <span id="seconds">00</span>
+            <span class="label">秒</span>
+          </div>
         </div>
-        <div class="countdown-card">
-          <h2 class="countdown-title">開催まであと</h2>
-          <div class="countdown-timer">
-            <div class="time-block">
-              <span id="days">00</span>
-              <span class="label">日</span>
-            </div>
-            <div class="time-block">
-              <span id="hours">00</span>
-              <span class="label">時間</span>
-            </div>
-            <div class="time-block">
-              <span id="minutes">00</span>
-              <span class="label">分</span>
-            </div>
-            <div class="time-block">
-              <span id="seconds">00</span>
-              <span class="label">秒</span>
-            </div>
-          </div>
-          <div class="about-theme">
-              <label class="button" for="popupFlag1">▶︎ テーマについて</label>
-              <label class="button" for="popupFlag1"><a href="./assets/img/mv_resized.png" target="_blank" rel="noopener noreferrer">▶︎メインビジュアル</a></label>
-          </div>
-                <input type="checkbox" class="popup-flag" id="popupFlag1">
-    <label class="popup-background" for="popupFlag1"></label>
-    <div class="popup">
-      <label class="close-button" for="popupFlag1">×</label>
-        <div class="content">
+        <div class="about-theme">
+          <label class="button" for="popupFlag1">▶︎ テーマについて</label>
+          <a class="button" href="./assets/img/mv_resized.png" target="_blank" rel="noopener noreferrer">▶︎メインビジュアル</a>
+        </div>
+        <input type="checkbox" class="popup-flag" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
             <div><p>2026年度飛翔祭のテーマは「OverHeat」~全力で空回れ~ です。メインテーマの「Over Heat」は熱しすぎた状態、また熱しすぎた結果動作不良を起こした状態も表す言葉です。<p></p><p>僕たちは全校生徒や来場者、そして先生方に動作不良を起こすほど熱くなってほしいと思いこのテーマにしました。また飛翔祭では、たとえ周りと少しずれていてもまずはやってみることが大切で、その一人一人のやりすぎや挑戦が飛翔祭をより面白くしていくという意味を込めて「～全力で空回れ～」というサブテーマにしました。<p>またメインビジュアルは「OverHeat」するみんなの熱量を代表するような尖ったかっこよさ、白黒に赤という構成は最も目がつき、あえて色を削ぎ落とすことで、『南山が本気で OverHeat している熱量』を表しています。<p>とにかく無難で終わらせたくないという作者の思いが込められています。</p></div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
 
   <section class="exhib-slider">
@@ -77,6 +73,11 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
+    <div class="actions">
+      <a class="button" href="project_exhib.html">▶ 展示企画一覧はこちらから</a>
+      <a class="button" href="project.html">▶ その他企画一覧はこちらから</a>
+    </div>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -86,221 +87,9 @@
       <span class="heading-text">舞台企画タイムテーブル</span>
       <span class="heading-line right"></span>
     </h2>
-    <p class="ttdate">9/20 Sat.</p><br><br>
-    <div class="schedule">
-      <ul>
-        <li>
-          <a href="CS.html#brass-band">
-            <div class="schedule_time">10:00~11:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ブラスバンド部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#ensemble-harmonia">
-            <div class="schedule_time">11:15~11:45</div>
-            <div class="schedule_content">
-                <div class="schedule_content_title">Ensemble Harmonia</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#nanzan-boys-string-orchestra">
-            <div class="schedule_time">11:50~12:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">南山男子弦楽部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#high-school-culture-committee">
-            <div class="schedule_time">12:05~12:25</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">高校文化委員会</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-1">
-            <div class="schedule_time">12:30~12:40</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">初山学園ダンス部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-2">
-            <div class="schedule_time">12:45~13:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">魔王 vs 帝王～陽と陰の言霊（「ひ」と「かげ」のことだま）～</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-3">
-            <div class="schedule_time">13:10~13:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ビートボックス</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-4">
-            <div class="schedule_time">13:30~13:40</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">異次元の逃亡者</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#magic-club">
-            <div class="schedule_time">13:50~14:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">奇術部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#drama-circle">
-            <div class="schedule_time">14:30~14:50</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">演劇同好会</div>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <br>
-      <p class="ttdate">9/21 Sun.</p><br><br>
-      <ul>
-        <li>
-          <a href="CS.html#drama-circle">
-            <div class="schedule_time">10:00~10:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">演劇同好会</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#magic-club">
-            <div class="schedule_time">10:35~11:05</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">奇術部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#ensemble-harmonia">
-            <div class="schedule_time">11:20~11:50</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Ensemble</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#dandy-street">
-            <div class="schedule_time">11:55~12:10</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">DANDY STREET</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-5">
-            <div class="schedule_time">12:15~12:30</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">with Kaze Fujii</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-6">
-            <div class="schedule_time">12:35~12:43</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">たべものとしょくぶつのディアボロ</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-7">
-            <div class="schedule_time">12:47~12:57</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Two Direction</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-8">
-            <div class="schedule_time">13:00~13:15</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">南山ヲタ芸 Ver.OB</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#brass-band">
-            <div class="schedule_time">13:30~14:30</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ブラスバンド部</div>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <p class="ttdate">9/19 Sat.</p>
+    <p class="ttdate">9/20 Sun.</p>
   </section>
-
-    <h2 class="stylish-heading">
-      <span class="heading-line left"></span>
-      <span class="heading-text">地下ステージ企画タイムテーブル</span>
-      <span class="heading-line right"></span>
-    </h2>
-    <p class="ttdate">9/21 Sun.</p><br><br>
-    <div class="schedule">
-      <ul>
-        <li>
-          <a href="B.html#significant">
-            <div class="schedule_time">10:30~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">significant</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#our-hands">
-            <div class="schedule_time">11:00~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">OUR HANDS</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#masa-band">
-            <div class="schedule_time">12:00~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">雅バンド（教員バンド）</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#nexus">
-            <div class="schedule_time">12:45~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Nexus</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#unconditional">
-            <div class="schedule_time">13:15~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Unconditional</div>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <br>
-    </div>
-  </div>
 
 
     <section class="goods">
@@ -314,10 +103,7 @@
           支払い方法は<strong>交通系ICカード</strong>を予定しております（Suica・PASMO・TOICA・manacaなど）。クレジットカード・QRコード決済はご利用いただけませんのでご了承ください。また、事前にチャージのうえご来場ください。
         </p>
         <img src="./assets/img/goods.jpg" alt="物販" class="goods-img" style="padding:1.5rem;">
-        <p class="goods-desc">今年度も生徒デザインの缶バッチやクリアファイルを販売します。</p>
-        <p class="goods-desc">さらに今年度からは、舞台企画を盛り上げる「サイリウム」も新登場！</p>
-        <p class="goods-desc">すべて150円で販売しています。</p>
-        <p class="goods-desc">販売場所は南校舎1階・第一理科室です。ぜひお立ち寄りください！</p>
+        <p class="goods-desc">物販について</p>
       </div>
     </section>
 

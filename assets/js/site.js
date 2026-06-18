@@ -393,13 +393,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   initCountdown();
   initNavHighlight();
 
+  const pathname = location.pathname.toLowerCase();
+  const isIndex = pathname.endsWith('/index.html') || pathname.endsWith('/') || pathname === '';
+
   await Promise.all([
     renderDirectExhibCards(),
     renderExhibPlaceholders(),
-    // 💡 10秒ローテーションの初期化（条件分岐フィルター内蔵）
-    initRandomPickup('#cardsContainer', c =>
+    // 💡 index.htmlのみランダムピックアップを実行
+    isIndex ? initRandomPickup('#cardsContainer', c =>
       c === '中学展示' || c === '高校展示' || c === '部活動' || c === '模擬店' || c === '有志演奏' || c === '講堂舞台企画' || c === '部活舞台企画'
-    )
+    ) : Promise.resolve()
   ]);
 
   initProjectList();
