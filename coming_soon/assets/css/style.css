@@ -83,19 +83,28 @@ img {
     height: auto;
 }
 
-.title {
-    margin: 0;
-    font-size: clamp(3.2rem, 11vw, 7.5rem);
-    line-height: 0.95;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 700;
+.theme_container {
+  display: grid;
 }
 
-.subtitle {
-    margin: 0;
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    font-weight: 500;
+.year {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: bold;
+}
+
+.sub_theme {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600;
+}
+
+.date {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 400;
+}
+
+.items {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 600;
 }
 
 .countdown-card {

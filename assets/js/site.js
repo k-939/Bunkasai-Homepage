@@ -62,14 +62,14 @@ function renderSingleCard(container, item) {
   if (item.startTime && item.endTime) {
     const start = new Date(item.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
     const end = new Date(item.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-    timeHtml = `<div class="event-time" style="color: #d32f2f; font-weight: bold; font-size: 0.9rem; margin-top: 4px;">公演:${formattedDate} ${start} 〜 ${end}</div>`;
+    timeHtml = `<div class="event-time" style="color: var(--color-primary); font-weight: bold; font-size: 0.9rem; margin-top: 4px;">公演:${formattedDate} ${start} 〜 ${end}</div>`;
   }
 
   container.innerHTML = `
     <div class="exhib_card_wrapper" style="width: 100%; max-width: 500px; margin: 0 auto;">
       <a href="${href}">
         <div class="exhib_card">
-          <span class="category-badge" style="background: #e0e0e0; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-bottom: 8px;">${item.category}</span>
+          <span class="category-badge" style="background: color-mix(in srgb, var(--color-primary) 12%, transparent); border: var(--border); color: var(--color-text-muted); padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; display: inline-block; margin-bottom: 8px;">${item.category}</span>
           <span class="group" style="display: block;">${escapeHtml(item.group)}</span>
           <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
           <span class="title" style="display: block; font-weight: bold; margin-top: 8px;">${escapeHtml(item.title)}</span>
@@ -129,17 +129,20 @@ async function initRandomPickup(selectorContainer, categoryFilter) {
       // 3. 残った有効な企画の中からランダムに3つ選ぶ
       const shuffled = [...filteredItems].sort(() => Math.random() - 0.5);
 
-const div1 = document.createElement('div');
-const div2 = document.createElement('div');
-const div3 = document.createElement('div');
-container.innerHTML = '';
-container.appendChild(div1);
-container.appendChild(div2);
-container.appendChild(div3);
+      const div1 = document.createElement('div');
+      div1.classList.add('div1');
+      const div2 = document.createElement('div');
+      div2.classList.add('div2');
+      const div3 = document.createElement('div');
+      div3.classList.add('div3');
+      container.innerHTML = '';
+      container.appendChild(div1);
+      container.appendChild(div2);
+      container.appendChild(div3);
 
-renderSingleCard(div1, shuffled[0]);
-renderSingleCard(div2, shuffled[1]);
-renderSingleCard(div3, shuffled[2]);
+      renderSingleCard(div1, shuffled[0]);
+      renderSingleCard(div2, shuffled[1]);
+      renderSingleCard(div3, shuffled[2]);
     }
 
     // 初回実行と、10秒ごとのタイマー駆動
@@ -157,13 +160,13 @@ function initProjectList() {
   const resultSpan = document.querySelector('#resultCount');
   const filterCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]:not(#selectAll)');
   const selectAllCheckbox = document.querySelector('#selectAll');
-  
+
   if (!container || !searchInput || !resultSpan || !selectAllCheckbox || !filterCheckboxes.length) return;
 
   const pathname = location.pathname.toLowerCase();
   const listMode = pathname.endsWith('/project_exhib.html') ? 'project_exhib'
-                 : pathname.endsWith('/project.html') ? 'project'
-                 : 'all';
+    : pathname.endsWith('/project.html') ? 'project'
+      : 'all';
 
   let allItems = [];
   let visibleItems = [];
@@ -260,7 +263,7 @@ async function renderExhibPlaceholders() {
   for (const mount of mounts) {
     const group = mount.id.slice('exhib_'.length);
     const item = byGroup.get(group);
-    
+
     if (!item) continue;
     if (mount.querySelector('.exhib_card')) continue;
 
@@ -360,14 +363,14 @@ function initTemplateInjection() {
   if (headerMount) {
     fetch('template/menu.html').then(r => r.text()).then(html => {
       headerMount.innerHTML = html;
-    }).catch(() => {/* ignore */});
+    }).catch(() => {/* ignore */ });
   }
 
   const footerMount = document.querySelector('#footer');
   if (footerMount) {
     fetch('template/footer_template.html').then(r => r.text()).then(html => {
       footerMount.innerHTML = html;
-    }).catch(() => {/* ignore */});
+    }).catch(() => {/* ignore */ });
   }
 }
 
