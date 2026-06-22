@@ -149,8 +149,8 @@
   {
     "group": "理科部生物班",
     "href": "C.html",
-    "title": "小さな生き物研究所",
-    "desc": "身近な生物の観察や、日頃の研究発表を行います。",
+    "title": "水辺と緑に息づく奇跡達",
+    "desc": "水辺や森林などに生息する日本の生き物達を見て知って欲しいです　苔テラリウム制作体験などの体験もできるのでぜひ来てみてください",
     "image": "assets/img/bio.png"
   },
   {
@@ -184,8 +184,8 @@
   {
     "group": "将棋部",
     "href": "C.html",
-    "title": "自由対局・指導対局",
-    "desc": "部員との対局や、来場者同士で自由に将棋が打てるスペースです。",
+    "title": "南山男子部の将棋屋（文化祭編）",
+    "desc": "皆さん、将棋といえばどういうイメージを思い浮かべますか？｢難しい｣というイメージを持つ人もいるでしょう。しかし、将棋は見た目に反して、かなりシンプルなゲームです。この展示では、将棋の魅力や奥深さを初心者の方でも楽しむことができます。",
     "image": "assets/img/shogi.png"
   },
   {
@@ -460,70 +460,77 @@
     "endTime": "2026-09-19T14:45:00+09:00"
   },
   {
-    "group": "模擬店1",
+    "group": "J3A",
     "href": "F.html",
     "title": "秘伝のからあげ",
     "desc": "外はカリッと、中はジューシーに揚げた自慢の一品です！",
-    "image": "assets/img/stall/karaage.png"
+    "image": "assets/img/stall/ karaage.png"
   },
   {
-    "group": "模擬店2",
+    "group": "J3B",
     "href": "F.html",
     "title": "炭火焼きそば",
     "desc": "特製ソースの香ばしい匂いが食欲をそそる定番焼きそば。",
     "image": "assets/img/stall/yakisoba.png"
   },
   {
-    "group": "模擬店3",
+    "group": "J3C",
     "href": "F.html",
     "title": "手作りチュロス",
     "desc": "シナモンとシュガーがたっぷりかかった、サクサクのスイーツ。",
     "image": "assets/img/stall/churros.png"
   },
   {
-    "group": "模擬店4",
+    "group": "J3D",
     "href": "F.html",
     "title": "タピオカミルクティー",
     "desc": "モチモチのタピオカと濃厚なミルクティーが相性抜群！",
     "image": "assets/img/stall/tapioca.png"
   },
   {
-    "group": "模擬店5",
+    "group": "J3E",
     "href": "F.html",
     "title": "ほかほかフランクフルト",
     "desc": "パリッと弾ける食感。ケチャップとマスタードを添えて。",
     "image": "assets/img/stall/frank.png"
   },
   {
-    "group": "模擬店6",
+    "group": "S1D",
     "href": "F.html",
     "title": "冷え冷えかき氷",
     "desc": "定番のイチゴ、メロン、ブルーハワイ。トッピングもあるよ！",
     "image": "assets/img/stall/ice.png"
   },
   {
-    "group": "模擬店7",
+    "group": "S2A",
     "href": "F.html",
     "title": "焼きたてみたらし団子",
     "desc": "香ばしく焦げ目をつけたお団子に、特製の甘辛タレを絡めました。",
     "image": "assets/img/stall/dango.png"
   },
   {
-    "group": "模擬店8",
+    "group": "S2B",
     "href": "F.html",
     "title": "じゃがバター",
     "desc": "ホクホクのジャガイモに、濃厚なバターがとろけて最高です。",
     "image": "assets/img/stall/potato.png"
   },
   {
-    "group": "模擬店9",
+    "group": "S2CD",
     "href": "F.html",
     "title": "特製ポップコーン",
     "desc": "できたて熱々！定番の塩味と、大人気のキャラメル味をご用意。",
     "image": "assets/img/stall/popcorn.png"
   },
   {
-    "group": "模擬店10",
+    "group": "S2E",
+    "href": "F.html",
+    "title": "ばっこり串カツ",
+    "desc": "揚げたてアツアツの串カツはいかがですか？サクサクの衣と濃厚なみそだれの相性は抜群！文化祭に来たらぜひ一度食べてみてください！",
+    "image": "assets/img/stall/juice.png"
+  },
+  {
+    "group": "S3有志",
     "href": "F.html",
     "title": "トロピカルフルーツジュース",
     "desc": "すっきり爽快、爽やかな果汁100%の特製ジュースです。",
