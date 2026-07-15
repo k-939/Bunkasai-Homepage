@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
+
 /* ==========================
    Modern Base + Design Tokens
    ========================== */
@@ -23,6 +25,7 @@
   /* schedule */
   --schedule-time-width: 8.5em;
   --schedule-line: #333333;
+  --font-body: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
 }
 
 @media (prefers-color-scheme: light) {
@@ -98,7 +101,7 @@ body {
   color: var(--color-text);
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  font-family: var(--font-body);
   line-height: 1.7;
 }
 
@@ -153,7 +156,6 @@ a {
   backdrop-filter: blur(16px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   border-radius: var(--radius-md);
-  font-family: "Oswald", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
   line-height: 1.5;
   color: #ffffff;
 }
@@ -298,7 +300,6 @@ a {
   gap: 24px;
   /* bottom margin reduced to ~half */
   margin: var(--space-6) auto var(--space-6);
-  font-family: "Mochiy Pop One", "Noto Sans JP", sans-serif;
   letter-spacing: 0.04em;
 }
 
@@ -544,29 +545,67 @@ a.is-active {
 }
 
 .exhib_card {
-  background: var(--color-card, rgba(255, 255, 255, 0.96));
-  border: var(--border, 1px solid rgba(0, 0, 0, 0.08));
-  border-radius: 16px;
+  background: var(--color-card);
+  border: var(--border);
+  border-radius: var(--radius-lg);
   padding: 16px;
-  box-shadow: var(--shadow-1, 0 8px 24px rgba(0, 0, 0, 0.08));
+  box-shadow: none;
   color: var(--color-text);
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  gap: 12px;
+  gap: 0;
   overflow: visible;
 }
 
-.exhib_card .group {
+.exhib_card .group-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.exhib_card .category-badge {
   display: inline-block;
+  font-size: 0.8rem;
   font-weight: 700;
-  font-size: 14px;
-  background: rgba(200, 200, 200, 0.2);
-  /* 薄いグレー背景 */
-  padding: 4px 10px;
-  border-radius: 999px;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0 0 8px;
+  color: var(--color-primary);
+}
+
+.exhib_card .category-badge::before {
+  content: "#";
+  opacity: 0.75;
+}
+
+.exhib_card .event-name {
+  font-size: 1.05rem;
+  margin: 8px 0;
+  padding-left: 10px;
+  border-left: 3px solid color-mix(in srgb, var(--color-primary) 55%, #ccc);
+}
+
+.exhib_card .description {
+  font-size: 0.95rem;
+  margin: 8px 0;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.exhib_card .button {
+  margin-top: 12px;
+}
+
+.exhib_card .event-time,
+.project-page .event-time {
+  margin-top: 4px;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 /* ライトモードでの表示 */
@@ -653,10 +692,13 @@ a.is-active {
 /* ==========================
    Project list (project.html)
    ========================== */
+.project-page {
+  font-family: var(--font-body);
+}
+
 .project-page h1 {
   margin: 0 0 12px;
   font-size: clamp(22px, 3vw, 30px);
-  font-family: "Mochiy Pop One", "Noto Sans JP", sans-serif;
   letter-spacing: 0.04em;
 }
 
@@ -664,7 +706,7 @@ a.is-active {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin: 12px 0 16px;
+  margin: 20px 0 14px;
 }
 
 .project-page .search-box {
@@ -683,15 +725,15 @@ a.is-active {
 }
 
 .project-page .search-box input:focus {
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary, #ff3b30) 28%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 28%, transparent);
 }
 
 .project-page .filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  margin: 10px 0 14px;
+  margin: 10px 0 18px;
 }
 
 .project-page .filter-group label {
@@ -704,11 +746,20 @@ a.is-active {
   border-radius: 999px;
   cursor: pointer;
   user-select: none;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.project-page .filter-group label:has(input:checked) {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-text);
 }
 
 .project-page .stats {
-  margin: 10px 0 14px;
+  margin: 0 0 18px;
   color: var(--color-text-muted);
+  font-size: 0.9rem;
 }
 
 .project-page .card-grid {
@@ -717,13 +768,11 @@ a.is-active {
   gap: 16px;
 }
 
-/* カードデザインは project.html のまま（枠＋余白）を維持しつつ、サイト配色に寄せる */
 .project-page .item-card {
   border: var(--border);
   background: var(--color-card);
   border-radius: var(--radius-lg);
   padding: 16px;
-  box-shadow: var(--shadow-1);
 }
 
 .project-page .group-name {
@@ -732,22 +781,28 @@ a.is-active {
   margin-bottom: 6px;
 }
 
+/* カテゴリはハッシュタグ表記に */
 .project-page .category-badge {
   display: inline-block;
-  font-size: 0.75rem;
-  border: var(--border);
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-  color: var(--color-text-muted);
-  background: color-mix(in srgb, var(--color-primary, #ff3b30) 12%, transparent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0 0 8px;
+  color: var(--color-primary);
+}
+
+.project-page .category-badge::before {
+  content: "#";
+  opacity: 0.75;
 }
 
 .project-page .event-name {
   font-size: 1.05rem;
   margin: 8px 0;
   padding-left: 10px;
-  border-left: 3px solid color-mix(in srgb, var(--color-primary, #ff3b30) 55%, #ccc);
+  border-left: 3px solid color-mix(in srgb, var(--color-primary) 55%, #ccc);
 }
 
 .project-page .description {
@@ -1034,7 +1089,6 @@ a.is-active {
   border: var(--border);
   background: var(--color-card);
   color: var(--color-text);
-  box-shadow: var(--shadow-1);
   letter-spacing: 0.14em;
   cursor: pointer;
   user-select: none;

@@ -29,6 +29,31 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function formatEventTime(item) {
+  if (Array.isArray(item.timeSlots) && item.timeSlots.length > 0) {
+    const slotLines = item.timeSlots.map(slot => {
+      const dateObj = new Date(slot.startTime);
+      const month = dateObj.getMonth() + 1;
+      const day = dateObj.getDate();
+      const start = new Date(slot.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+      const end = new Date(slot.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+      return `${month}/${day} ${start} 〜 ${end}`;
+    }).join(' / ');
+    return `<div class="event-time">公演: ${escapeHtml(slotLines)}</div>`;
+  }
+
+  if (item.startTime && item.endTime) {
+    const dateObj = new Date(item.startTime);
+    const month = dateObj.getMonth() + 1;
+    const day = dateObj.getDate();
+    const start = new Date(item.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+    const end = new Date(item.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+    return `<div class="event-time">公演: ${month}/${day} ${start} 〜 ${end}</div>`;
+  }
+
+  return '';
+}
+
 async function fetchItems() {
   if (cachedItems) return cachedItems;
   try {
@@ -52,29 +77,18 @@ function renderSingleCard(container, item) {
   const page = resolveHref(item.href);
   const href = `${page}#${encodeURIComponent(item.group)}`;
   const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
-
-  // 💡 時間情報がある場合は、カード内に「公演時間」として綺麗に表示する
-  let timeHtml = '';
-  const dateObj = new Date(item.startTime);
-  const m = dateObj.getMonth() + 1;
-  const d = dateObj.getDate();
-  const formattedDate = `${m}/${d}`;
-  if (item.startTime && item.endTime) {
-    const start = new Date(item.startTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-    const end = new Date(item.endTime).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-    timeHtml = `<div class="event-time" style="color: var(--color-primary); font-weight: bold; font-size: 0.9rem; margin-top: 4px;">公演:${formattedDate} ${start} 〜 ${end}</div>`;
-  }
+  const timeHtml = formatEventTime(item);
 
   container.innerHTML = `
     <div class="exhib_card_wrapper" style="width: 100%; max-width: 500px; margin: 0 auto;">
       <a href="${href}">
         <div class="exhib_card">
-          <span class="category-badge" style="background: color-mix(in srgb, var(--color-primary) 12%, transparent); border: var(--border); color: var(--color-text-muted); padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; display: inline-block; margin-bottom: 8px;">${item.category}</span>
-          <span class="group" style="display: block;">${escapeHtml(item.group)}</span>
-          <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
-          <span class="title" style="display: block; font-weight: bold; margin-top: 8px;">${escapeHtml(item.title)}</span>
+          <div class="group-name">${escapeHtml(item.group)}</div>
+          <span class="category-badge">${escapeHtml(item.category)}</span>
+          <div class="event-name">「${escapeHtml(item.title)}」</div>
           ${timeHtml}
-          <div class="desc" style="margin-top: 8px;">${escapeHtml(item.desc || '')}</div>
+          <div class="description">${escapeHtml(item.desc || '')}</div>
+          <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
         </div>
       </a>
       <input type="checkbox" class="popup-flag" id="popupFlag${item.group}">
@@ -111,13 +125,18 @@ async function initRandomPickup(selectorContainer, categoryFilter) {
 
       // 2. 時間による条件分岐フィルター（終了した舞台企画を弾く）
       filteredItems = filteredItems.filter(item => {
-        // もしデータに「終了時刻(endTime)」が設定されている場合のみチェックを行う
+        // timeSlots（複数回公演）がある場合は、最後のスロットの終了時刻で判定する
+        if (Array.isArray(item.timeSlots) && item.timeSlots.length > 0) {
+          const lastSlot = item.timeSlots[item.timeSlots.length - 1];
+          return now < new Date(lastSlot.endTime);
+        }
+        // 旧来の endTime が設定されている場合は、それで判定する
         if (item.endTime) {
           const endTime = new Date(item.endTime);
           // 現在時刻が終了時刻を「過ぎていたら」不採用(false)、まだなら採用(true)
           return now < endTime;
         }
-        // endTime がない一般展示（教室展示など）はいつでも表示対象にする
+        // どちらもない一般展示（教室展示など）はいつでも表示対象にする
         return true;
       });
 
@@ -204,11 +223,13 @@ function initProjectList() {
 
     let html = '';
     for (const item of filtered) {
+      const timeHtml = formatEventTime(item);
       html += `
         <div class="item-card">
           <div class="group-name">${item.group}</div>
           <span class="category-badge">${item.category}</span>
           <div class="event-name">「${item.title}」</div>
+          ${timeHtml}
           <div class="description">${item.desc || ''}</div>
         </div>
       `;
