@@ -74,7 +74,6 @@ ol {
   margin: 0;
 }
 
-ul,
 ol {
   padding-left: 1.2rem;
 }
@@ -83,7 +82,6 @@ img,
 video {
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 button,
@@ -259,6 +257,115 @@ a {
   }
 }
 
+/* ===== 共通 ===== */
+
+.back-button {
+  display: inline-block;
+  margin: 24px 16px 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.back-button:hover {
+  color: var(--color-primary);
+}
+
+/* ===== ニュース一覧ページ ===== */
+
+.news-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.news-page-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--color-text);
+  margin: 16px 0 32px;
+}
+
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.news-list li {
+  margin: 0;
+}
+
+.news-list li a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  background: var(--color-card);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+  margin: 20px;
+}
+
+.news-list li a:hover {
+  border-color: var(--color-primary);
+}
+
+.news-list li time {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.news-list li span {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+@media (max-width: 480px) {
+  .news-list li a {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.news-heading h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin: 0;
+  text-align: center;
+}
+
+.date {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.news-caption {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  text-align: center;
+}
+
 .exhib-slider .swiper-pagination-bullet {
   background: var(--color-text-muted) !important;
   opacity: 0.5;
@@ -383,16 +490,11 @@ a {
   align-items: stretch;
   background: var(--color-card);
   border-radius: 20px;
-  box-shadow: var(--shadow-1), 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
   border: var(--border);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   padding: 3.2rem;
-}
-
-.access .contents:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-1), 0 24px 48px rgba(0, 0, 0, 0.25);
 }
 
 .access .text {
@@ -470,16 +572,14 @@ a {
   }
 }
 
-/* --- 追加: ナビのアクティブ表示 --- */
 a.is-active {
   text-decoration: underline;
 }
 
-/* --- 追加: 汎用ページセクション余白 --- */
 .page-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 48px) 16px;
+  padding: clamp(16px, 2.5vw, 32px) 16px;
 }
 
 .exhib-slider {
@@ -491,13 +591,14 @@ a.is-active {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 16px;
 }
 
 .exhib-slider .swiper-container {
   width: 100%;
   max-width: 100%;
-  padding: 16px 0 36px;
-  height: auto !important;
+  padding: 4px 0 16px;
+  height: clamp(400px, 55vw, 560px) !important;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -506,9 +607,10 @@ a.is-active {
 .exhib-slider .swiper-wrapper {
   background: transparent;
   display: flex;
-  align-items: stretch;
-  justify-content: space-around;
-  height: auto !important;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+  height: 100% !important;
 }
 
 .exhib-slider .swiper-slide {
@@ -517,7 +619,7 @@ a.is-active {
   box-shadow: none !important;
   color: var(--color-text);
   display: flex;
-  align-items: stretch;
+  align-items: center;
   padding: 6px;
   height: auto !important;
   overflow: visible;
@@ -527,9 +629,9 @@ a.is-active {
 .exhib-slider .swiper-slide a {
   display: flex;
   width: 100%;
-  height: 100%;
-  align-items: stretch;
-  justify-content: stretch;
+  height: auto;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: inherit;
 }
@@ -541,7 +643,7 @@ a.is-active {
 
 .exhib-slider .swiper-slide>[id^="exhib_"]>a>.exhib_card {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .exhib_card {
@@ -872,11 +974,6 @@ a.is-active {
   font-weight: bold;
 }
 
-.ttdate {
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: bold;
-}
 
 /* Normalize anchor wrapper inside timetable so it behaves like previous div layout */
 .schedule li>a {
@@ -1189,6 +1286,15 @@ a.is-active {
   font-weight: 400;
 }
 
+.popup>.content img.map {
+  display: block;
+  width: min(100%, 620px);
+  height: auto;
+  max-height: calc(72svh - 150px);
+  object-fit: contain;
+  margin: 0 auto;
+}
+
 .popup>.content div {
   font-size: 1.05rem;
   font-weight: 400;
@@ -1229,6 +1335,11 @@ a.is-active {
     width: min(94vw, 720px);
     padding: 54px 14px 14px;
     max-height: 84svh;
+  }
+
+  .popup>.content img.map {
+    width: min(100%, 560px);
+    max-height: calc(74svh - 140px);
   }
 
   .popup>.content {

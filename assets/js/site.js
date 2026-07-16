@@ -81,7 +81,7 @@ function renderSingleCard(container, item) {
 
   container.innerHTML = `
     <div class="exhib_card_wrapper" style="width: 100%; max-width: 500px; margin: 0 auto;">
-      <a href="${href}">
+      <a href="">
         <div class="exhib_card">
           <div class="group-name">${escapeHtml(item.group)}</div>
           <span class="category-badge">${escapeHtml(item.category)}</span>
@@ -164,9 +164,9 @@ async function initRandomPickup(selectorContainer, categoryFilter) {
       renderSingleCard(div3, shuffled[2]);
     }
 
-    // 初回実行と、10秒ごとのタイマー駆動
+
     updatePickup();
-    setInterval(updatePickup, 10000);
+    setInterval(updatePickup, 30000);
 
   } catch (error) {
     container.innerHTML = `<div class="no-result">❌ ${escapeHtml(error.message)}</div>`;
@@ -293,7 +293,7 @@ async function renderExhibPlaceholders() {
     const imageHtml = item.image ? `<img src="${item.image}" class="map" alt="">` : '';
 
     mount.innerHTML = `
-      <a href="${href}">
+      <a href="">
         <div class="exhib_card">
           <span class="group">${escapeHtml(item.group)}</span>
           <label class="button" for="popupFlag${item.group}">▶︎ 地図を見る</label>
@@ -382,14 +382,14 @@ function initCountdown() {
 function initTemplateInjection() {
   const headerMount = document.querySelector('#header');
   if (headerMount) {
-    fetch('template/menu.html').then(r => r.text()).then(html => {
+    fetch('../../template/menu.html').then(r => r.text()).then(html => {
       headerMount.innerHTML = html;
     }).catch(() => {/* ignore */ });
   }
 
   const footerMount = document.querySelector('#footer');
   if (footerMount) {
-    fetch('template/footer_template.html').then(r => r.text()).then(html => {
+    fetch('../../template/footer_template.html').then(r => r.text()).then(html => {
       footerMount.innerHTML = html;
     }).catch(() => {/* ignore */ });
   }
@@ -431,3 +431,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   initProjectList();
 });
+
+const hm = iso => new Date(iso).toTimeString().slice(0,5);
+
+fetch("assets/timetable.json")
+  .then(res => res.json())
+  .then(data => {
+    const times = [...new Set(data.flatMap(d => d.events.map(e => hm(e.startTime))
+      .concat(hm(d.events.at(-1).endTime))))].sort();
+
+    const table = document.getElementById("tt");
+    table.innerHTML = `<tr><th></th>${data.map(d => `<th>${d.date}</th>`).join("")}</tr>`;
+
+    for (let i = 0; i < times.length - 1; i++) {
+      const t = times[i];
+      let row = `<td class="time">${t}</td>`;
+      data.forEach(day => {
+        const ev = day.events.find(e => hm(e.startTime) <= t && t < hm(e.endTime));
+        if (!ev) row += "<td></td>";
+        else if (hm(ev.startTime) === t) {
+          const span = times.filter(tm => hm(ev.startTime) <= tm && tm < hm(ev.endTime)).length;
+          row += `<td rowspan="${span}">${ev.group}</td>`;
+        }
+      });
+      table.innerHTML += `<tr>${row}</tr>`;
+    }
+  });

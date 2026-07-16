@@ -5,7 +5,7 @@
       transparent);
   color: var(--color-text, #e6eaf2);
   border-top: var(--border, 1px solid rgba(255, 255, 255, 0.08));
-  padding: 32px 16px;
+  padding: 20px 16px;
 }
 
 .footer-content {

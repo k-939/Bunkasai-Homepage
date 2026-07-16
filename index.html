@@ -75,6 +75,15 @@
     </div>
   </section>
 
+  <section class="news">
+    <h2 class="stylish-heading">
+      <span class="heading-line left"></span>
+      <span class="heading-text">お知らせ</span>
+      <span class="heading-line right"></span>
+    </h2>
+    <div id="news-list" class="news-list">
+    </div>
+
   <section class="exhib-slider">
     <h2 class="stylish-heading">
       <span class="heading-line left"></span>
@@ -103,8 +112,7 @@
       <span class="heading-text">タイムテーブル</span>
       <span class="heading-line right"></span>
     </h2>
-    <p class="ttdate">9/19 Sat.</p>
-    <p class="ttdate">9/20 Sun.</p>
+    <p style="text-align: center;">Coming Soon...</p>
   </section>
 
 
@@ -118,8 +126,8 @@
       <p class="notice">
         支払い方法は<strong>交通系ICカード</strong>を予定しております（Suica・PASMO・TOICA・manacaなど）。クレジットカード・QRコード決済はご利用いただけませんのでご了承ください。また、事前にチャージのうえご来場ください。
       </p>
-      <img src="./assets/img/goods.jpg" alt="物販" class="goods-img" style="padding:1.5rem;">
-      <p class="goods-desc">物販について</p>
+      <img src="./assets/img/goods.jpg" class="goods-img" style="padding:1.5rem;">
+      <p class="goods-desc">Coming Soon...</p>
     </div>
   </section>
 
@@ -145,6 +153,26 @@
     </div>
   </section>
   <div id="footer" style="padding-top: 4rem;"></div>
+  <script>
+    fetch('/news/news.json')
+  .then(res => res.json())
+  .then(news => {
+    const list = document.querySelector('#news-list');
+
+    news.slice(0, 3).forEach(item => {
+      const li = document.createElement('li');
+
+      li.innerHTML = `
+        <a href="${item.url}">
+          <time>${item.date}</time>
+          <span>${item.title}</span>
+        </a>
+      `;
+
+      list.appendChild(li);
+    });
+  });
+  </script>
   <script src="assets/js/site.js"></script>
 </body>
 

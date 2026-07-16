@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ニュース一覧 | 飛翔祭2026</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/main.css" />
+</head>
+<body>
+<div id="header"></div>
+
+<a href="../../index.html" class="back-button">← トップページに戻る</a>
+
+<div class="news-page">
+    <h1 class="news-page-title">ニュース</h1>
+    <div id="news-list" class="news-list">
+</div>
+
+<div id="footer"></div>
+
+<script>
+fetch('news.json')
+  .then(res => res.json())
+  .then(news => {
+    const list = document.querySelector('#news-list');
+
+    news.forEach(item => {
+      const li = document.createElement('li');
+
+      li.innerHTML = `
+        <a href="${item.url}">
+          <time>${item.date}</time>
+          <span>${item.title}</span>
+        </a>
+      `;
+
+      list.appendChild(li);
+    });
+  });
+</script>
+
+</body>
+</html>
