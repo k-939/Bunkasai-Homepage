@@ -1,13 +1,11 @@
 /* Footer Modern Styles (uses CSS variables from main.css if available) */
 .footer-wrap {
-  background: color-mix(
-    in srgb,
-    var(--color-surface, #0f172a) 92%,
-    transparent
-  );
+  background: color-mix(in srgb,
+      var(--color-surface, #0f172a) 92%,
+      transparent);
   color: var(--color-text, #e6eaf2);
   border-top: var(--border, 1px solid rgba(255, 255, 255, 0.08));
-  padding: 32px 16px;
+  padding: 20px 16px;
 }
 
 .footer-content {
@@ -22,13 +20,13 @@
 
 .footer-section {
   flex: 1 1 260px;
-  min-width: 220px; /* レイアウト崩れ防止 */
+  min-width: 220px;
+  /* レイアウト崩れ防止 */
 }
 
 .footer-section h2 {
   font-size: 16px;
   letter-spacing: 0.06em;
-  margin: 0 0 10px;
   color: var(--color-text, #e6eaf2);
   opacity: 0.9;
 }
@@ -45,6 +43,7 @@
   text-decoration: none;
   opacity: 0.9;
 }
+
 .footer-links a:hover {
   opacity: 1;
   text-decoration: underline;
@@ -54,6 +53,7 @@
   flex-direction: row;
   gap: 12px;
 }
+
 .social-icons img {
   width: 28px;
   height: 28px;
@@ -67,4 +67,10 @@
   margin-top: 24px;
   color: var(--color-text, #e6eaf2);
   opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .footer-wrap {
+    padding-bottom: calc(32px + 2.5rem + env(safe-area-inset-bottom));
+  }
 }

@@ -1,86 +1,117 @@
-<html>
-<meta charset="UTF-8">
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>飛翔祭 2025</title>
+    <title>Coming Soon - 飛翔祭 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" href="./assets/img/favicon.ico">
 </head>
-
 <body>
-    <div id="header">
-    </div>
-    <div class="image_container">
-        <div class="back-resize">
-            <img src="./assets/img/S__11378705.jpg" class="pcback_img">
-            <img src="./assets/img/92316_0.jpg" class="spback_img">
-            <div class="image_overlay">
-                <div class="logo_container">
-                    <img src="./assets/img/logo.png" class="logo_image">
-                    <div class="items">
-                        2025
-                    </div>
-                    <br>
-                    <div class="items">
-                        in 南山高等学校・中学校男子部
-                    </div>
-                </div>
-                <h2 class="countdown-title">開催まであと</h2><br>
-                <div class="countdown-timer">
-                    <div class="time-block">
-                        <span id="days">00</span>
-                        <span class="label">日</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="hours">00</span>
-                        <span class="label">時間</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="minutes">00</span>
-                        <span class="label">分</span>
-                    </div>
-                    <div class="time-block">
-                        <span id="seconds">00</span>
-                        <span class="label">秒</span>
-                    </div>
-                    <script>
-                        fetch("header.html")
-                            .then((response) => response.text())
-                            .then((data) => document.querySelector("#header").innerHTML = data);
-                        function updateCountdown() {
-                            // 飛翔祭開始まで
-                            const eventDate = new Date('2025-09-20T09:00:00');
-                            const now = new Date();
-                            const diff = eventDate - now;
-                            if (diff > 0) {
-                                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                            } else {
-                                // 開始後
-                                document.getElementById('days').textContent = '00';
-                                document.getElementById('hours').textContent = '00';
-                                document.getElementById('minutes').textContent = '00';
-                                document.getElementById('seconds').textContent = '00';
-
-                                document.querySelector('.countdown-title').textContent = '飛翔祭開催中！';
-                            }
-                        }
-
-                        setInterval(updateCountdown, 1000);
-                    </script>
-                </div>
+        <section class="bg">
+            <div class="bg-media">
+                <img class="bg-image" src="./assets/img/mv_resized.png" alt="main visual">
+                <div class="bg-overlay"></div>
             </div>
-        </div>
-</body>
 
+            <div class="bg-content">
+                <img class="logo-image" src="./assets/img/logo.png" alt="logo">
+
+                <div class="theme_container">
+                  <div class="year">Overheat</div>
+                  <div class="sub_theme">〜全力で空回れ〜</div>
+                  <div class="date">2026.9.19(Sat) & 9.20(Sun)</div>
+                </div>
+                <div></div>
+                <div class="items">in 南山高等学校・中学校男子部</div>
+                <div class="countdown-card">
+                    <h2 class="countdown-title">開催まであと</h2>
+                    <div class="countdown-timer">
+                        <div class="time-block">
+                            <span id="days">00</span>
+                            <span class="label">日</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="hours">00</span>
+                            <span class="label">時間</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="minutes">00</span>
+                            <span class="label">分</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="seconds">00</span>
+                            <span class="label">秒</span>
+                        </div>
+                    </div>
+                <div class="about-theme">
+                 <label class="button" for="popupFlag1">▶︎ テーマについて</label>
+                 <label class="button" for="popupFlag1"><a href="./assets/img/mv_resized.png" target="_blank" rel="noopener noreferrer">▶︎メインビジュアル</a></label>
+                </div>
+                <input type="checkbox" class="popup-flag" id="popupFlag1">
+    <label class="popup-background" for="popupFlag1"></label>
+    <div class="popup">
+      <label class="close-button" for="popupFlag1">×</label>
+        <div class="content">
+            <div><p>2026年度飛翔祭のテーマは「OverHeat」~全力で空回れ~ です。メインテーマの「Over Heat」は熱しすぎた状態、また熱しすぎた結果動作不良を起こした状態も表す言葉です。<p></p><p>僕たちは全校生徒や来場者、そして先生方に動作不良を起こすほど熱くなってほしいと思いこのテーマにしました。また飛翔祭では、たとえ周りと少しずれていてもまずはやってみることが大切で、その一人一人のやりすぎや挑戦が飛翔祭をより面白くしていくという意味を込めて「～全力で空回れ～」というサブテーマにしました。<p>またメインビジュアルは「OverHeat」するみんなの熱量を代表するような尖ったかっこよさ、白黒に赤という構成は最も目がつき、あえて色を削ぎ落とすことで、『南山が本気で OverHeat している熱量』を表しています。<p>とにかく無難で終わらせたくないという作者の思いが込められています。</p></div>
+        </div>
+    </div> 
+          <div class="sns">飛翔祭実行委員会 公式SNS<div></div>
+                <a href="https://x.com/NZ_Hishosai/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/img/xlogo-l.png" alt="Twitter">
+                    <p>X @NZ_Hishosai</p>
+                </a>
+                <a href="https://www.instagram.com/nz_hishosai/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/img/iglogo.png" alt="Instagram">
+                    <p>Instagram @nz_hishosai</p>
+                </a>
+            </div>
+          <div style="font-size: 1.2rem; line-height: 1.6;">
+            ホームページ正式公開前のため、このページはカウントダウンのみを表示しています。<br>
+            正式なホームページは7月末〜8月初旬に公開予定です。
+          </div>
+        </div>
+     </div>
+        </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventDate = new Date('2026-09-19T09:30:00+09:00');
+            const nodes = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            function updateCountdown() {
+                const now = new Date();
+                const diff = eventDate - now;
+
+                if (diff <= 0) {
+                    Object.values(nodes).forEach((node) => {
+                        if (node) node.textContent = '00';
+                    });
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                nodes.days.textContent = String(days).padStart(2, '0');
+                nodes.hours.textContent = String(hours).padStart(2, '0');
+                nodes.minutes.textContent = String(minutes).padStart(2, '0');
+                nodes.seconds.textContent = String(seconds).padStart(2, '0');
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
 </html>

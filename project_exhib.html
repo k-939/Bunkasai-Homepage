@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>企画一覧 | 飛翔祭2026</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    <script src="/assets/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<main class="page-section project-page">
+    <h1>企画一覧</h1>
+    <div class="search-area">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="団体名・企画名で検索" disabled>
+        </div>
+    </div>
+    <div class="filter-group" id="categoryFilters">
+        <label><input type="checkbox" value="中学展示" checked disabled> 中学展示</label>
+        <label><input type="checkbox" value="高校展示" checked disabled> 高校展示</label>
+        <label><input type="checkbox" value="部活動" checked disabled> 部活・有志展示</label>
+        <label><input type="checkbox" id="selectAll" checked disabled> すべて</label>
+    </div>
+
+    <div class="stats">
+        <span id="resultCount">データ読み込み中</span>
+    </div>
+
+    <div id="cardsContainer" class="card-grid">
+        <div class="loading">データ読み込み中</div>
+    </div>
+
+</main>
+<div id="footer"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

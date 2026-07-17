@@ -1,34 +1,38 @@
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>飛翔祭2025</title>
+  <title>飛翔祭2026</title>
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+  <script src="assets/js/site.js"></script>
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+    integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- カウントダウン要素間のスペース -->
-  <style>
-    .countdown-timer .time-block+.time-block {
-      margin-left: 12px;
-    }
-  </style>
+  <link rel="icon" href="./assets/img/favicon.ico">
 </head>
 
 <body>
-  <section class="top-img"></section>
   <div id="header"></div>
-  <div class="image_container">
-    <div class="back-resize">
-      <img src="./assets/img/S__11378705.jpg" class="pcback_img">
-      <img src="./assets/img/92316_0.jpg" class="spback_img">
-      <div class="image_overlay">
-        <div class="logo_container">
-          <img src="./assets/img/logo.png" class="logo_image">
-          <div class="items">2025</div>
-          <div class="items">in 南山高等学校・中学校男子部</div>
+  <section class="hero">
+    <img src="./assets/img/mv_resized.png" class="hero-bg" alt="">
+    <div class="image_overlay">
+      <div class="logo_container">
+        <img src="./assets/img/logo.png" class="logo_image">
+        <div class="theme_container">
+          <div class="year">Overheat</div>
+          <div class="sub_theme">〜全力で空回れ〜</div>
+          <div class="date">2026.9.19(Sat) & 9.20(Sun)</div>
         </div>
-  <h2 class="countdown-title" style="color:#fff;">2025年度の飛翔祭は終了しました。<br>たくさんのご来場、ありがとうございました！</h2>
+        <div></div>
+        <div class="items">in 南山高等学校・中学校男子部</div>
+      </div>
+      <div class="countdown-card">
+        <h2 class="countdown-title">開催まであと</h2>
         <div class="countdown-timer">
           <div class="time-block">
             <span id="days">00</span>
@@ -47,509 +51,56 @@
             <span class="label">秒</span>
           </div>
         </div>
+        <div class="about-theme">
+          <label class="button" for="popupFlag1">▶︎ テーマについて</label>
+          <a class="button" href="./assets/img/mv_resized.png" target="_blank" rel="noopener noreferrer">▶︎メインビジュアル</a>
+        </div>
+        <input type="checkbox" class="popup-flag" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
+            <div>
+              <p>2026年度飛翔祭のテーマは「OverHeat」~全力で空回れ~ です。メインテーマの「Over Heat」は熱しすぎた状態、また熱しすぎた結果動作不良を起こした状態も表す言葉です。
+              <p></p>
+              <p>
+                僕たちは全校生徒や来場者、そして先生方に動作不良を起こすほど熱くなってほしいと思いこのテーマにしました。また飛翔祭では、たとえ周りと少しずれていてもまずはやってみることが大切で、その一人一人のやりすぎや挑戦が飛翔祭をより面白くしていくという意味を込めて「～全力で空回れ～」というサブテーマにしました。
+              <p>またメインビジュアルは「OverHeat」するみんなの熱量を代表するような尖ったかっこよさ、白黒に赤という構成は最も目がつき、あえて色を削ぎ落とすことで、『南山が本気で OverHeat
+                している熱量』を表しています。
+              <p>とにかく無難で終わらせたくないという作者の思いが込められています。</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   </section>
 
-  <!-- 校長挨拶 -->
-  <section class="overview">
+  <section class="news">
     <h2 class="stylish-heading">
       <span class="heading-line left"></span>
-      <span class="heading-text">校長からのあいさつ</span>
+      <span class="heading-text">お知らせ</span>
       <span class="heading-line right"></span>
     </h2>
-    <div class="overview_greet-container">
-      <div class="overview_greet">
-        <div class="overview_greet-text">
-          <p>南山高等学校・中学校男子部の文化祭「飛翔祭」へのご来場心より感謝申し上げます。</p>
-          <p>今年度のテーマとして掲げている「燎（かがり）」という言葉の通り、情熱を燃やして各々の個性を輝かせると同時に、力を合わせて周りを照らし明るくする、そんな思いを込めて生徒たちが時間をかけて準備をしてきました。
-          </p>
-          <p>
-            今年もクラスや部活動、有志団体の企画・展示やパフォーマンス、模擬店などがありますが、それぞれがどのような明かりをともしてくれるのか、それらすべてが重なったときにどんな輝きをもたらしてくれるのか、私も楽しみにしています。
-          </p>
-          <p>
-            また、そうした明るく照らされた表舞台を見えないところで支えてくれる生徒たちの頑張りや多くの方々のご協力にも感謝したいと思います。まだまだ暑い中ではありますが、ご来場の皆様に生徒たちの熱意が生み出す色とりどりの「燎」を感じていただけますと幸いです。
-          </p>
-          <p>どうぞ私たちと共に熱く輝く時間をお過ごしください。</p>
-        </div>
-      </div>
-      <div class="overview_greet-photo">
-        <img src="assets/img/akao.png" alt="校長の写真">
-        <div class="overview_greet-photo-alt">
-          南山高等学校・中学校男子部校長<br>赤尾 道夫
-        </div>
-      </div>
+    <div id="news-list" class="news-list">
     </div>
-  </section>
 
   <section class="exhib-slider">
     <h2 class="stylish-heading">
       <span class="heading-line left"></span>
-      <span class="heading-text">クラス企画</span>
+      <span class="heading-text">おすすめ企画</span>
       <span class="heading-line right"></span>
     </h2>
     <div class="swiper-container class-swiper">
-      <div class="swiper-wrapper">
+      <div id="cardsContainer" class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href="J.html#ai-vs-human-can-we-change-ai">
-            <div class="exhib-card">
-              <span class="group">J2A</span>
-              <img src="./assets/img/J2A.png" class="map">
-              <span class="title">AIvs人間〜人間はAIを変えられるのか〜</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#real-life-game-of-life">
-            <div class="exhib-card">
-              <span class="group">J2B</span>
-              <img src="./assets/img/J2B.png" class="map">
-              <span class="title">リアル人生ゲーム</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#jail-to-code-puzzle-prisoners-revenge">
-            <div class="exhib-card">
-              <span class="group">J2C</span>
-              <img src="./assets/img/J2C.png" class="map">
-              <span class="title">Jail to coad 謎解き 囚人たちの逆襲</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#d-sports">
-            <div class="exhib-card">
-              <span class="group">J2D</span>
-              <img src="./assets/img/J2D.png" class="map">
-              <span class="title">D-SPORTS</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#mini-versal-studio-nandan">
-            <div class="exhib-card">
-              <span class="group">J2E</span>
-              <img src="./assets/img/J2E.png" class="map">
-              <span class="title">ミニバーサル・スタジオ・ナンダン</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#nanzando-switch-3">
-            <div class="exhib-card">
-              <span class="group">J3A</span>
-              <img src="./assets/img/J3A.png" class="map">
-              <span class="title">Nanzando〜Switch3〜</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#weekly-bunshun">
-            <div class="exhib-card">
-              <span class="group">J3B</span>
-              <img src="./assets/img/J3B.png" class="map">
-              <span class="title">週刊文瞬</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#mini-on-chaotic-viking">
-            <div class="exhib-card">
-              <span class="group">J3C</span>
-              <img src="./assets/img/J3C.png" class="map">
-              <span class="title">ミニヲンのはちゃめちゃバイキング</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#escape-from-the-nanzan-church">
-            <div class="exhib-card">
-              <span class="group">J3D</span>
-              <img src="./assets/img/J3D.png" class="map">
-              <span class="title">南教会からの脱出〜リアル脱出ゲーム〜</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="J.html#e-league">
-            <div class="exhib-card">
-              <span class="group">J3E</span>
-              <img src="./assets/img/J3E.png" class="map">
-              <span class="title">Eリーグ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#nanzan-magic-school">
-            <div class="exhib-card">
-              <span class="group">S1A</span>
-              <img src="./assets/img/S1A.png" class="map">
-              <span class="title">ナンザーン魔法学校</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#ready-to-launch-ride-to-the-edge-of-the-universe">
-            <div class="exhib-card">
-              <span class="group">S1B</span>
-              <img src="./assets/img/S1B.png" class="map">
-              <span class="title">発車寸前‼宇宙の果てまでゐってこい</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#nanzan-hogwarts">
-            <div class="exhib-card">
-              <span class="group">S1C</span>
-              <img src="./assets/img/S1C.png" class="map">
-              <span class="title">南山ホグワーツ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#indijaws">
-            <div class="exhib-card">
-              <span class="group">S1D</span>
-              <img src="./assets/img/S1D.png" class="map">
-              <span class="title">インDジョーズ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#million-spinner">
-            <div class="exhib-card">
-              <span class="group">S1E</span>
-              <img src="./assets/img/S1E.png" class="map">
-              <span class="title">ミリONスピナー</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#s2a-null">
-            <div class="exhib-card">
-              <span class="group">S2A</span>
-              <img src="./assets/img/S2A.png" class="map">
-              <span class="title">名探偵ナンザン</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#minion-chaos-ride-banana-operation">
-            <div class="exhib-card">
-              <span class="group">S2B</span>
-              <img src="./assets/img/S2B.png" class="map">
-              <span class="title">ミ⚪︎⚪︎ンハチャメチャライド〜バナーナ大作戦〜</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#back-to-the-jurassic-park">
-            <div class="exhib-card">
-              <span class="group">S2C</span>
-              <img src="./assets/img/S2C.png" class="map">
-              <span class="title">バック・トゥー・ザ・ジュラシック・パーク</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#nanzan-pirates-ghost-ship-treasure-hunt">
-            <div class="exhib-card">
-              <span class="group">S2D</span>
-              <img src="./assets/img/S2D.png" class="map">
-              <span class="title">南山海賊団 〜大砲を撃って幽霊船に眠る宝を手に入れろ！〜</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="S.html#Merry-Go-Round-Shall-We-Go-Around">
-            <div class="exhib-card">
-              <span class="group">S2E</span>
-              <img src="./assets/img/S2E.png" class="map">
-              <span class="title">Merry Go Round-Shall We Go Around</span>
-            </div>
-          </a>
+          <div class="loading">データ読み込み中</div>
         </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
-
-    <h2 class="stylish-heading">
-      <span class="heading-line left"></span>
-      <span class="heading-text">部活・有志企画</span>
-      <span class="heading-line right"></span>
-    </h2>
-    <div class="swiper-container club-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="C.html#moment-to-memories">
-            <div class="exhib-card">
-              <span class="group">写真部</span>
-              <img src="./assets/img/J1C.png" class="map">
-              <span class="title">moment to memories</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#english-club-pavilion">
-            <div class="exhib-card">
-              <span class="group">English Club</span>
-              <img src="assets\img\chu1.png" class="map">
-              <span class="title">English Club Pavilion</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#twinkle-stars">
-            <div class="exhib-card">
-              <span class="group">理科部天文班</span>
-              <img src="./assets/img/J1B.png" class="map">
-              <span class="title">きらきら星</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#waterside-creatures-for-the-future">
-            <div class="exhib-card">
-              <span class="group">理科部生物班</span>
-              <img src="./assets/img/J1E.png" class="map">
-              <span class="title">南男生物班から未来へつなぐ水辺の仲間たち</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#fossils-and-our-minerals">
-            <div class="exhib-card">
-              <span class="group">理科部地質班</span>
-              <img src="./assets/img/2F.png" class="map">
-              <span class="title">化石と私たちの鉱石</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#shogi-with-nanzan-boys">
-            <div class="exhib-card">
-              <span class="group">将棋部</span>
-              <img src="./assets/img/S3D.png" class="map">
-              <span class="title">南山男子部と将棋</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#nanzan-magic-school-trial-admission">
-            <div class="exhib-card">
-              <span class="group">奇術部</span>
-              <img src="./assets/img/J1A.png" class="map">
-              <span class="title">「南山魔法学校の体験入学」</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#nanzan-art-expo">
-            <div class="exhib-card">
-              <span class="group">美術同好会</span>
-              <img src="./assets/img/J1D.png" class="map">
-              <span class="title">南男美術万博</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="C.html#shi-about-japanese-castles">
-            <div class="exhib-card">
-              <span class="group">歴史研究同好会</span>
-              <img src="assets\img\shakaika.png" class="map">
-              <span class="title">シ。-日本の城について-</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#stage-play-opening-act-and-aladdin">
-            <div class="exhib-card">
-              <span class="group">とある高校生が演劇してみた</span>
-              <img src="assets\img\S3B.png" class="map">
-              <span class="title">劇（前座＆アラジン）</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#mystery-tour-around-campus">
-            <div class="exhib-card">
-              <span class="group">高2有志謎解き</span>
-              <img src="./assets/img/3F.png" class="map">
-              <span class="title">謎解き周遊学舎にて</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#life-style-in-nanzan-boys">
-            <div class="exhib-card">
-              <span class="group">高2有志</span>
-              <img src="./assets/img/2F.png" class="map">
-              <span class="title">Life Style in Nanzan Boys</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#railway-models-and-reports">
-            <div class="exhib-card">
-              <span class="group">鉄道研究会</span>
-              <img src="./assets/img/S3C.png" class="map">
-              <span class="title">車両走行・鉄道模型展示・レポート添付</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#initial-n">
-            <div class="exhib-card">
-              <span class="group">初代 VR-Game-Maker</span>
-              <img src="./assets/img/sho3.png" class="map">
-              <span class="title">頭文字N</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#thoroughbred-tracks-bonds-between-horses-and-people">
-            <div class="exhib-card">
-              <span class="group">サンダバ</span>
-              <img src="./assets/img/3F.png" class="map">
-              <span class="title">優駿の蹄跡~馬と人とのキズナ~</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#nanzan-students-indie-film-project">
-            <div class="exhib-card">
-              <span class="group">緑鳥</span>
-              <img src="assets\img\sho1.png" class="map">
-              <span class="title">南山生が本気で自主制作映画作ってみた件</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#panel-quiz-experience">
-            <div class="exhib-card">
-              <span class="group">クイズ研究会</span>
-              <img src="./assets/img/S3A.png" class="map">
-              <span class="title">パネルクイズ体験会</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="V.html#burning-amp">
-            <div class="exhib-card">
-              <span class="group">音ゲー</span>
-              <img src="assets\img\sho2.png" class="map">
-              <span class="title">Burning Amp</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
-
-  <section class="exhib-slider">
-    <h2 class="stylish-heading">
-      <span class="heading-line left"></span>
-      <span class="heading-text">模擬店</span>
-      <span class="heading-line right"></span>
-    </h2>
-    <p style="font-weight:bold; text-align:center;">雨天の場合、配置の順番の変更はありませんが、模擬店の受付窓口が移動する場合があります。ご注意ください。</p><br>
-    <div class="swiper-container food-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="F.html#tamassen">
-            <div class="exhib-card">
-              <span class="group">J3AとJ3C</span>
-              <img src="./assets/img/stall/tamasen.png" class="map">
-              <span class="title">絶対美味しい玉せん</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#tamassen">
-            <div class="exhib-card">
-              <span class="group">J3B</span>
-              <img src="./assets/img/stall/takoyaki.png" class="map">
-              <span class="title">なかがわっふる</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#tamassen">
-            <div class="exhib-card">
-              <span class="group">J3D</span>
-              <img src="./assets/img/stall/popcorn.png" class="map">
-              <span class="title">W.Dポップ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#tamassen">
-            <div class="exhib-card">
-              <span class="group">J3E</span>
-              <img src="./assets/img/stall/castella.png" class="map">
-              <span class="title">もちもちベビーカステラ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#pizza-tower">
-            <div class="exhib-card">
-              <span class="group">S1B</span>
-              <img src="./assets/img/stall/minipizza.png" class="map">
-              <span class="title">ピザの斜塔</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#happy-yakisoba">
-            <div class="exhib-card">
-              <span class="group">S1C</span>
-              <img src="./assets/img/stall/yakisoba.png" class="map">
-              <span class="title">ハッピー★塩焼きそば</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#fire-tornado">
-            <div class="exhib-card">
-              <span class="group">S1D</span>
-              <img src="./assets/img/stall/potato.png" class="map">
-              <span class="title">ファイヤートルネード</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#churros">
-            <div class="exhib-card">
-              <span class="group">S2B</span>
-              <img src="./assets/img/stall/churos.png" class="map">
-              <span class="title">バナナよりチュロスだろ</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#kurorekishi">
-            <div class="exhib-card">
-              <span class="group">高2有志</span>
-              <img src="./assets/img/stall/ramen.png" class="map">
-              <span class="title">黒歴史を刻め</span>
-            </div>
-          </a>
-        </div>
-        <div class="swiper-slide">
-          <a href="F.html#kogedo">
-            <div class="exhib-card">
-              <span class="group">高3合同</span>
-              <img src="./assets/img/stall/pizza.png" class="map">
-              <span class="title">漢の焦げ道</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
+    <div class="actions">
+      <a class="button" href="project_exhib.html">▶ 展示企画一覧はこちらから</a>
+      <a class="button" href="project.html">▶ その他企画一覧はこちらから</a>
     </div>
   </section>
 
@@ -558,267 +109,71 @@
   <section class="timetable" id="timetable">
     <h2 class="stylish-heading">
       <span class="heading-line left"></span>
-      <span class="heading-text">舞台企画タイムテーブル</span>
+      <span class="heading-text">タイムテーブル</span>
       <span class="heading-line right"></span>
     </h2>
-    <p class="ttdate">9/20 Sat.</p><br><br>
-    <div class="schedule">
-      <ul>
-        <li>
-          <a href="CS.html#brass-band">
-            <div class="schedule_time">10:00~11:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ブラスバンド部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#ensemble-harmonia">
-            <div class="schedule_time">11:15~11:45</div>
-            <div class="schedule_content">
-                <div class="schedule_content_title">Ensemble Harmonia</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#nanzan-boys-string-orchestra">
-            <div class="schedule_time">11:50~12:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">南山男子弦楽部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#high-school-culture-committee">
-            <div class="schedule_time">12:05~12:25</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">高校文化委員会</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-1">
-            <div class="schedule_time">12:30~12:40</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">初山学園ダンス部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-2">
-            <div class="schedule_time">12:45~13:00</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">魔王 vs 帝王～陽と陰の言霊（「ひ」と「かげ」のことだま）～</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-3">
-            <div class="schedule_time">13:10~13:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ビートボックス</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-4">
-            <div class="schedule_time">13:30~13:40</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">異次元の逃亡者</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#magic-club">
-            <div class="schedule_time">13:50~14:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">奇術部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#drama-circle">
-            <div class="schedule_time">14:30~14:50</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">演劇同好会</div>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <br>
-      <p class="ttdate">9/21 Sun.</p><br><br>
-      <ul>
-        <li>
-          <a href="CS.html#drama-circle">
-            <div class="schedule_time">10:00~10:20</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">演劇同好会</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#magic-club">
-            <div class="schedule_time">10:35~11:05</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">奇術部</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#ensemble-harmonia">
-            <div class="schedule_time">11:20~11:50</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Ensemble</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="St.html#dandy-street">
-            <div class="schedule_time">11:55~12:10</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">DANDY STREET</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-5">
-            <div class="schedule_time">12:15~12:30</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">with Kaze Fujii</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-6">
-            <div class="schedule_time">12:35~12:43</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">たべものとしょくぶつのディアボロ</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-7">
-            <div class="schedule_time">12:47~12:57</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Two Direction</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="ngt.html#ngt-slot-8">
-            <div class="schedule_time">13:00~13:15</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">南山ヲタ芸 Ver.OB</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="CS.html#brass-band">
-            <div class="schedule_time">13:30~14:30</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">ブラスバンド部</div>
-            </div>
-          </a>
-        </li>
-      </ul>
+    <p style="text-align: center;">Coming Soon...</p>
+  </section>
+
+
+  <section class="goods">
+    <h2 class="stylish-heading">
+      <span class="heading-line left"></span>
+      <span class="heading-text">物販</span>
+      <span class="heading-line right"></span>
+    </h2>
+    <div class="goods-notice" role="note" style="text-align:center; line-height:1.9;">
+      <p class="notice">
+        支払い方法は<strong>交通系ICカード</strong>を予定しております（Suica・PASMO・TOICA・manacaなど）。クレジットカード・QRコード決済はご利用いただけませんのでご了承ください。また、事前にチャージのうえご来場ください。
+      </p>
+      <!-- <img src="./assets/img/goods.jpg" class="goods-img" style="padding:1.5rem;"> -->
+      <p class="goods-desc">Coming Soon...</p>
     </div>
   </section>
 
-    <section class="timetable" id="timetable">
+  <section class="access">
     <h2 class="stylish-heading">
       <span class="heading-line left"></span>
-      <span class="heading-text">地下ステージ企画タイムテーブル</span>
+      <span class="heading-text">アクセス</span>
       <span class="heading-line right"></span>
     </h2>
-    <p class="ttdate">9/21 Sun.</p><br><br>
-    <div class="schedule">
-      <ul>
-        <li>
-          <a href="B.html#significant">
-            <div class="schedule_time">10:30~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">significant</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#our-hands">
-            <div class="schedule_time">11:00~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">OUR HANDS</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#masa-band">
-            <div class="schedule_time">12:00~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">雅バンド（教員バンド）</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#nexus">
-            <div class="schedule_time">12:45~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Nexus</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="B.html#unconditional">
-            <div class="schedule_time">13:15~</div>
-            <div class="schedule_content">
-              <div class="schedule_content_title">Unconditional</div>
-            </div>
-          </a>
-        </li>
-       </ul>
-      <br>
-   </section>
-
-
-    <section class="goods">
-      <h2 class="stylish-heading">
-        <span class="heading-line left"></span>
-        <span class="heading-text">物販</span>
-        <span class="heading-line right"></span>
-      </h2>
-      <div class="goods-notice" role="note" style="text-align:center; line-height:1.9;">
-        <p class="notice">
-          支払い方法は<strong>交通系ICカード</strong>を予定しております（Suica・PASMO・TOICA・manacaなど）。クレジットカード・QRコード決済はご利用いただけませんのでご了承ください。また、事前にチャージのうえご来場ください。
-        </p>
-        <img src="./assets/img/goods.jpg" alt="物販" class="goods-img" style="padding:1.5rem;">
-        <p class="goods-desc">今年度も生徒デザインの缶バッチやクリアファイルを販売します。</p>
-        <p class="goods-desc">さらに今年度からは、舞台企画を盛り上げる「サイリウム」も新登場！</p>
-        <p class="goods-desc">すべて150円で販売しています。</p>
-        <p class="goods-desc">販売場所は南校舎1階・第一理科室です。ぜひお立ち寄りください！</p>
+    <div class="contents">
+      <div class="text">
+        <h3>所在地</h3>
+        <p>〒466-0838 愛知県名古屋市昭和区五軒家町6</p>
+        <p>地下鉄鶴舞線「いりなか」駅下車徒歩5分</p>
       </div>
-    </section>
-
-    <section class="access">
-      <div class="contents">
-        <div class="text">
-          <h2 class="stylish-heading">
-            <span class="heading-line left"></span>
-            <span class="heading-text">アクセス</span>
-            <span class="heading-line right"></span>
-          </h2>
-          <h3>所在地</h3>
-          <p>〒466-0838 愛知県名古屋市昭和区五軒家町6</p>
-          <p>地下鉄鶴舞線「いりなか」駅下車徒歩5分</p>
-        </div>
-        <div class="map">
-          <div class="map-embed">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1371.723983478034!2d136.95319175561136!3d35.1434544905055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60037a8dfe903e5f%3A0x4bcfca66fd25a03!2z5Y2X5bGx6auY562J5a2m5qCh44O75Lit5a2m5qChIOeUt-WtkOmDqA!5e0!3m2!1sja!2sjp!4v1746446793275!5m2!1sja!2sjp"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+      <div class="map">
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1371.723983478034!2d136.95319175561136!3d35.1434544905055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60037a8dfe903e5f%3A0x4bcfca66fd25a03!2z5Y2X5bGx6auY562J5a2m5qCh44O75Lit5a2m5qChIOeUt-WtkOmDqA!5e0!3m2!1sja!2sjp!4v1746446793275!5m2!1sja!2sjp"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-    </section>
-    <div id="footer"></div>
-    <script src="assets/js/site.js"></script>
+    </div>
+  </section>
+  <div id="footer" style="padding-top: 4rem;"></div>
+  <script>
+    fetch('/news/news.json')
+  .then(res => res.json())
+  .then(news => {
+    const list = document.querySelector('#news-list');
+
+    news.slice(0, 3).forEach(item => {
+      const li = document.createElement('li');
+
+      li.innerHTML = `
+        <a href="${item.url}">
+          <time>${item.date}</time>
+          <span>${item.title}</span>
+        </a>
+      `;
+
+      list.appendChild(li);
+    });
+  });
+  </script>
+  <script src="assets/js/site.js"></script>
 </body>
 
 
