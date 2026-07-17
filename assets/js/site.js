@@ -346,7 +346,7 @@ async function renderDirectExhibCards() {
 }
 
 function initCountdown() {
-  const eventDate = new Date('2026-09-19T09:00:00+09:00');
+  const eventDate = new Date('2026-09-19T09:30:00+09:00');
   const els = {
     days: document.getElementById('days'),
     hours: document.getElementById('hours'),
@@ -431,29 +431,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   initProjectList();
 });
-
-const hm = iso => new Date(iso).toTimeString().slice(0,5);
-
-fetch("assets/timetable.json")
-  .then(res => res.json())
-  .then(data => {
-    const times = [...new Set(data.flatMap(d => d.events.map(e => hm(e.startTime))
-      .concat(hm(d.events.at(-1).endTime))))].sort();
-
-    const table = document.getElementById("tt");
-    table.innerHTML = `<tr><th></th>${data.map(d => `<th>${d.date}</th>`).join("")}</tr>`;
-
-    for (let i = 0; i < times.length - 1; i++) {
-      const t = times[i];
-      let row = `<td class="time">${t}</td>`;
-      data.forEach(day => {
-        const ev = day.events.find(e => hm(e.startTime) <= t && t < hm(e.endTime));
-        if (!ev) row += "<td></td>";
-        else if (hm(ev.startTime) === t) {
-          const span = times.filter(tm => hm(ev.startTime) <= tm && tm < hm(ev.endTime)).length;
-          row += `<td rowspan="${span}">${ev.group}</td>`;
-        }
-      });
-      table.innerHTML += `<tr>${row}</tr>`;
-    }
-  });
