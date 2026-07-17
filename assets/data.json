@@ -362,8 +362,8 @@
     "title": "OUR HANDS.",
     "desc": "みなさんと一緒につくる最高の時間を楽しみながら、全力を出し切ります。",
     "image": "assets/img/logo.png",
-    "startTime": "2026-09-19T09:30:00+09:00",
-    "endTime": "2026-09-19T10:00:00+09:00"
+    "startTime": "",
+    "endTime": ""
   },
   {
     "group": "Dog Panting",
@@ -371,8 +371,8 @@
     "title": "Dog Panting",
     "desc": "DogがPantingします。",
     "image": "assets/img/logo.png",
-    "startTime": "2026-09-19T10:15:00+09:00",
-    "endTime": "2026-09-19T10:45:00+09:00"
+    "startTime": "",
+    "endTime": ""
   },
   {
     "group": "雅バンド",
@@ -380,8 +380,8 @@
     "title": "雅バンド",
     "desc": "万難を排して今年も出場します！今年は南山一有名なあの方も⁉︎",
     "image": "assets/img/logo.png",
-    "startTime": "2026-09-19T10:15:00+09:00",
-    "endTime": "2026-09-19T10:45:00+09:00"
+    "startTime": "",
+    "endTime": ""
   },
   {
     "group": "J3A",
