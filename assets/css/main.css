@@ -313,7 +313,8 @@ a {
   color: inherit;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .news-list li a:hover {
@@ -355,6 +356,13 @@ a {
   font-weight: 700;
   color: var(--color-primary);
   text-align: center;
+}
+
+.news-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .news-caption {
