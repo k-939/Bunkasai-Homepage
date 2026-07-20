@@ -3,7 +3,8 @@ const DATA_URL = new URL('assets/data.json', document.baseURI).toString();
 const categoryMap = {
   'J.html': '中学展示',
   'S.html': '高校展示',
-  'C.html': '部活動',
+  'C.html': '部活動展示',
+  'V.html': '有志展示',
   'F.html': '模擬店',
   'B.html': '有志演奏',
   'St.html': '講堂舞台企画',
@@ -12,7 +13,10 @@ const categoryMap = {
 };
 
 const projectVisibleHrefs = new Set(['F.html', 'B.html', 'St.html', 'CS.html', 'ngt.html']);
-const projectExhibVisibleHrefs = new Set(['J.html', 'S.html', 'C.html']);
+const projectExhibVisibleHrefs = new Set(['J.html', 'S.html', 'C.html', 'V.html']);
+const projectExhibCategoryGroups = {
+  '部活動': new Set(['部活動展示', '有志展示'])
+};
 
 let cachedItems = null;
 
@@ -205,7 +209,12 @@ function initProjectList() {
     const searchTerm = searchInput.value.trim().toLowerCase();
 
     const filtered = visibleItems.filter(item => {
-      if (selectedCategories.length > 0 && !selectedCategories.includes(item.category)) return false;
+      if (selectedCategories.length > 0) {
+        const matchesSelectedCategory = selectedCategories.some(category =>
+          category === item.category || projectExhibCategoryGroups[category]?.has(item.category)
+        );
+        if (!matchesSelectedCategory) return false;
+      }
       if (searchTerm !== '') {
         return item.group.toLowerCase().includes(searchTerm) ||
           item.title.toLowerCase().includes(searchTerm) ||
