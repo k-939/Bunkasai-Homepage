@@ -3,7 +3,8 @@ const DATA_URL = new URL('assets/data.json', document.baseURI).toString();
 const categoryMap = {
   'J.html': '中学展示',
   'S.html': '高校展示',
-  'C.html': '部活動',
+  'C.html': '部活動展示',
+  'V.html': '有志展示',
   'F.html': '模擬店',
   'B.html': '有志演奏',
   'St.html': '講堂舞台企画',
@@ -425,7 +426,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderExhibPlaceholders(),
     // 💡 index.htmlのみランダムピックアップを実行
     isIndex ? initRandomPickup('#cardsContainer', c =>
-      c === '中学展示' || c === '高校展示' || c === '部活動' || c === '模擬店' || c === '有志演奏' || c === '講堂舞台企画' || c === '部活舞台企画'
+      c === '中学展示' || c === '高校展示' || c === '部活動展示' || c === '有志展示' || c === '模擬店' || c === '有志演奏' || c === '講堂舞台企画' || c === '部活舞台企画'
     ) : Promise.resolve()
   ]);
 
