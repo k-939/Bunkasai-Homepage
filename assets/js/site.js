@@ -388,6 +388,232 @@ function initCountdown() {
   setInterval(update, 1000);
 }
 
+const TIMETABLE_TIME_ZONE = 'Asia/Tokyo';
+const TIMETABLE_PX_PER_MINUTE = 1.6;
+
+function timetableMinutes(dateString) {
+  const match = String(dateString).match(/T(\d{2}):(\d{2})/);
+  if (!match) return NaN;
+  return Number(match[1]) * 60 + Number(match[2]);
+}
+
+function timetableTimeLabel(dateString) {
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat('ja-JP', {
+    timeZone: TIMETABLE_TIME_ZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).format(date);
+}
+
+function timetableDateParts(dateString) {
+  const date = new Date(`${dateString}T00:00:00+09:00`);
+  if (Number.isNaN(date.getTime())) return { short: dateString, long: dateString };
+  const short = new Intl.DateTimeFormat('ja-JP', {
+    timeZone: TIMETABLE_TIME_ZONE,
+    month: 'numeric',
+    day: 'numeric',
+    weekday: 'short'
+  }).format(date);
+  const long = new Intl.DateTimeFormat('ja-JP', {
+    timeZone: TIMETABLE_TIME_ZONE,
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long'
+  }).format(date);
+  return { short, long };
+}
+
+function layoutTimetableEvents(events) {
+  const sorted = [...events].sort((a, b) => {
+    const startDiff = timetableMinutes(a.startTime) - timetableMinutes(b.startTime);
+    return startDiff || timetableMinutes(a.endTime) - timetableMinutes(b.endTime);
+  });
+  const clusters = [];
+  let currentCluster = [];
+  let clusterEnd = -Infinity;
+
+  sorted.forEach(event => {
+    const start = timetableMinutes(event.startTime);
+    const end = timetableMinutes(event.endTime);
+    if (currentCluster.length && start >= clusterEnd) {
+      clusters.push(currentCluster);
+      currentCluster = [];
+      clusterEnd = -Infinity;
+    }
+    currentCluster.push(event);
+    clusterEnd = Math.max(clusterEnd, end);
+  });
+  if (currentCluster.length) clusters.push(currentCluster);
+
+  return clusters.flatMap(cluster => {
+    const laneEnds = [];
+    const placed = cluster.map(event => {
+      const start = timetableMinutes(event.startTime);
+      const end = timetableMinutes(event.endTime);
+      let lane = laneEnds.findIndex(laneEnd => laneEnd <= start);
+      if (lane === -1) lane = laneEnds.length;
+      laneEnds[lane] = end;
+      return { event, lane };
+    });
+    const laneCount = Math.max(laneEnds.length, 1);
+    return placed.map(item => ({ ...item, laneCount }));
+  });
+}
+
+function renderTimetablePanel(day, index) {
+  const events = Array.isArray(day.events)
+    ? day.events.filter(event => {
+      const start = timetableMinutes(event.startTime);
+      const end = timetableMinutes(event.endTime);
+      return Number.isFinite(start) && Number.isFinite(end) && end > start;
+    })
+    : [];
+  const panelId = `timetable-panel-${index}`;
+
+  if (!events.length) {
+    return `<section class="timetable-panel" id="${panelId}" role="tabpanel" tabindex="0">
+      <p class="timetable-status">この日の予定はまだ登録されていません。</p>
+    </section>`;
+  }
+
+  const eventStarts = events.map(event => timetableMinutes(event.startTime));
+  const eventEnds = events.map(event => timetableMinutes(event.endTime));
+  const startMinute = Math.floor(Math.min(...eventStarts) / 30) * 30;
+  const endMinute = Math.ceil(Math.max(...eventEnds) / 30) * 30;
+  const duration = Math.max(endMinute - startMinute, 30);
+  const totalHeight = duration * TIMETABLE_PX_PER_MINUTE;
+  const locations = [];
+  const eventsByLocation = new Map();
+  events.forEach(event => {
+    const location = String(event.location || '会場未定');
+    if (!eventsByLocation.has(location)) {
+      locations.push(location);
+      eventsByLocation.set(location, []);
+    }
+    eventsByLocation.get(location).push(event);
+  });
+
+  let scaleHtml = '';
+  let gridHtml = '';
+  for (let minute = startMinute; minute <= endMinute; minute += 30) {
+    const offset = (minute - startMinute) * TIMETABLE_PX_PER_MINUTE;
+    const hour = String(Math.floor(minute / 60)).padStart(2, '0');
+    const min = String(minute % 60).padStart(2, '0');
+    scaleHtml += `<span class="timetable-time" style="top:${offset}px">${hour}:${min}</span>`;
+    gridHtml += `<span class="timetable-gridline" style="top:${offset}px"></span>`;
+  }
+
+  const tracksHtml = locations.map(location => {
+    const locationEvents = layoutTimetableEvents(eventsByLocation.get(location));
+    const eventsHtml = locationEvents.map(({ event, lane, laneCount }) => {
+      const eventStart = timetableMinutes(event.startTime);
+      const eventEnd = timetableMinutes(event.endTime);
+      const top = (eventStart - startMinute) * TIMETABLE_PX_PER_MINUTE;
+      const height = Math.max((eventEnd - eventStart) * TIMETABLE_PX_PER_MINUTE, 36);
+      const startLabel = timetableTimeLabel(event.startTime);
+      const endLabel = timetableTimeLabel(event.endTime);
+      const group = escapeHtml(event.group || '名称未定');
+      const detail = event.title ? `<span class="timetable-event-detail">${escapeHtml(event.title)}</span>` : '';
+      const now = Date.now();
+      const isCurrent = new Date(event.startTime).getTime() <= now && now < new Date(event.endTime).getTime();
+      const currentLabel = isCurrent ? '<span class="timetable-current-label">開催中</span>' : '';
+      const content = `${currentLabel}<span class="timetable-event-time">${startLabel}–${endLabel}</span><strong>${group}</strong>${detail}`;
+      const locationClass = location === 'バンドステージ'
+        ? 'timetable-event-location-band'
+        : 'timetable-event-location-hall';
+      const eventClass = `timetable-event ${locationClass}${laneCount > 1 ? ' is-overlapping' : ''}${isCurrent ? ' is-current' : ''}`;
+      const gap = laneCount > 1 ? 4 : 12;
+      const left = `calc(${lane * 100 / laneCount}% + ${gap}px)`;
+      const width = `calc(${100 / laneCount}% - ${gap * 2}px)`;
+      const style = `top:${top}px;height:${height}px;left:${left};width:${width}`;
+
+      if (event.href) {
+        return `<a class="${eventClass}" href="${escapeHtml(event.href)}" style="${style}">${content}</a>`;
+      }
+      return `<div class="${eventClass}" style="${style}">${content}</div>`;
+    }).join('');
+
+    return `<div class="timetable-track">
+      <div class="timetable-track-heading">${escapeHtml(location)}</div>
+      <div class="timetable-track-body" style="height:${totalHeight}px">
+        ${gridHtml}
+        ${eventsHtml}
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<section class="timetable-panel" id="${panelId}" role="tabpanel" tabindex="0">
+    <div class="timetable-board" style="--timetable-height:${totalHeight}px;--location-count:${locations.length}">
+      <div class="timetable-scale" aria-hidden="true">${scaleHtml}</div>
+      ${tracksHtml}
+    </div>
+  </section>`;
+}
+
+async function initTimetable() {
+  const app = document.querySelector('.timetable-app');
+  if (!app) return;
+
+  const tabs = app.querySelector('.timetable-tabs');
+  const panels = app.querySelector('.timetable-panels');
+  const dataUrl = new URL(app.dataset.timetableUrl || 'assets/timetable.json', document.baseURI).toString();
+
+  try {
+    const response = await fetch(dataUrl, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const days = await response.json();
+    if (!Array.isArray(days) || !days.length) throw new Error('日程データがありません');
+
+    tabs.innerHTML = days.map((day, index) => {
+      const date = timetableDateParts(day.date);
+      return `<button class="button timetable-tab" id="timetable-tab-${index}" type="button" role="tab"
+        aria-controls="timetable-panel-${index}" aria-selected="${index === 0}" tabindex="${index === 0 ? 0 : -1}"
+        data-panel-index="${index}">${escapeHtml(date.short)}</button>`;
+    }).join('');
+
+    panels.innerHTML = days.map(renderTimetablePanel).join('');
+    const tabButtons = Array.from(tabs.querySelectorAll('.timetable-tab'));
+    const panelElements = Array.from(panels.querySelectorAll('.timetable-panel'));
+
+    panelElements.forEach((panel, index) => {
+      panel.setAttribute('aria-labelledby', `timetable-tab-${index}`);
+      panel.hidden = index !== 0;
+    });
+
+    function selectDay(nextIndex, moveFocus = false) {
+      tabButtons.forEach((button, index) => {
+        const selected = index === nextIndex;
+        button.setAttribute('aria-selected', String(selected));
+        button.tabIndex = selected ? 0 : -1;
+        panelElements[index].hidden = !selected;
+      });
+      if (moveFocus) tabButtons[nextIndex].focus();
+    }
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => selectDay(index));
+      button.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let nextIndex = index;
+        if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabButtons.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = tabButtons.length - 1;
+        selectDay(nextIndex, true);
+      });
+    });
+  } catch (error) {
+    console.error('タイムテーブルの読み込みに失敗しました', error);
+    tabs.remove();
+    panels.innerHTML = '<p class="timetable-status is-error">タイムテーブルを読み込めませんでした。時間をおいて再度お試しください。</p>';
+  }
+}
+
 function initTemplateInjection() {
   const headerMount = document.querySelector('#header');
   if (headerMount) {
@@ -425,6 +651,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initTemplateInjection();
   initCountdown();
   initNavHighlight();
+  initTimetable();
 
   const pathname = location.pathname.toLowerCase();
   const isIndex = pathname.endsWith('/index.html') || pathname.endsWith('/') || pathname === '';

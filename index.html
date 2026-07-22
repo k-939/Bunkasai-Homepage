@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>飛翔祭2026</title>
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-  <script src="assets/js/site.js"></script>
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"
     integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,7 +115,12 @@
       <span class="heading-text">タイムテーブル</span>
       <span class="heading-line right"></span>
     </h2>
-    <p style="text-align: center;">Coming Soon...</p>
+    <div class="timetable-app" data-timetable-url="assets/timetable.json">
+      <div class="timetable-tabs" role="tablist" aria-label="タイムテーブルの日付を選択"></div>s
+      <div class="timetable-panels" aria-live="polite">
+        <p class="timetable-status">タイムテーブルを読み込んでいます…</p>
+      </div>
+    </div>
   </section>
 
 

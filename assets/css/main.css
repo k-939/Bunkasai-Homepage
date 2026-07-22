@@ -982,6 +982,254 @@ a.is-active {
   font-weight: bold;
 }
 
+/* ==========================
+   Festival timetable
+   ========================== */
+.timetable-app {
+  width: min(calc(100% - 32px), 920px);
+  margin-inline: auto;
+}
+
+.timetable-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 auto 24px;
+}
+
+.timetable-tab {
+  min-width: 170px;
+  font-weight: 700;
+}
+
+.timetable-tab[aria-selected="true"] {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.timetable-tab:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 42%, #fff);
+  outline-offset: 3px;
+}
+
+.timetable-status {
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.timetable-status {
+  padding: 32px 16px;
+}
+
+.timetable-status.is-error {
+  color: var(--color-primary);
+}
+
+.timetable-panel[hidden] {
+  display: none;
+}
+
+.timetable-panel:focus {
+  outline: none;
+}
+
+.timetable-date-title {
+  margin: 0 0 12px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  text-align: center;
+}
+
+.timetable-board {
+  display: grid;
+  grid-template-columns: 64px repeat(var(--location-count), minmax(0, 1fr));
+  align-items: start;
+  width: 100%;
+}
+
+.timetable-scale {
+  position: relative;
+  z-index: 4;
+  height: calc(var(--timetable-height) + 48px);
+  border-right: var(--border);
+}
+
+.timetable-time {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 2;
+  transform: translateY(calc(48px - 50%));
+  color: var(--color-text);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.timetable-track-heading {
+  display: grid;
+  place-items: center;
+  height: 48px;
+  padding: 0 12px;
+  border-bottom: var(--border);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.timetable-track + .timetable-track {
+  border-left: var(--border);
+}
+
+.timetable-track-body {
+  position: relative;
+  min-width: 0;
+}
+
+.timetable-gridline {
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--schedule-line) 58%, transparent);
+}
+
+.timetable-gridline.is-hour {
+  background: var(--schedule-line);
+}
+
+.timetable-event {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 36px;
+  padding: 5px 14px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 56%, transparent);
+  border-left: 5px solid var(--color-primary);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-card));
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+a.timetable-event:hover {
+  background: color-mix(in srgb, var(--color-primary) 25%, var(--color-card));
+}
+
+.timetable-event strong {
+  font-size: clamp(0.82rem, 2.4vw, 1rem);
+  overflow-wrap: anywhere;
+}
+
+.timetable-event.is-current {
+  outline: 3px solid #fff;
+  outline-offset: -4px;
+}
+
+.timetable-current-label {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.timetable-event-time {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+.timetable-event-detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  opacity: 0.78;
+}
+
+.timetable-event-location-band {
+  border-color: color-mix(in srgb, #ff8a65 62%, transparent);
+  border-left-color: #ff8a65;
+  background: color-mix(in srgb, #ff8a65 15%, var(--color-card));
+}
+
+.timetable-event-location-hall {
+  border-color: color-mix(in srgb, var(--color-primary) 56%, transparent);
+  border-left-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-card));
+}
+
+@media (max-width: 560px) {
+  .timetable-app {
+    width: min(calc(100% - 20px), 920px);
+  }
+
+  .timetable-tabs {
+    gap: 6px;
+  }
+
+  .timetable-tab {
+    flex: 1 1 calc(50% - 3px);
+    min-width: 0;
+    min-height: 44px;
+    padding-inline: 8px;
+    font-size: 0.88rem;
+  }
+
+  .timetable-board {
+    grid-template-columns: 55px repeat(var(--location-count), minmax(0, 1fr));
+  }
+
+  .timetable-time {
+    right: 7px;
+    font-size: 0.66rem;
+  }
+
+  .timetable-event {
+    padding-inline: 7px;
+    border-radius: 8px;
+  }
+
+  .timetable-event.is-overlapping {
+    padding-inline: 2px;
+    border-left-width: 3px;
+    text-align: center;
+  }
+
+  .timetable-event.is-overlapping strong {
+    font-size: 0.66rem;
+    line-height: 1.15;
+  }
+
+  .timetable-event.is-overlapping .timetable-event-time {
+    font-size: 0.56rem;
+  }
+
+  .timetable-event.is-overlapping .timetable-current-label {
+    top: 2px;
+    right: 2px;
+    padding-inline: 3px;
+    font-size: 0.52rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timetable-tab {
+    transition: none;
+  }
+}
+
 
 /* Normalize anchor wrapper inside timetable so it behaves like previous div layout */
 .schedule li>a {
