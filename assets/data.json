@@ -276,7 +276,7 @@
     "href": "CS.html",
     "title": "手品を隠すなら講堂の中",
     "desc": "ステージ上で人が浮いたり切られたり⁉︎他にも様々なジャグリングやマジックをお見せします！ 校舎内では目の前でマジックを見たり、実際にトランプマジックを体験できる展示もあるので是非こちらもお越しください！！",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall.png",
     "timeSlots": [
       {
         "startTime": "2026-09-19T12:45:00+09:00",
@@ -293,7 +293,7 @@
     "href": "CS.html",
     "title": "村瀬吹奏楽団",
     "desc": "ブラスバンド部です！今年も一度は聞いたことのある流行りの曲から保護者の方の懐かしの曲まで幅広いジャンルの曲を、男子のみの熱い演奏で披露します。ぜひお越しください！！ ",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall.png",
     "timeSlots": [
       {
         "startTime": "2026-09-19T10:45:00+09:00",
@@ -310,7 +310,7 @@
     "href": "CS.html",
     "title": "三つの魂",
     "desc": "私たちが今回演じるのは「三つの魂」という劇です。「三つの魂」はキリスト教徒が弾圧されていた江戸時代の隠れ切支丹とそれを追う役人達がテーマになっており、少々挑戦的な演目となっています。ぜひとも皆様見に来て下さい。",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall.png",
     "timeSlots": [
       {
         "startTime": "2026-09-19T13:00:00+09:00",
@@ -327,7 +327,7 @@
     "href": "St.html",
     "title": "南山ヲタ芸",
     "desc": "単位よりヲタ芸 誰が為にヲタクは踊る 満身創痍でも光る棒を振り回します",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall.png",
     "timeSlots": [
       {
         "startTime": "2026-09-19T09:30:00+09:00",
@@ -344,7 +344,7 @@
     "href": "St.html",
     "title": "合奏団Hibiki",
     "desc": "中1、中2、高2の生徒と教員でクラシックとポップスの演奏をします。演奏楽器はバイオリンとピアノです。ぜひ聴きに来てください！",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall.png",
     "timeSlots": [
       {
         "startTime": "2026-09-19T10:00:00+09:00",
@@ -361,7 +361,7 @@
     "href": "B.html",
     "title": "OUR HANDS.",
     "desc": "みなさんと一緒につくる最高の時間を楽しみながら、全力を出し切ります。",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall_b.png",
     "startTime": "2026-09-20T12:30:00+09:00",
     "endTime": "2026-09-20T12:55:00+09:00"
   },
@@ -370,7 +370,7 @@
     "href": "B.html",
     "title": "Dog Panting",
     "desc": "DogがPantingします。",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall_b.png",
     "startTime": "2026-09-20T11:55:00+09:00",
     "endTime": "2026-09-20T12:20:00+09:00"
   },
@@ -379,7 +379,7 @@
     "href": "B.html",
     "title": "雅バンド",
     "desc": "万難を排して今年も出場します！今年は南山一有名なあの方も⁉︎",
-    "image": "assets/img/logo.png",
+    "image": "assets/img/map/hall_b.png",
     "startTime": "2026-09-20T11:15:00+09:00",
     "endTime": "2026-09-20T11:45:00+09:00"
   },
@@ -388,77 +388,77 @@
     "href": "F.html",
     "title": "for your smile〜本格二郎系ラーメン",
     "desc": "中学生徒会長が企画長の本格二郎系ラーメン「for your smile」！味から接客まで全てをこだわり、店名の如く皆様の”笑顔の為に”最高のラーメンを作ります！",
-    "image": "assets/img/stall/ karaage.png"
+    "image": ""
   },
   {
     "group": "J3B",
     "href": "F.html",
     "title": "たこ焼きをつくる",
     "desc": "たこ焼きをつくります！外はカリッ、中はトロッとしたおいしいたこ焼きを心を込めて作ります！ 友達や家族と一緒に、できたてアツアツをぜひ味わってください。 文化祭の思い出に、ぜひ私たちの模擬店へお越しください！",
-    "image": "assets/img/stall/yakisoba.png"
+    "image": ""
   },
   {
     "group": "J3C",
     "href": "F.html",
     "title": "Eggい！！たません",
     "desc": "お祭りで食べた「あの味」をもう一度。 パリパリのえびせんに、ソースの香ばしさが広がる懐かしの味。 ひとくち食べれば、一気にお祭り気分が盛り上がります！食べたことある人も、ない人も是非一度食べてみてください",
-    "image": "assets/img/stall/churros.png"
+    "image": ""
   },
   {
     "group": "J3D",
     "href": "F.html",
     "title": "李氏の本格トッポギ",
     "desc": "李氏による本場韓国のトッポギをとくとご賞味あれ!",
-    "image": "assets/img/stall/tapioca.png"
+    "image": ""
   },
   {
     "group": "J3E",
     "href": "F.html",
     "title": "南韓ハットグ",
     "desc": "SNSでも話題の「あの」味を、南山で体験しよう！揚げたてアツアツ、噛んだ瞬間にチーズがどこまでも伸びる！サクサク食感と濃厚チーズの背徳的なハーモニーは、一度食べたら忘れられないはず。売り切れ必至、急いで！",
-    "image": "assets/img/stall/frank.png"
+    "image": ""
   },
   {
     "group": "S1D",
     "href": "F.html",
     "title": "インディ・チキン",
     "desc": "《招待状》 焼き鳥のお店『インディ・チキン』へようそ！この2日間だけのために考えた幻のお店をオープン！！飛翔祭をもっと楽しみたい、もっと思い出を作りたい皆さんに、絶品焼き鳥でお迎えします！皆様のご来店を、心よりお待ちしております！",
-    "image": "assets/img/stall/ice.png"
+    "image": ""
   },
   {
     "group": "S2A",
     "href": "F.html",
     "title": "世界の勝ちゃん",
     "desc": "香ばしく焼き上げた焼き鳥を販売します！ジューシーなお肉と秘伝のタレ（または塩）が相性抜群！文化祭を楽しみながら、ぜひできたての焼き鳥をご賞味ください。皆さんのご来店をお待ちしています！",
-    "image": "assets/img/stall/dango.png"
+    "image": ""
   },
   {
     "group": "S2B",
     "href": "F.html",
     "title": "DOGDONALD'S ",
     "desc": "『あとで食べよう』と思っているあなたへ。その「あとで」には売り切れているかもしれません。お早めにDOGDONALD'Sへ！",
-    "image": "assets/img/stall/potato.png"
+    "image": ""
   },
   {
     "group": "S2CD",
     "href": "F.html",
     "title": "在日台湾ラーメン",
     "desc": "🔥台湾ラーメン販売中！🍜 ピリッとした辛さと、うま味たっぷりのひき肉がクセになる「台湾ラーメン」を販売します！ 辛いもの好きはもちろん、「ちょっと挑戦してみたい！」という人にもおすすめです。体の芯から温まる一杯を、ぜひ文化祭で味わってみてください！",
-    "image": "assets/img/stall/popcorn.png"
+    "image": ""
   },
   {
     "group": "S2E",
     "href": "F.html",
     "title": "ばっこり串カツ",
     "desc": "揚げたてアツアツの串カツはいかがですか？サクサクの衣と濃厚なみそだれの相性は抜群！文化祭に来たらぜひ一度食べてみてください！",
-    "image": "assets/img/stall/juice.png"
+    "image": ""
   },
   {
     "group": "S3有志",
     "href": "F.html",
     "title": "南山のはっと汁",
     "desc": "高３生がつくる宮城県北地域の郷土料理、はっと汁です。",
-    "image": "assets/img/stall/juice.png"
+    "image": ""
   },
   {
     "group": "育友会",
