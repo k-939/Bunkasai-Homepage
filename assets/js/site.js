@@ -628,6 +628,36 @@ function initTemplateInjection() {
       footerMount.innerHTML = html;
     }).catch(() => {/* ignore */ });
   }
+
+  const goodsMount = document.querySelector('#goods');
+  if (goodsMount) {
+    fetch('../../template/goods.html').then(r => r.text()).then(html => {
+      goodsMount.innerHTML = html;
+      goodsMount.querySelectorAll('[data-goods-src]').forEach(image => {
+        image.src = image.dataset.goodsSrc;
+      });
+      initGoodsSwiper();
+    }).catch(() => {/* ignore */ });
+  }
+}
+
+function initGoodsSwiper() {
+  const slider = document.querySelector('.goods-slider');
+  if (!slider || typeof Swiper === 'undefined') return;
+
+  new Swiper(slider, {
+    slidesPerView: 1.15,
+    spaceBetween: 16,
+    pagination: {
+      el: slider.querySelector('.swiper-pagination'),
+      clickable: true
+    },
+    breakpoints: {
+      640: { slidesPerView: 2, spaceBetween: 20 },
+      960: { slidesPerView: 3, spaceBetween: 24 },
+      1200: { slidesPerView: 4, spaceBetween: 24 }
+    }
+  });
 }
 
 function initNavHighlight() {
