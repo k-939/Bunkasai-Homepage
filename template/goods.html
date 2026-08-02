@@ -1,0 +1,211 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  .goods-slider,
+  .goods-slider * {
+    box-sizing: border-box;
+  }
+
+  .goods-slider {
+    --goods-image-bg: #f3f4f2;
+    width: min(calc(100% - 2rem), 1200px);
+    margin-inline: auto;
+    padding: 10px 6px 42px;
+    overflow: hidden;
+    color: var(--goods-text);
+    font-family: "Zen Kaku Gothic New", sans-serif;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .goods-slider {
+      --goods-card-bg: #ffffff;
+      --goods-text: #1c1c1e;
+      --goods-muted: #66676b;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .goods-slider {
+      --goods-card-bg: #242424;
+      --goods-text: #f3f4f2;
+      --goods-muted: #99999d;
+    }
+  }
+
+  .goods-slider .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+
+  .goods-card {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background: var(--goods-card-bg);
+    border: 1px solid rgba(28, 28, 30, .1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);;
+  }
+
+  .goods-card__media {
+    display: grid;
+    place-items: center;
+    width: calc(100% - 20px);
+    margin: 10px 10px 0;
+    padding: 10px;
+    background: var(--goods-image-bg);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .goods-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .goods-card__media--pair {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .goods-card__media--pair img {
+    border-radius: 8px;
+  }
+
+  .goods-card__content {
+    display: flex;
+    flex-direction: column;
+    padding: 13px 16px 16px;
+  }
+
+  .goods-card__name {
+    margin: 0;
+    color: var(--goods-text);
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+
+  .goods-card__description {
+    display: -webkit-box;
+    margin: 5px 0 0;
+    overflow: hidden;
+    color: var(--goods-muted);
+    font-size: .82rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    }
+
+  .goods-card__price {
+    margin-top: 12px;
+    color: var(--goods-text);
+    font-size: 1.3rem;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .goods-card__price span {
+    margin-left: 3px;
+    font-size: .72rem;
+    font-weight: 700;
+    opacity: .55;
+  }
+
+  .goods-slider .swiper-pagination-bullet {
+    background: var(--goods-muted);
+    opacity: .4;
+  }
+
+  .goods-slider .swiper-pagination-bullet-active {
+    background: var(--goods-accent);
+    opacity: 1;
+  }
+</style>
+
+<div class="goods-slider swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <article class="goods-card">
+        <div class="goods-card__media">
+          <img src="../assets/img/goods/keyring.png" data-goods-src="assets/img/goods/keyring.png"
+            alt="飛翔祭2026 キーホルダー">
+        </div>
+        <div class="goods-card__content">
+          <div class="goods-card__name">キーホルダー</div>
+          <div class="goods-card__description">飛翔祭2026のメインビジュアルのキャラクターをデザインしたアクリルキーホルダーです！</div>
+          <div class="goods-card__price">¥200 <span>税込</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="swiper-slide">
+      <article class="goods-card">
+        <div class="goods-card__media goods-card__media--pair">
+          <img src="../assets/img/goods/shirt1.jpg" data-goods-src="assets/img/goods/shirt1.jpg"
+            alt="飛翔祭2026 ポロシャツ ネイビー">
+          <img src="../assets/img/goods/shirt2.jpg" data-goods-src="assets/img/goods/shirt2.jpg"
+            alt="飛翔祭2026 ポロシャツ ホワイト">
+        </div>
+        <div class="goods-card__content">
+          <div class="goods-card__name">ポロシャツ</div>
+          <div class="goods-card__description">校章入りの特別仕様で、飛翔祭限定モデルです。<p></p>在庫僅少・再販予定なしなので、お早めに！</div>
+          <div class="goods-card__price">¥2,200 <span>税込</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="swiper-slide">
+      <article class="goods-card">
+        <div class="goods-card__media">
+          <img src="../assets/img/goods/file.png" data-goods-src="assets/img/goods/file.png"
+            alt="飛翔祭2026 クリアファイル 表面と裏面">
+        </div>
+        <div class="goods-card__content">
+          <div class="goods-card__name">クリアファイル</div>
+          <div class="goods-card__description">今年のメインビジュアルと「OVERHEAT」ロゴを両面にあしらったデザインです！</div>
+          <div class="goods-card__price">¥100 <span>税込</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="swiper-slide">
+      <article class="goods-card">
+        <div class="goods-card__media">
+          <img src="../assets/img/goods/badge.png" data-goods-src="assets/img/goods/badge.png"
+            alt="飛翔祭2026 缶バッジ">
+        </div>
+        <div class="goods-card__content">
+          <div class="goods-card__name">缶バッジ</div>
+          <div class="goods-card__description">最近の暑さも吹き飛ばすかわいいデザインです！</div>
+          <div class="goods-card__price">¥100 <span>税込</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+    <div class="goods-notice" role="note" style="text-align:center; line-height:1.9;">
+      <p class="notice">
+        支払い方法は<strong>交通系IC（Suica・PASMO・TOICA・manacaなど）</strong>を予定しております。<p></p>クレジットカード・QRコード決済はご利用いただけませんのでご了承ください。また、事前にチャージのうえご来場ください。
+      </p>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.goods-slider', {
+      slidesPerView: 1.15,
+      spaceBetween: 16,
+      pagination: {
+        el: '.goods-slider .swiper-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        960: { slidesPerView: 3, spaceBetween: 24 },
+        1200: { slidesPerView: 4, spaceBetween: 24 }
+      }
+    });
+  }
+</script>
