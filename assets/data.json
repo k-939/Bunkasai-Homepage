@@ -1,12 +1,16 @@
 [
   {
     "group": "J2A",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "J.html",
     "title": "ジュラシックナンザンワールド",
     "desc": "恐竜世界をテーマとした、シューティングゲームです！トロッコで動きながら色々な所にいる恐竜を撃ち抜いて、捕まえましょう！そして、メインの目的は、超巨大恐竜を捕まえることだ！あなたは脱走した恐竜たちを捕まえ、生還することができるのでしょうか...？"
   },
   {
     "group": "J2B",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "J.html",
     "title": "うさぎの国〜USAランド〜",
     "desc": "ここはうさぎの国USAランド！とっても平和だけど、他の動物たちに人参をとられて、大ピンチ！2つのゲームに挑戦して、うさぎたちを救ってあげよう！",
@@ -14,6 +18,8 @@
   },
   {
     "group": "J2C",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "J.html",
     "title": "C撃の南山~ウォール南山を守れ~",
     "desc": "J2C組は、あの頃のTVを思い出すようなモノを作ったぞ。その名も、ジャイアントクラッシュ。聞いたことある人もない人も、全力で楽しめるものとなっている。来ないと損所の騒ぎじゃない。君も一緒にウォール南山を守ってくれ！",
@@ -21,6 +27,8 @@
   },
   {
     "group": "J2D",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "J.html",
     "title": "南山電鉄",
     "desc": "たくさんのミニゲームをクリアしランキング上位を目指してお金を増やそう‼️",
@@ -28,6 +36,8 @@
   },
   {
     "group": "J2E",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "J.html",
     "title": "稼ぎまくれ！スターカジノ☆☆☆",
     "desc": "まあるくて、ピンクい、なんでも吸い込んじゃうあのキャラがテーマのカジノです！初めての文化祭での展示ですが頑張ったのでぜひ来てください！",
@@ -35,6 +45,8 @@
   },
   {
     "group": "J3A",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "J.html",
     "title": "フィンランドの文化パビリオン",
     "desc": "【一投で、フィンランドが好きになる。】ヨーロッパで大人気！話題の「モルック」が今すぐ遊べる！遊びながら知る、北欧フィンランドの歴史と文化!!　モルック初心者・フィンランドの歴史を詳しく知らない人も大歓迎！ルールは最短1分で覚えられる！「世界一幸福な国」の遊びを、今ここで体感しよう！",
@@ -42,6 +54,8 @@
   },
   {
     "group": "J3B",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "J.html",
     "title": "8bit GALA",
     "desc": "どこか懐かしいドット絵の世界と、無限に広がる壮大な宇宙が融合した参加型アトラクションです！ いっぱい得点を稼いでスコア表に載ろう！",
@@ -49,6 +63,8 @@
   },
   {
     "group": "J3C",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "J.html",
     "title": "南山疾風伝",
     "desc": "南山に突如として現れた忍者屋敷で忍者試験に合格して一人前の忍者になってみせよ！！",
@@ -56,6 +72,8 @@
   },
   {
     "group": "J3D",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "J.html",
     "title": "カイシ救出大作戦！",
     "desc": "負債に悩む青年カイシを救うため、あなたが挑戦者として立ち上がる！数々のゲームやミッションをクリアして、カイシをピンチから救い出そう。",
@@ -63,6 +81,8 @@
   },
   {
     "group": "J3E",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "J.html",
     "title": "NANZANGREATESTSHOWMAN",
     "desc": "あの伝説のミュージック映画が南山に降臨。笑顔、感動、驚き。そのすべてが一つになった、唯一無二のステージ。さあ、幕が上がる瞬間、あなたも最高のショーの目撃者になりませんか。",
@@ -70,6 +90,8 @@
   },
   {
     "group": "S1A",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "ヨシリン・ファンタスティック・フライト",
     "desc": "大空を飛んでみたいと思いませんか？武田飛行隊と一緒にその夢、叶えに行きましょう！",
@@ -77,6 +99,8 @@
   },
   {
     "group": "S1B",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "ヘビー・ポッターと秘密の間",
     "desc": "ヘビー級の面白さ！　謎を解いて秘密の間に連れ去られてしまった「囚われし者」を助け出してほしい！",
@@ -84,6 +108,8 @@
   },
   {
     "group": "S1C",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "南星のカーヴィー",
     "desc": "カーヴィがテテテ大王に連れ去られた！テテテ大王は宇宙船の中にいる！君たちの持っている南星の力が籠もったスペースガンを持って、ポポポライダーで助けに行ってくれ君たちの銃の腕前が試されるときだ！",
@@ -91,6 +117,8 @@
   },
   {
     "group": "S1D",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "インディ・クエスト",
     "desc": "《挑戦状》 『勇敢な冒険者たちよ。飛翔祭に眠る古代遺跡に挑め！爆速トロッコで遺跡を駆け抜け、遺跡や洞窟を探検し、数々の謎を解いてポイントを稼げ！！キミは最高得点を出せるか？？』 スリルとワクワクの没入型アトラクションとなっています！みなさんの挑戦をお待ちしています！",
@@ -98,6 +126,8 @@
   },
   {
     "group": "S1E",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "VS南山～コロコロバイキング～",
     "desc": "板に乗せたボールを、障害物や穴を避けながらゴールまで運ぶゲームです。穴に落ちてしまうと0点になってしまうため、6人の息を合わせることがクリアの鍵となります。仲間と声を掛け合い、障害物を上手に利用しながら、みんなで協力してゴールを目指しましょう！",
@@ -105,6 +135,8 @@
   },
   {
     "group": "S2A",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "S.html",
     "title": "南山実験病棟",
     "desc": "南山の奥深くに存在すると噂される閉鎖研究施設。近年、立ち入り禁止の施設内で不可解な現象が相次ぎ、「Dr.K」と記された記録も発見された。この場所に隠された真実を、--あなた自身の目で確かめてほしい。",
@@ -112,6 +144,8 @@
   },
   {
     "group": "S2B",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "アンディーが帰ってきた！！",
     "desc": "おもちゃの世界にようこそ！事件発生！！皆さんの協力が必要です！！世界観をこだわったので楽しんでってください！",
@@ -119,6 +153,8 @@
   },
   {
     "group": "S2C",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "古代エジプトの謎",
     "desc": "古代エジプトの世界で謎解きを体験しよう！ぜひやってみてね！",
@@ -126,6 +162,8 @@
   },
   {
     "group": "S2D",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "パイレーツ・オブ・ナンザン",
     "desc": "砲台や弓を操作してさまざまな的を撃ち抜き、制限時間内により多くの得点を獲得しよう。仲間との連携と正確な狙いが必要なシューティングゲーム！",
@@ -133,6 +171,8 @@
   },
   {
     "group": "S2E",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "S.html",
     "title": "チと智尋のカミ隠し",
     "desc": "名前を奪われてチとして湯屋で働くことになってしまった智尋、無事に元の世界に戻ることは出来るのか?!",
@@ -140,6 +180,8 @@
   },
   {
     "group": "美術同好会",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "～美術の軌跡(レール)を行く～ミュージアムレールウェイ",
     "desc": "部員たちの力作に加え、今年はトロッコ展示やガチャガチャなど、よりこだわった作品展示をお楽しみ頂けます。",
@@ -147,6 +189,8 @@
   },
   {
     "group": "理科部生物班",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "水辺と緑に息づく奇跡達",
     "desc": "水辺や森林などに生息する日本の生き物達を見て知って欲しいです　苔テラリウム制作体験などの体験もできるのでぜひ来てみてください",
@@ -154,6 +198,8 @@
   },
   {
     "group": "写真部",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "FilMemories -レンズ越しの景色-",
     "desc": "中1～高2の部員が撮影した作品を、4つのジャンル別ブースで展示します。スマホ写真が上手になるミニ講座も実施！ぜひお立ち寄りください。",
@@ -161,6 +207,8 @@
   },
   {
     "group": "理科部天文班",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "Star＆Night",
     "desc": "天文班です、今年もプラネタリウムやります！占い・ミニ工作もあるのでぜひ来てください！！",
@@ -168,6 +216,8 @@
   },
   {
     "group": "アマチュア無線同好会",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "ハムの世界",
     "desc": "アマチュア無線同好会では、アマチュア無線の魅力を体感できる展示を行っています。昨年に続き、今年もドローンを実際に操作してお楽しみいただけます。また、同好会が活動で使用している無線機材と所有する各種アンテナを展示し、電波の世界を身近に感じていただける展示です。ドローンを試したい方、電波に興味のある方はぜひお越しください。皆様のご来場をお待ちしております。",
@@ -175,6 +225,8 @@
   },
   {
     "group": "歴史研究同好会",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "コロッセオから見る古代ローマ",
     "desc": "コロッセオや的あて体験、解説やコスプレからローマ文明について学んでみよう",
@@ -182,6 +234,8 @@
   },
   {
     "group": "将棋部",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "南山男子部の将棋屋（文化祭編）",
     "desc": "皆さん、将棋といえばどんなイメージを思い浮かべますか？｢難しそう｣というイメージを持つ人もいるでしょう。しかし、将棋は見た目に反して、かなりシンプルなゲームです。この展示では、将棋の魅力や奥深さを初心者の方でも楽しむことができます。",
@@ -189,6 +243,8 @@
   },
   {
     "group": "奇術部",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "手品を隠すなら森の中",
     "desc": "不思議な庭でのマジックやジャグリングをお楽しみください‼︎他にも同教室でトランプマジック体験(受付は先着予約制となっているのでお早めに)や講堂ステージでのイリュージョンもあるのでこちらも是非お越しになってください！",
@@ -196,6 +252,8 @@
   },
   {
     "group": "英語部",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "すごろく",
     "desc": "すごろくだけでなくレポートの展示やダシオン前校長との交流記録を流したりするのでぜひ来てください!!!!!",
@@ -203,6 +261,8 @@
   },
   {
     "group": "パソコン同好会",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "あなたの知らないパソコンの世界",
     "desc": "部員が得意な分野で制作した、ゲームや動画といった様々な作品を展示します。今年は南山再現マインクラフトも3年ぶりに復活！ぜひお越しください。",
@@ -210,6 +270,8 @@
   },
   {
     "group": "理科部地質班",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "C.html",
     "title": "地質のタイムカプセル",
     "desc": "超綺麗な鉱物や太古の化石、部員力作の化石模型やレポートに化石クリーニング体験など盛りだくさん！",
@@ -217,6 +279,8 @@
   },
   {
     "group": "南方project",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "V.html",
     "title": "自作ゲーム試遊会",
     "desc": "自作弾幕シューティングゲームを展示します。ゲームが好きな方も、初めての方も大歓迎です。",
@@ -224,6 +288,8 @@
   },
   {
     "group": "鉄道研究会",
+    "isHandsOn": false,
+    "hasVisitorInteraction": true,
     "href": "V.html",
     "title": "鉄道研究会",
     "desc": "レポートやモジュールレイアウトといった鉄道の史資料を展示しています。",
@@ -231,6 +297,8 @@
   },
   {
     "group": "nanosoft",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "V.html",
     "title": "頭文字N　-2nd season-",
     "desc": "VRゴーグルを装着し、ハンドルを握れば、目の前のコースを駆け抜けるドリフトレースがスタート！目の前のコースをドリフトで攻めていく感覚は、正直やってみないとわからないと思います。コーナーに差し掛かる時のあの緊張感、体が勝手に前のめりになる感じ、ぜひ味わってほしいです。 今年は初めての方や小さいお子さんでも大丈夫なように、コースの難易度は分けています。気軽に遊びに来てください。また、タイムはスマホからその場でランキングを確認できるようにしていて、待ち時間もオンライン整理券で少しでも減らせるよう工夫しました。 この展示は企画から制作まで全部生徒約20人のみでやりました。文化祭でしか味わえない、この展示オリジナルの作品です。最速タイムを狙って、ぜひ挑戦しに来てください！",
@@ -238,6 +306,8 @@
   },
   {
     "group": "平和研究会",
+    "isHandsOn": true,
+    "hasVisitorInteraction": true,
     "href": "V.html",
     "title": "Peace81th",
     "desc": "平和81年ということで愛知県に関わっている模擬原爆や戦争などを高校生なりに調べました。鶴折り体験などもあるので来ていただけたら幸いです",
@@ -245,6 +315,8 @@
   },
   {
     "group": "高校一年生",
+    "isHandsOn": false,
+    "hasVisitorInteraction": true,
     "href": "V.html",
     "title": "ニュージーランド•オーストラリア留学報告",
     "desc": "南山生の海外での活動をまとめた展示です。ぜひ足を運んでみてください。",
@@ -252,6 +324,8 @@
   },
   {
     "group": "高校文化委員会・飛翔祭実行委員会",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "V.html",
     "title": "南山学園の歴史＆実行委員会の歩み",
     "desc": "私たち(高校文化委員会・飛翔祭実行委員会)は、南山学園の歴史について調べてきました。先生方への取材やライネルス館の見学などを通して集めた情報を、展示でご紹介します。あわせて、飛翔祭実行委員会がこれまで歩んできた道のりもご紹介します！",
@@ -259,6 +333,8 @@
   },
   {
     "group": "緑鳥",
+    "isHandsOn": true,
+    "hasVisitorInteraction": false,
     "href": "V.html",
     "title": "NANZAN シネマ",
     "desc": "Gたちが団結し南山生に襲いかかる。果たして逃げ切ることはできるのか。",
@@ -266,6 +342,8 @@
   },
   {
     "group": "アニメ制作くらぶ",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "V.html",
     "title": "自主制作アニメ上映会",
     "desc": "高校生4人が作ったショートアニメを上映します。上映作品は『冬がきた！』『翔』『ゆうしゃとまおう(仮)』『悪夢』等4本。みんな、見に来てね☆　※内容は高校生達の制作状況次第で変更される可能性があります。",
@@ -273,6 +351,8 @@
   },
   {
     "group": "奇術部",
+    "isHandsOn": false,
+    "hasVisitorInteraction": true,
     "href": "CS.html",
     "title": "手品を隠すなら講堂の中",
     "desc": "ステージ上で人が浮いたり切られたり⁉︎他にも様々なジャグリングやマジックをお見せします！ 校舎内では目の前でマジックを見たり、実際にトランプマジックを体験できる展示もあるので是非こちらもお越しください！！",
@@ -290,6 +370,8 @@
   },
   {
     "group": "ブラスバンド部",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "CS.html",
     "title": "村瀬吹奏楽団",
     "desc": "ブラスバンド部です！今年も一度は聞いたことのある流行りの曲から保護者の方の懐かしの曲まで幅広いジャンルの曲を、男子のみの熱い演奏で披露します。ぜひお越しください！！ ",
@@ -307,6 +389,8 @@
   },
   {
     "group": "演劇同好会",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "CS.html",
     "title": "三つの魂",
     "desc": "私たちが今回演じるのは「三つの魂」という劇です。「三つの魂」はキリスト教徒が弾圧されていた江戸時代の隠れ切支丹とそれを追う役人達がテーマになっており、少々挑戦的な演目となっています。ぜひとも皆様見に来て下さい。",
@@ -324,6 +408,8 @@
   },
   {
     "group": "単位よりヲタ芸",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "St.html",
     "title": "南山ヲタ芸",
     "desc": "単位よりヲタ芸 誰が為にヲタクは踊る 満身創痍でも光る棒を振り回します",
@@ -341,6 +427,8 @@
   },
   {
     "group": "合奏団Hibiki",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "St.html",
     "title": "合奏団Hibiki",
     "desc": "中1、中2、高2の生徒と教員でクラシックとポップスの演奏をします。演奏楽器はバイオリンとピアノです。ぜひ聴きに来てください！",
@@ -358,6 +446,8 @@
   },
   {
     "group": "OUR HANDS.",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "B.html",
     "title": "OUR HANDS.",
     "desc": "みなさんと一緒につくる最高の時間を楽しみながら、全力を出し切ります。",
@@ -367,6 +457,8 @@
   },
   {
     "group": "Dog Panting",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "B.html",
     "title": "Dog Panting",
     "desc": "DogがPantingします。",
@@ -376,6 +468,8 @@
   },
   {
     "group": "雅バンド",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "B.html",
     "title": "雅バンド",
     "desc": "万難を排して今年も出場します！今年は南山一有名なあの方も⁉︎",
@@ -385,6 +479,8 @@
   },
   {
     "group": "J3A",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "for your smile〜本格二郎系ラーメン",
     "desc": "中学生徒会長が企画長の本格二郎系ラーメン「for your smile」！味から接客まで全てをこだわり、店名の如く皆様の”笑顔の為に”最高のラーメンを作ります！",
@@ -392,6 +488,8 @@
   },
   {
     "group": "J3B",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "たこ焼きをつくる",
     "desc": "たこ焼きをつくります！外はカリッ、中はトロッとしたおいしいたこ焼きを心を込めて作ります！ 友達や家族と一緒に、できたてアツアツをぜひ味わってください。 文化祭の思い出に、ぜひ私たちの模擬店へお越しください！",
@@ -399,6 +497,8 @@
   },
   {
     "group": "J3C",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "Eggい！！たません",
     "desc": "お祭りで食べた「あの味」をもう一度。 パリパリのえびせんに、ソースの香ばしさが広がる懐かしの味。 ひとくち食べれば、一気にお祭り気分が盛り上がります！食べたことある人も、ない人も是非一度食べてみてください",
@@ -406,6 +506,8 @@
   },
   {
     "group": "J3D",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "李氏の本格トッポギ",
     "desc": "李氏による本場韓国のトッポギをとくとご賞味あれ!",
@@ -413,6 +515,8 @@
   },
   {
     "group": "J3E",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "南韓ハットグ",
     "desc": "SNSでも話題の「あの」味を、南山で体験しよう！揚げたてアツアツ、噛んだ瞬間にチーズがどこまでも伸びる！サクサク食感と濃厚チーズの背徳的なハーモニーは、一度食べたら忘れられないはず。売り切れ必至、急いで！",
@@ -420,6 +524,8 @@
   },
   {
     "group": "S1D",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "インディ・チキン",
     "desc": "《招待状》 焼き鳥のお店『インディ・チキン』へようそ！この2日間だけのために考えた幻のお店をオープン！！飛翔祭をもっと楽しみたい、もっと思い出を作りたい皆さんに、絶品焼き鳥でお迎えします！皆様のご来店を、心よりお待ちしております！",
@@ -427,6 +533,8 @@
   },
   {
     "group": "S2A",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "世界の勝ちゃん",
     "desc": "香ばしく焼き上げた焼き鳥を販売します！ジューシーなお肉と秘伝のタレ（または塩）が相性抜群！文化祭を楽しみながら、ぜひできたての焼き鳥をご賞味ください。皆さんのご来店をお待ちしています！",
@@ -434,6 +542,8 @@
   },
   {
     "group": "S2B",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "DOGDONALD'S ",
     "desc": "『あとで食べよう』と思っているあなたへ。その「あとで」には売り切れているかもしれません。お早めにDOGDONALD'Sへ！",
@@ -441,6 +551,8 @@
   },
   {
     "group": "S2CD",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "在日台湾ラーメン",
     "desc": "🔥台湾ラーメン販売中！🍜 ピリッとした辛さと、うま味たっぷりのひき肉がクセになる「台湾ラーメン」を販売します！ 辛いもの好きはもちろん、「ちょっと挑戦してみたい！」という人にもおすすめです。体の芯から温まる一杯を、ぜひ文化祭で味わってみてください！",
@@ -448,6 +560,8 @@
   },
   {
     "group": "S2E",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "ばっこり串カツ",
     "desc": "揚げたてアツアツの串カツはいかがですか？サクサクの衣と濃厚なみそだれの相性は抜群！文化祭に来たらぜひ一度食べてみてください！",
@@ -455,6 +569,8 @@
   },
   {
     "group": "S3有志",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "南山のはっと汁",
     "desc": "高３生がつくる宮城県北地域の郷土料理、はっと汁です。",
@@ -462,6 +578,8 @@
   },
   {
     "group": "育友会",
+    "isHandsOn": false,
+    "hasVisitorInteraction": false,
     "href": "F.html",
     "title": "育友会模擬店",
     "desc": "育友会喫茶室では、フレンチトーストやラスク、冷たいお飲み物、南山オリジナルグッズを販売！<p></p>4階の涼しいお部屋でひと息つきませんか！？<p></p>なんと！奇術部のテーブルマジックも開催！！<p></p>今年は1階模擬店エリアにも初出店♪売上は学校備品購入に活用します！",

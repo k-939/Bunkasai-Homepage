@@ -601,6 +601,56 @@ a.is-active {
   margin-top: 16px;
 }
 
+.booth-container {
+  width: min(100% - 32px, 860px);
+  margin: 0 auto;
+}
+
+.booth-card {
+  background: var(--color-card);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(18px, 4vw, 32px);
+}
+
+.booth-card-title {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  letter-spacing: 0.08em;
+}
+
+.booth-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.booth-menu li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: var(--border);
+}
+
+.booth-menu li:first-child {
+  border-top: var(--border);
+}
+
+.booth-menu span {
+  font-weight: 800;
+  text-align: left;
+}
+
+.booth-menu strong {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  text-align: right;
+  white-space: nowrap;
+}
+
 .exhib-slider .swiper-container {
   width: 100%;
   max-width: 100%;
