@@ -89,6 +89,8 @@ function renderSingleCard(container, item) {
         <div class="exhib_card">
           <div class="group-name">${escapeHtml(item.group)}</div>
           <span class="category-badge">${escapeHtml(item.category)}</span>
+          ${item.isHandsOn ? '<span class="category-badge">体験型</span>' : ''}
+          ${item.hasVisitorInteraction ? '<span class="category-badge">交流</span>' : ''}
           <div class="event-name">「${escapeHtml(item.title)}」</div>
           ${timeHtml}
           <div class="description">${escapeHtml(item.desc || '')}</div>
@@ -204,6 +206,19 @@ function initProjectList() {
     return items;
   }
 
+  function applyUrlOption() {
+    const params = new URLSearchParams(location.search);
+    const option = params.get('option') || params.get('category');
+    if (!option) return;
+
+    const selectedCategory = option === 'booth' ? '模擬店' : option;
+    const targetCheckbox = Array.from(filterCheckboxes).find(cb => cb.value === selectedCategory);
+    if (!targetCheckbox) return;
+
+    filterCheckboxes.forEach(cb => cb.checked = cb === targetCheckbox);
+    selectAllCheckbox.checked = false;
+  }
+
   function render() {
     const selectedCategories = Array.from(filterCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
     const searchTerm = searchInput.value.trim().toLowerCase();
@@ -236,7 +251,9 @@ function initProjectList() {
       html += `
         <div class="item-card">
           <div class="group-name">${item.group}</div>
-          <span class="category-badge">${item.category}</span>
+          <span class="category-badge">${escapeHtml(item.category)}</span>
+          ${item.isHandsOn ? '<span class="category-badge">体験型</span>' : ''}
+          ${item.hasVisitorInteraction ? '<span class="category-badge">交流</span>' : ''}
           <div class="event-name">「${item.title}」</div>
           ${timeHtml}
           <div class="description">${item.desc || ''}</div>
@@ -255,6 +272,7 @@ function initProjectList() {
       filterCheckboxes.forEach(cb => cb.disabled = false);
       selectAllCheckbox.disabled = false;
 
+      applyUrlOption();
       render();
     } catch (error) {
       container.innerHTML = `<div class="no-result">❌ ${escapeHtml(error.message)}</div>`;
