@@ -1,5 +1,6 @@
 // --- Utilities & Shared Data ---
 const DATA_URL = new URL('assets/data.json', document.baseURI).toString();
+const FACILITIES_DATA_URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSnl--gK1WfvB_vsW_hp1vTt2YeOzFQdxoi7xDjN15BCP0Erd9MDM0y90eKzleztgh-HlNguGfQ-6ptSYHC1EOF8Z8HDO9T4XWo1NMAX0Q3JB-b3ZbiWOCs9vvKQFPpgP1hcGGobN0R3T_iSWrSxvLLCVOkMofXukfPBBLQqO7K-PcIWVEf2-er4SeglIidW3613aPOrPdWQ7zPmTji_cM9Tg-A-35vqkfgfL3EMIZwVX0mNp9Mkni5sizfWimJGY2Nr4YYgBa3Of1kjHNiV05ax_TMGw&lib=MvdQ6pUtclqAqHW-4jhyPZrQRap5-2f6S';
 const categoryMap = {
   'J.html': '中学展示',
   'S.html': '高校展示',
@@ -19,6 +20,32 @@ const projectExhibCategoryGroups = {
 };
 
 let cachedItems = null;
+let cachedFacilityStatuses = {};
+
+async function fetchFacilityStatuses() {
+  try {
+    const response = await fetch(FACILITIES_DATA_URL, { cache: 'no-cache' });
+    if (!response.ok) throw new Error('混雑状況の取得に失敗しました');
+    const data = await response.json();
+    cachedFacilityStatuses = Array.isArray(data) ? data.reduce((result, item) => {
+      if (item && item.name && item.status) result[item.name] = item.status;
+      return result;
+    }, {}) : {};
+  } catch (err) {
+    console.warn(err);
+  }
+  return cachedFacilityStatuses;
+}
+
+function renderFacilityStatus(group) {
+  const status = cachedFacilityStatuses[group] || '準備中';
+  const statusClass = status === '準備中' ? 'is-preparing'
+    : status.includes('配布中') ? 'is-crowded'
+      : status.includes('混雑している') ? 'is-busy'
+        : status.includes('混雑していない') ? 'is-available'
+          : 'is-preparing';
+  return `<div class="facility-status ${statusClass}">混雑状況: ${escapeHtml(status)}</div>`;
+}
 
 function resolveHref(href) {
   return href || '';
@@ -255,6 +282,7 @@ function initProjectList() {
           ${item.isHandsOn ? '<span class="category-badge">体験型</span>' : ''}
           ${item.hasVisitorInteraction ? '<span class="category-badge">交流</span>' : ''}
           <div class="event-name">「${item.title}」</div>
+          ${renderFacilityStatus(item.group)}
           ${timeHtml}
           <div class="description">${item.desc || ''}</div>
         </div>
@@ -267,6 +295,7 @@ function initProjectList() {
     try {
       allItems = await fetchItems();
       visibleItems = getVisibleItems(allItems);
+      await fetchFacilityStatuses();
 
       searchInput.disabled = false;
       filterCheckboxes.forEach(cb => cb.disabled = false);
@@ -299,6 +328,10 @@ function initProjectList() {
 
   searchInput.addEventListener('input', render);
   loadData();
+  setInterval(async () => {
+    await fetchFacilityStatuses();
+    render();
+  }, 30000);
 }
 
 async function renderExhibPlaceholders() {
