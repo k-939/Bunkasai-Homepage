@@ -651,6 +651,34 @@ a.is-active {
   white-space: nowrap;
 }
 
+.facility-status {
+  margin: 10px 0 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.facility-status.is-preparing {
+  background: #eeeeee;
+  color: #666666;
+}
+
+.facility-status.is-available {
+  background: #e3f5e8;
+  color: #20733b;
+}
+
+.facility-status.is-busy {
+  background: #fff4d6;
+  color: #a37b00;
+}
+
+.facility-status.is-crowded {
+  background: #ffe2e2;
+  color: #a32828;
+}
+
 .exhib-slider .swiper-container {
   width: 100%;
   max-width: 100%;
