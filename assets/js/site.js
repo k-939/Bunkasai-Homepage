@@ -330,6 +330,10 @@ function initProjectList() {
 
   searchInput.addEventListener('input', render);
   loadData();
+    setInterval(async () => {
+    await fetchFacilityStatuses();
+    render();
+  }, 30000);
 }
 
 async function renderExhibPlaceholders() {
