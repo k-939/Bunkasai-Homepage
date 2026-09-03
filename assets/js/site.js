@@ -233,18 +233,18 @@ function initProjectList() {
     return items;
   }
 
-  function applyUrlOption() {
-    const params = new URLSearchParams(location.search);
-    const option = params.get('option') || params.get('category');
-    if (!option) return;
+    function applyUrlOption() {
+      const params = new URLSearchParams(location.search);
+      const option = params.get('option') || params.get('category');
+      if (!option) return;
 
-    const selectedCategory = option === 'booth' ? '模擬店' : option;
-    const targetCheckbox = Array.from(filterCheckboxes).find(cb => cb.value === selectedCategory);
-    if (!targetCheckbox) return;
+      const selectedCategory = option === 'booth' ? '模擬店' : option;
+      const targetCheckbox = Array.from(filterCheckboxes).find(cb => cb.value === selectedCategory);
+      if (!targetCheckbox) return;
 
-    filterCheckboxes.forEach(cb => cb.checked = cb === targetCheckbox);
-    selectAllCheckbox.checked = false;
-  }
+      filterCheckboxes.forEach(cb => cb.checked = cb === targetCheckbox);
+      selectAllCheckbox.checked = false;
+    }
 
   function render() {
     const selectedCategories = Array.from(filterCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
@@ -295,13 +295,15 @@ function initProjectList() {
     try {
       allItems = await fetchItems();
       visibleItems = getVisibleItems(allItems);
-      await fetchFacilityStatuses();
 
       searchInput.disabled = false;
       filterCheckboxes.forEach(cb => cb.disabled = false);
       selectAllCheckbox.disabled = false;
 
       applyUrlOption();
+      render();
+
+      await fetchFacilityStatuses();
       render();
     } catch (error) {
       container.innerHTML = `<div class="no-result">❌ ${escapeHtml(error.message)}</div>`;
@@ -328,7 +330,7 @@ function initProjectList() {
 
   searchInput.addEventListener('input', render);
   loadData();
-  setInterval(async () => {
+    setInterval(async () => {
     await fetchFacilityStatuses();
     render();
   }, 30000);
@@ -737,6 +739,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const pathname = location.pathname.toLowerCase();
   const isIndex = pathname.endsWith('/index.html') || pathname.endsWith('/') || pathname === '';
 
+  // 企画一覧は他の表示処理を待たず、すぐに読み込みを開始する
+  initProjectList();
+
   await Promise.all([
     renderDirectExhibCards(),
     renderExhibPlaceholders(),
@@ -746,5 +751,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     ) : Promise.resolve()
   ]);
 
-  initProjectList();
 });
