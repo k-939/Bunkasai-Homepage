@@ -1186,7 +1186,6 @@ a.is-active {
   padding: 5px 14px;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-primary) 56%, transparent);
-  border-left: 5px solid var(--color-primary);
   border-radius: 10px;
   background: color-mix(in srgb, var(--color-primary) 16%, var(--color-card));
   color: var(--color-text);
